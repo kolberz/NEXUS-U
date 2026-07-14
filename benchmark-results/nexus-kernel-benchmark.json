@@ -1,0 +1,291 @@
+{
+  "checks": {
+    "beta_delta_normalization": true,
+    "closed_proof_verified": true,
+    "definitional_equality": true,
+    "deterministic_kernel_digest": true,
+    "proof_is_axiom_free": true,
+    "resource_limit_enforced": true,
+    "serialization_round_trip": true,
+    "serialized_bundle_replayed": true
+  },
+  "kernel": "nexus-kernel-v0.1.0-recovered",
+  "kernel_sha256": "8d74dc18e3b95f3b64ce7bbc1f83a92975d422558eed1fca5c1937e3c47f8b53",
+  "mutations": {
+    "reject_bundle_payload_tampering": true,
+    "reject_decoder_unknown_tag": true,
+    "reject_false_elimination_without_false": true,
+    "reject_forged_short_proof": true,
+    "reject_kernel_digest_substitution": true,
+    "reject_non_function_application": true,
+    "reject_unbound_variable": true,
+    "reject_unknown_constant": true,
+    "reject_wrong_theorem": true
+  },
+  "proof_bundle": {
+    "axioms": [],
+    "bundle_sha256": "377210fa66f3f639a0b1c597de527710612d0673ff185e793953a17c9a59a0d5",
+    "external_lean_compatible": false,
+    "kernel": "nexus-kernel-v0.1.0-recovered",
+    "kernel_sha256": "8d74dc18e3b95f3b64ce7bbc1f83a92975d422558eed1fca5c1937e3c47f8b53",
+    "proof": {
+      "body": {
+        "body": {
+          "body": {
+            "body": {
+              "body": {
+                "body": {
+                  "body": {
+                    "left_branch": {
+                      "body": {
+                        "index": 0,
+                        "tag": "Var"
+                      },
+                      "domain": {
+                        "index": 6,
+                        "tag": "Var"
+                      },
+                      "tag": "Lam"
+                    },
+                    "result_type": {
+                      "index": 6,
+                      "tag": "Var"
+                    },
+                    "right_branch": {
+                      "body": {
+                        "proof": {
+                          "argument": {
+                            "argument": {
+                              "argument": {
+                                "index": 0,
+                                "tag": "Var"
+                              },
+                              "function": {
+                                "index": 3,
+                                "tag": "Var"
+                              },
+                              "tag": "App"
+                            },
+                            "function": {
+                              "index": 2,
+                              "tag": "Var"
+                            },
+                            "tag": "App"
+                          },
+                          "function": {
+                            "index": 4,
+                            "tag": "Var"
+                          },
+                          "tag": "App"
+                        },
+                        "result_type": {
+                          "index": 7,
+                          "tag": "Var"
+                        },
+                        "tag": "EmptyElim"
+                      },
+                      "domain": {
+                        "codomain": {
+                          "tag": "Empty"
+                        },
+                        "domain": {
+                          "index": 6,
+                          "tag": "Var"
+                        },
+                        "tag": "Pi"
+                      },
+                      "tag": "Lam"
+                    },
+                    "scrutinee": {
+                      "index": 0,
+                      "tag": "Var"
+                    },
+                    "tag": "Case"
+                  },
+                  "domain": {
+                    "left": {
+                      "index": 5,
+                      "tag": "Var"
+                    },
+                    "right": {
+                      "codomain": {
+                        "tag": "Empty"
+                      },
+                      "domain": {
+                        "index": 5,
+                        "tag": "Var"
+                      },
+                      "tag": "Pi"
+                    },
+                    "tag": "Sum"
+                  },
+                  "tag": "Lam"
+                },
+                "domain": {
+                  "codomain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "domain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "tag": "Pi"
+                },
+                "tag": "Lam"
+              },
+              "domain": {
+                "codomain": {
+                  "index": 3,
+                  "tag": "Var"
+                },
+                "domain": {
+                  "codomain": {
+                    "tag": "Empty"
+                  },
+                  "domain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "tag": "Pi"
+                },
+                "tag": "Pi"
+              },
+              "tag": "Lam"
+            },
+            "domain": {
+              "codomain": {
+                "tag": "Empty"
+              },
+              "domain": {
+                "index": 0,
+                "tag": "Var"
+              },
+              "tag": "Pi"
+            },
+            "tag": "Lam"
+          },
+          "domain": {
+            "level": 0,
+            "tag": "Sort"
+          },
+          "tag": "Lam"
+        },
+        "domain": {
+          "level": 0,
+          "tag": "Sort"
+        },
+        "tag": "Lam"
+      },
+      "domain": {
+        "level": 0,
+        "tag": "Sort"
+      },
+      "tag": "Lam"
+    },
+    "scope": "constructive generic sensitivity-to-query contradiction lemma",
+    "theorem": {
+      "codomain": {
+        "codomain": {
+          "codomain": {
+            "codomain": {
+              "codomain": {
+                "codomain": {
+                  "codomain": {
+                    "index": 6,
+                    "tag": "Var"
+                  },
+                  "domain": {
+                    "left": {
+                      "index": 5,
+                      "tag": "Var"
+                    },
+                    "right": {
+                      "codomain": {
+                        "tag": "Empty"
+                      },
+                      "domain": {
+                        "index": 5,
+                        "tag": "Var"
+                      },
+                      "tag": "Pi"
+                    },
+                    "tag": "Sum"
+                  },
+                  "tag": "Pi"
+                },
+                "domain": {
+                  "codomain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "domain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "tag": "Pi"
+                },
+                "tag": "Pi"
+              },
+              "domain": {
+                "codomain": {
+                  "index": 3,
+                  "tag": "Var"
+                },
+                "domain": {
+                  "codomain": {
+                    "tag": "Empty"
+                  },
+                  "domain": {
+                    "index": 3,
+                    "tag": "Var"
+                  },
+                  "tag": "Pi"
+                },
+                "tag": "Pi"
+              },
+              "tag": "Pi"
+            },
+            "domain": {
+              "codomain": {
+                "tag": "Empty"
+              },
+              "domain": {
+                "index": 0,
+                "tag": "Var"
+              },
+              "tag": "Pi"
+            },
+            "tag": "Pi"
+          },
+          "domain": {
+            "level": 0,
+            "tag": "Sort"
+          },
+          "tag": "Pi"
+        },
+        "domain": {
+          "level": 0,
+          "tag": "Sort"
+        },
+        "tag": "Pi"
+      },
+      "domain": {
+        "level": 0,
+        "tag": "Sort"
+      },
+      "tag": "Pi"
+    },
+    "universal_offline_lower_bound_status": "OPEN"
+  },
+  "schema": "https://nexus-u.dev/native-kernel-benchmark/v1",
+  "summary": {
+    "all_checks_passed": true,
+    "axiom_count": 0,
+    "check_count": 17,
+    "checks_passed": 17,
+    "external_lean_compatible": false,
+    "kernel_status": "NEXUS_KERNEL_VERIFIED_RECOVERED",
+    "universal_offline_lower_bound_status": "OPEN"
+  }
+}

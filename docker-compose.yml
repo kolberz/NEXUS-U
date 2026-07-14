@@ -1,7 +1,7 @@
 services:
   nexus-u:
     build: .
-    image: nexus-u:1.5.0
+    image: nexus-u:2.6.0
     ports:
       - "8080:8080"
     volumes:

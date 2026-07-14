@@ -1,6 +1,6 @@
-# NEXUS-U v2.4 — Cross-Kernel Restricted Theorem
+# NEXUS-U v2.6 — Native Kernel Production
 
-NEXUS-U is an obligation-centered runtime for discovery, construction, formal verification, safety review, provenance, and controlled release. Version 2.4 adds an independent typed natural-deduction microkernel and cross-checks the restricted decision-tree theorem against the existing arithmetic sensitivity certificate.
+NEXUS-U is an obligation-centered runtime for discovery, construction, formal verification, safety review, provenance, and controlled release. Version 2.6 adds the native production kernel while retaining independent cross-checks against the arithmetic sensitivity certificate and replayable Lean bridge.
 
 The first production challenge is binary integer multiplication. The laboratory records the proved `O(n log n)` upper bound, preserves the unconditional matching lower bound as `OPEN`, and represents the matrix-transposition route as a `CONDITIONAL_THEOREM` until its premise is proved. The active-search layer then generates and attacks proof routes before ranking them by expected obligation reduction.
 
@@ -12,7 +12,7 @@ nexus-u formalized-lower-bound --output benchmark-results --database .nexus-u/co
 nexus-u formalized-lower-bound-history --database .nexus-u/control.db
 ```
 
-The search engine blocks timings, Landauer-only arguments, online-to-offline transfers, and circuit-to-Turing transfers before ranking. It also emits a scoped `DERIVED_RESTRICTED` certificate showing that deterministic exact bit-query multiplication has worst-case query depth at least `2n`. This does not prove the open multitape `Omega(n log n)` target. Version 2.4 requires agreement between the arithmetic certificate checker and the logical microkernel. The replayable Lean project remains pending because the pinned Lean executable was unavailable in this sandbox.
+The search engine blocks timings, Landauer-only arguments, online-to-offline transfers, and circuit-to-Turing transfers before ranking. It also emits a scoped `DERIVED_RESTRICTED` certificate showing that deterministic exact bit-query multiplication has worst-case query depth at least `2n`. This does not prove the open multitape `Omega(n log n)` target. Agreement between the arithmetic certificate checker and the logical microkernel remains required, and CI independently builds the replayable project with the pinned Lean kernel.
 
 See `docs/LOWER_BOUND_DISCOVERY_LAB.md`, `docs/ACTIVE_LOWER_BOUND_SEARCH.md`, and `docs/FORMALIZED_LOWER_BOUND_SEARCH.md`.
 
@@ -95,9 +95,9 @@ The tension score is a prioritization metric, not a truth probability. See `docs
 
 ## Kernel Verification Bridge
 
-NEXUS-U v2.4 adds a replayable Lean project for the generic sensitivity-to-query lower-bound theorem. The bridge:
+NEXUS-U v2.6 includes a replayable Lean project for the generic sensitivity-to-query lower-bound theorem. The bridge:
 
-- pins `leanprover/lean4:v4.29.0-rc1`;
+- pins `leanprover/lean4:v4.29.1`;
 - emits a complete Lean source file with no `sorry`, `admit`, `axiom`, or `unsafe`;
 - records all source hashes in a replay manifest;
 - rejects missing, wrong-version, or untrusted toolchain identities;
@@ -138,8 +138,18 @@ make release
 ## HTTP API
 
 ```bash
+export NEXUS_U_API_TOKEN="replace-with-a-long-random-secret"
 nexus-u serve --port 8080
 ```
+
+PowerShell:
+
+```powershell
+$env:NEXUS_U_API_TOKEN = "replace-with-a-long-random-secret"
+nexus-u serve --port 8080
+```
+
+The server listens on `127.0.0.1` by default. Health endpoints are public; all other routes, including metrics, require `Authorization: Bearer <token>`. For an explicitly local development-only server, set `NEXUS_U_ALLOW_UNAUTHENTICATED=true`. Bind to `0.0.0.0` only behind appropriate network controls.
 
 Core routes:
 

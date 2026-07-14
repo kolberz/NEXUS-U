@@ -243,7 +243,7 @@ def write_lean_target(path: str | Path) -> Path:
     output = Path(path)
     output.parent.mkdir(parents=True, exist_ok=True)
     text = r'''/--
-NEXUS-U v2.4 formalization target.
+NEXUS-U v2.6 formalization target.
 
 This file declares the restricted-model definitions and the proposition to be proved.
 It deliberately contains no `axiom`, `sorry`, or `admit`, and it is not labeled

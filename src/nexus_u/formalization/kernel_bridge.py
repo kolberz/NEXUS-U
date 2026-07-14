@@ -16,8 +16,8 @@ PINNED_LEAN_VERSION = "4.29.1"
 BRIDGE_THEOREM = "allSensitive_forces_allQueried"
 UNIVERSAL_TARGET_STATUS = "OPEN"
 
-LEAN_SOURCE = r'''/--
-NEXUS-U v2.4 kernel-bridge theorem.
+LEAN_SOURCE = r'''/-
+NEXUS-U v2.6 kernel-bridge theorem.
 
 Scope: deterministic path certificates over finite Boolean inputs.
 This theorem is deliberately generic. It proves that if every input coordinate is
@@ -53,15 +53,18 @@ theorem allSensitive_forces_allQueried
     (allSensitive : ∀ i, SensitiveAt f x i) :
     AllQueried queried := by
   intro i
-  by_contra hNotQueried
-  obtain ⟨y, hSame, hDifferent⟩ := allSensitive i
-  apply hDifferent
-  apply pathExact y
-  intro j hQueried
-  apply hSame j
-  intro hEq
-  subst j
-  exact hNotQueried hQueried
+  cases hQuery : queried i with
+  | false =>
+    obtain ⟨y, hSame, hDifferent⟩ := allSensitive i
+    have hOutput : f y = f x := pathExact y (by
+      intro j hQueried
+      apply hSame j
+      intro hEq
+      subst j
+      simp [hQuery] at hQueried)
+    exact False.elim (hDifferent hOutput)
+  | true =>
+    rfl
 
 /--
 Conditional multiplication-facing specialization. A separate proof must establish
@@ -83,7 +86,16 @@ end NexusU.KernelBridge
 
 LAKEFILE = '''name = "NexusUKernelBridge"\nversion = "0.1.0"\ndefaultTargets = ["NexusUKernelBridge"]\n\n[[lean_lib]]\nname = "NexusUKernelBridge"\n'''
 
-WORKFLOW = '''name: Lean kernel bridge\n\non:\n  push:\n  pull_request:\n  workflow_dispatch:\n\njobs:\n  kernel-check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: leanprover/lean-action@v1\n        with:\n          lake-package-directory: formal/lean-kernel-bridge\n      - name: Verify replay manifest inputs\n        run: python scripts/verify_kernel_bridge_manifest.py\n'''
+LAKE_MANIFEST = '''{"version": "1.1.0",
+ "packagesDir": ".lake/packages",
+ "packages": [],
+ "name": "NexusUKernelBridge",
+ "lakeDir": ".lake"}
+'''
+
+ROOT_MODULE = "import NexusUKernelBridge.AllSensitive\n"
+
+WORKFLOW = '''name: Lean kernel bridge\n\non:\n  push:\n  pull_request:\n  workflow_dispatch:\n\njobs:\n  kernel-check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: leanprover/lean-action@v1\n        with:\n          lake-package-directory: formal/lean-kernel-bridge\n          auto-config: false\n      - name: Verify replay manifest inputs\n        run: python scripts/verify_kernel_bridge_manifest.py\n'''
 
 VERIFY_SCRIPT = '''#!/usr/bin/env bash\nset -euo pipefail\ncd "$(dirname "$0")"\nlake build\n'''
 
@@ -171,6 +183,8 @@ class KernelBridgeEngine:
         workflow_dir.mkdir(parents=True, exist_ok=True)
         (root / "lean-toolchain").write_text(PINNED_LEAN_TOOLCHAIN + "\n", encoding="utf-8")
         (root / "lakefile.toml").write_text(LAKEFILE, encoding="utf-8")
+        (root / "lake-manifest.json").write_text(LAKE_MANIFEST, encoding="utf-8")
+        (root / "NexusUKernelBridge.lean").write_text(ROOT_MODULE, encoding="utf-8")
         (source_dir / "AllSensitive.lean").write_text(LEAN_SOURCE, encoding="utf-8")
         verify = root / "verify.sh"
         verify.write_text(VERIFY_SCRIPT, encoding="utf-8")
@@ -194,6 +208,8 @@ class KernelBridgeEngine:
             "balanced_brackets": text.count("[") == text.count("]"),
             "pinned_toolchain_present": (project / "lean-toolchain").read_text(encoding="utf-8").strip() == PINNED_LEAN_TOOLCHAIN,
             "lakefile_present": (project / "lakefile.toml").is_file(),
+            "lake_manifest_present": (project / "lake-manifest.json").read_text(encoding="utf-8") == LAKE_MANIFEST,
+            "root_module_present": (project / "NexusUKernelBridge.lean").read_text(encoding="utf-8") == ROOT_MODULE,
             "replay_script_present": (project / "verify.sh").is_file(),
             "ci_workflow_present": (project / ".github" / "workflows" / "kernel-check.yml").is_file(),
         }
@@ -201,9 +217,20 @@ class KernelBridgeEngine:
         return checks
 
     def _locate(self) -> tuple[str | None, str | None]:
-        lake = self.explicit_lake or os.environ.get("NEXUS_U_LAKE") or shutil.which("lake")
-        lean = self.explicit_lean or os.environ.get("NEXUS_U_LEAN") or shutil.which("lean")
-        return lake, lean
+        # An explicitly selected executable must not be shadowed by another tool
+        # discovered on PATH. This is also what makes deterministic test/replay
+        # configurations possible on hosts that have both Lake and Lean installed.
+        if self.explicit_lake:
+            return self.explicit_lake, None
+        if self.explicit_lean:
+            return None, self.explicit_lean
+        configured_lake = os.environ.get("NEXUS_U_LAKE")
+        if configured_lake:
+            return configured_lake, None
+        configured_lean = os.environ.get("NEXUS_U_LEAN")
+        if configured_lean:
+            return None, configured_lean
+        return shutil.which("lake"), shutil.which("lean")
 
     @staticmethod
     def _version(executable: str) -> tuple[str, bool]:
@@ -231,7 +258,8 @@ class KernelBridgeEngine:
         if lake:
             command = [executable, "build"]
         else:
-            command = [executable, str(project / "NexusUKernelBridge" / "AllSensitive.lean")]
+            source = (project / "NexusUKernelBridge" / "AllSensitive.lean").resolve()
+            command = [executable, str(source)]
         started = time.monotonic()
         try:
             result = subprocess.run(command, cwd=project, capture_output=True, text=True, timeout=180, check=False)

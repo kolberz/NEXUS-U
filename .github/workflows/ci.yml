@@ -10,6 +10,43 @@ permissions:
 
 jobs:
   test:
+    name: Test (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m pytest -q
+      - run: python -m pytest -q -m reality
+      - run: python -m compileall -q src tests
+
+  lean_kernel:
+    name: Lean kernel verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e .
+      - name: Generate the pinned replay project
+        run: python -c "from pathlib import Path; from nexus_u.formalization.kernel_bridge import KernelBridgeEngine; KernelBridgeEngine.write_project(Path('benchmark-results/kernel-bridge'))"
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: benchmark-results/kernel-bridge
+          auto-config: false
+
+  release:
+    name: Release gate
+    needs: [test, lean_kernel]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,9 +55,6 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install --upgrade pip build
       - run: python -m pip install -e ".[dev]"
-      - run: python -m pytest -q
-      - run: python -m pytest -q -m reality
-      - run: python -m compileall -q src tests
       - run: nexus-u validate examples/hello_python.json
       - run: nexus-u capabilities
       - run: nexus-u validate examples/discovery.json

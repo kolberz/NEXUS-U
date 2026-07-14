@@ -1,11 +1,34 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from nexus_u.benchmark.kernel_bridge import run_kernel_bridge_benchmark
 from nexus_u.formalization.kernel_bridge import KernelBridgeEngine, PINNED_LEAN_TOOLCHAIN
 from nexus_u.storage.sqlite import ControlStore
+
+
+def _fake_lean(tmp_path: Path, version: str) -> Path:
+    if os.name == "nt":
+        fake = tmp_path / "lean.cmd"
+        fake.write_text(
+            "@echo off\n"
+            f'if "%~1"=="--version" (echo {version}& exit /b 0)\n'
+            'if exist "%~1" (exit /b 0)\n'
+            "exit /b 1\n",
+            encoding="utf-8",
+        )
+    else:
+        fake = tmp_path / "lean"
+        fake.write_text(
+            "#!/bin/sh\n"
+            f'if [ "$1" = "--version" ]; then echo \'{version}\'; exit 0; fi\n'
+            'test -f "$1"\n',
+            encoding="utf-8",
+        )
+        fake.chmod(0o755)
+    return fake
 
 
 def test_kernel_bridge_generates_replayable_project(tmp_path: Path) -> None:
@@ -16,6 +39,8 @@ def test_kernel_bridge_generates_replayable_project(tmp_path: Path) -> None:
     assert report.execution.verified is False
     assert Path(report.replay_manifest_path).is_file()
     assert (tmp_path / "project" / "lean-toolchain").read_text().strip() == PINNED_LEAN_TOOLCHAIN
+    assert json.loads((tmp_path / "project" / "lake-manifest.json").read_text())["packages"] == []
+    assert (tmp_path / "project" / "NexusUKernelBridge.lean").read_text().strip() == "import NexusUKernelBridge.AllSensitive"
 
 
 def test_kernel_bridge_unavailable_is_explicit(tmp_path: Path, monkeypatch) -> None:
@@ -28,9 +53,7 @@ def test_kernel_bridge_unavailable_is_explicit(tmp_path: Path, monkeypatch) -> N
 
 
 def test_kernel_bridge_rejects_untrusted_fake_toolchain(tmp_path: Path) -> None:
-    fake = tmp_path / "lean"
-    fake.write_text("#!/bin/sh\nif [ \"$1\" = \"--version\" ]; then echo fake; exit 0; fi\nexit 0\n")
-    fake.chmod(0o755)
+    fake = _fake_lean(tmp_path, "fake")
     report = KernelBridgeEngine(explicit_lean=str(fake)).run(tmp_path / "project")
     assert report.execution.available is True
     assert report.execution.trusted_identity is False
@@ -39,18 +62,20 @@ def test_kernel_bridge_rejects_untrusted_fake_toolchain(tmp_path: Path) -> None:
 
 
 def test_kernel_bridge_runner_accepts_pinned_identity_in_mechanical_test(tmp_path: Path) -> None:
-    fake = tmp_path / "lean"
-    fake.write_text(
-        "#!/bin/sh\n"
-        "if [ \"$1\" = \"--version\" ]; then echo 'Lean (version 4.29.1, x86_64-unknown-linux-gnu)'; exit 0; fi\n"
-        "test -f \"$1\"\n"
-    )
-    fake.chmod(0o755)
+    fake = _fake_lean(tmp_path, "Lean (version 4.29.1, test-platform)")
     report = KernelBridgeEngine(explicit_lean=str(fake)).run(tmp_path / "project")
     assert report.execution.trusted_identity is True
     assert report.execution.verified is True
     assert report.status == "KERNEL_VERIFIED"
     # This test validates orchestration only; the production benchmark never injects this fake tool.
+
+
+def test_kernel_bridge_resolves_source_for_relative_output_path(tmp_path: Path, monkeypatch) -> None:
+    fake = _fake_lean(tmp_path, "Lean (version 4.29.1, test-platform)")
+    monkeypatch.chdir(tmp_path)
+    report = KernelBridgeEngine(explicit_lean=str(fake)).run(Path("relative-project"))
+    assert Path(report.execution.command[1]).is_absolute()
+    assert report.execution.verified is True
 
 
 def test_kernel_bridge_static_check_detects_forbidden_declaration(tmp_path: Path) -> None:

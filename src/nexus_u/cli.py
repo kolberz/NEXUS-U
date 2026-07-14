@@ -780,7 +780,7 @@ def build_parser() -> argparse.ArgumentParser:
     init.set_defaults(func=cmd_init)
 
     server = sub.add_parser("serve", help="Run the HTTP control plane")
-    server.add_argument("--host", default="0.0.0.0")
+    server.add_argument("--host", default="127.0.0.1")
     server.add_argument("--port", type=int, default=8080)
     server.set_defaults(func=lambda args: serve(args.host, args.port) or 0)
     return parser

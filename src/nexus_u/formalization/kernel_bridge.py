@@ -86,6 +86,13 @@ end NexusU.KernelBridge
 
 LAKEFILE = '''name = "NexusUKernelBridge"\nversion = "0.1.0"\ndefaultTargets = ["NexusUKernelBridge"]\n\n[[lean_lib]]\nname = "NexusUKernelBridge"\n'''
 
+LAKE_MANIFEST = '''{"version": "1.1.0",
+ "packagesDir": ".lake/packages",
+ "packages": [],
+ "name": "NexusUKernelBridge",
+ "lakeDir": ".lake"}
+'''
+
 ROOT_MODULE = "import NexusUKernelBridge.AllSensitive\n"
 
 WORKFLOW = '''name: Lean kernel bridge\n\non:\n  push:\n  pull_request:\n  workflow_dispatch:\n\njobs:\n  kernel-check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: leanprover/lean-action@v1\n        with:\n          lake-package-directory: formal/lean-kernel-bridge\n          auto-config: false\n      - name: Verify replay manifest inputs\n        run: python scripts/verify_kernel_bridge_manifest.py\n'''
@@ -176,6 +183,7 @@ class KernelBridgeEngine:
         workflow_dir.mkdir(parents=True, exist_ok=True)
         (root / "lean-toolchain").write_text(PINNED_LEAN_TOOLCHAIN + "\n", encoding="utf-8")
         (root / "lakefile.toml").write_text(LAKEFILE, encoding="utf-8")
+        (root / "lake-manifest.json").write_text(LAKE_MANIFEST, encoding="utf-8")
         (root / "NexusUKernelBridge.lean").write_text(ROOT_MODULE, encoding="utf-8")
         (source_dir / "AllSensitive.lean").write_text(LEAN_SOURCE, encoding="utf-8")
         verify = root / "verify.sh"
@@ -200,6 +208,7 @@ class KernelBridgeEngine:
             "balanced_brackets": text.count("[") == text.count("]"),
             "pinned_toolchain_present": (project / "lean-toolchain").read_text(encoding="utf-8").strip() == PINNED_LEAN_TOOLCHAIN,
             "lakefile_present": (project / "lakefile.toml").is_file(),
+            "lake_manifest_present": (project / "lake-manifest.json").read_text(encoding="utf-8") == LAKE_MANIFEST,
             "root_module_present": (project / "NexusUKernelBridge.lean").read_text(encoding="utf-8") == ROOT_MODULE,
             "replay_script_present": (project / "verify.sh").is_file(),
             "ci_workflow_present": (project / ".github" / "workflows" / "kernel-check.yml").is_file(),

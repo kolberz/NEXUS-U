@@ -16,8 +16,8 @@ PINNED_LEAN_VERSION = "4.29.1"
 BRIDGE_THEOREM = "allSensitive_forces_allQueried"
 UNIVERSAL_TARGET_STATUS = "OPEN"
 
-LEAN_SOURCE = r'''/--
-NEXUS-U v2.4 kernel-bridge theorem.
+LEAN_SOURCE = r'''/-
+NEXUS-U v2.6 kernel-bridge theorem.
 
 Scope: deterministic path certificates over finite Boolean inputs.
 This theorem is deliberately generic. It proves that if every input coordinate is
@@ -53,15 +53,18 @@ theorem allSensitive_forces_allQueried
     (allSensitive : ∀ i, SensitiveAt f x i) :
     AllQueried queried := by
   intro i
-  by_contra hNotQueried
-  obtain ⟨y, hSame, hDifferent⟩ := allSensitive i
-  apply hDifferent
-  apply pathExact y
-  intro j hQueried
-  apply hSame j
-  intro hEq
-  subst j
-  exact hNotQueried hQueried
+  cases hQuery : queried i with
+  | false =>
+    obtain ⟨y, hSame, hDifferent⟩ := allSensitive i
+    have hOutput : f y = f x := pathExact y (by
+      intro j hQueried
+      apply hSame j
+      intro hEq
+      subst j
+      simp [hQuery] at hQueried)
+    exact False.elim (hDifferent hOutput)
+  | true =>
+    rfl
 
 /--
 Conditional multiplication-facing specialization. A separate proof must establish
@@ -201,9 +204,20 @@ class KernelBridgeEngine:
         return checks
 
     def _locate(self) -> tuple[str | None, str | None]:
-        lake = self.explicit_lake or os.environ.get("NEXUS_U_LAKE") or shutil.which("lake")
-        lean = self.explicit_lean or os.environ.get("NEXUS_U_LEAN") or shutil.which("lean")
-        return lake, lean
+        # An explicitly selected executable must not be shadowed by another tool
+        # discovered on PATH. This is also what makes deterministic test/replay
+        # configurations possible on hosts that have both Lake and Lean installed.
+        if self.explicit_lake:
+            return self.explicit_lake, None
+        if self.explicit_lean:
+            return None, self.explicit_lean
+        configured_lake = os.environ.get("NEXUS_U_LAKE")
+        if configured_lake:
+            return configured_lake, None
+        configured_lean = os.environ.get("NEXUS_U_LEAN")
+        if configured_lean:
+            return None, configured_lean
+        return shutil.which("lake"), shutil.which("lean")
 
     @staticmethod
     def _version(executable: str) -> tuple[str, bool]:
@@ -231,7 +245,8 @@ class KernelBridgeEngine:
         if lake:
             command = [executable, "build"]
         else:
-            command = [executable, str(project / "NexusUKernelBridge" / "AllSensitive.lean")]
+            source = (project / "NexusUKernelBridge" / "AllSensitive.lean").resolve()
+            command = [executable, str(source)]
         started = time.monotonic()
         try:
             result = subprocess.run(command, cwd=project, capture_output=True, text=True, timeout=180, check=False)

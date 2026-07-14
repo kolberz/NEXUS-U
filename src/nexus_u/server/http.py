@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import hmac
 import json
 import os
 from pathlib import Path
@@ -37,6 +38,21 @@ _STORE = ControlStore(_DATA_DIR / "control.db")
 _PIPELINE = Pipeline(output_dir=_DATA_DIR / "artifacts", store=_STORE)
 _JOBS = JobManager(_STORE, pipeline_factory=lambda: Pipeline(output_dir=_DATA_DIR / "artifacts", store=_STORE))
 
+_PUBLIC_ROUTES = {"/health", "/health/live", "/health/ready"}
+_TRUE_VALUES = {"1", "true", "yes", "on"}
+_MAX_QUERY_LIMIT = 1000
+
+
+def _bounded_query(raw_query: str) -> dict[str, list[str]]:
+    query = parse_qs(raw_query, keep_blank_values=True, max_num_fields=100)
+    if "limit" not in query:
+        return query
+    limit = int(query["limit"][0])
+    if limit < 1:
+        raise ValueError("limit must be a positive integer")
+    query["limit"] = [str(min(limit, _MAX_QUERY_LIMIT))]
+    return query
+
 
 class NexusHandler(BaseHTTPRequestHandler):
     pipeline = _PIPELINE
@@ -48,12 +64,19 @@ class NexusHandler(BaseHTTPRequestHandler):
         return self.headers.get("X-Request-ID") or str(uuid.uuid4())
 
     def _authorized(self, route: str) -> bool:
-        if route in {"/health", "/health/live", "/health/ready", "/metrics"}:
+        if route in _PUBLIC_ROUTES:
             return True
         expected = os.environ.get("NEXUS_U_API_TOKEN")
         if not expected:
-            return True
-        return self.headers.get("Authorization") == f"Bearer {expected}"
+            setting = os.environ.get("NEXUS_U_ALLOW_UNAUTHENTICATED", "")
+            return setting.strip().lower() in _TRUE_VALUES
+        authorization = self.headers.get("Authorization", "")
+        prefix = "Bearer "
+        if not authorization.startswith(prefix):
+            return False
+        return hmac.compare_digest(
+            authorization[len(prefix):].encode("utf-8"), expected.encode("utf-8")
+        )
 
     def _headers(self, request_id: str, content_type: str, length: int) -> None:
         self.send_header("Content-Type", content_type)
@@ -97,7 +120,16 @@ class NexusHandler(BaseHTTPRequestHandler):
             self._finish(started, route, 401)
             return
         parsed = urlparse(self.path)
-        query = parse_qs(parsed.query)
+        try:
+            query = _bounded_query(parsed.query)
+        except (ValueError, TypeError):
+            self._send(
+                400,
+                {"error": "invalid_request", "detail": "limit must be a positive integer"},
+                request_id=request_id,
+            )
+            self._finish(started, route, 400)
+            return
         if route in {"/health", "/health/live"}:
             self._send(200, {"status": "ok", "service": "nexus-u", "version": __version__}, request_id=request_id)
             self._finish(started, route, 200)
@@ -482,7 +514,7 @@ class NexusHandler(BaseHTTPRequestHandler):
         return
 
 
-def serve(host: str = "0.0.0.0", port: int = 8080) -> None:
+def serve(host: str = "127.0.0.1", port: int = 8080) -> None:
     server = ThreadingHTTPServer((host, port), NexusHandler)
     print(f"NEXUS-U listening on http://{host}:{port}")
     server.serve_forever()

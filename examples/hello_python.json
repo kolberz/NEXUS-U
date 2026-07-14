@@ -1,0 +1,16 @@
+{
+  "intent": "Produce and verify a release-ready Python artifact",
+  "artifact_type": "software",
+  "modes": ["SOFTWARE_ENGINEERING"],
+  "adapter": "python",
+  "success_conditions": ["NEXUS-U READY"],
+  "assumptions": ["Python 3.11 or newer"],
+  "inputs": {
+    "code": "print('NEXUS-U READY')"
+  },
+  "budget": {
+    "wall_clock_seconds": 10,
+    "memory_mb": 256,
+    "output_bytes": 100000
+  }
+}

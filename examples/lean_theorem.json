@@ -1,0 +1,11 @@
+{
+  "intent": "Kernel-check a minimal Lean theorem",
+  "artifact_type": "theorem",
+  "modes": ["FORMAL_PROOF"],
+  "adapter": "lean",
+  "inputs": {
+    "file_name": "NexusArtifact.lean",
+    "source": "theorem nexus_identity (n : Nat) : n = n := by\n  rfl\n"
+  },
+  "budget": {"wall_clock_seconds": 30, "memory_mb": 512, "output_bytes": 200000}
+}

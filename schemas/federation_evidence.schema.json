@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/federation_evidence.schema.json",
+  "title": "NEXUS-U Federated Evidence Submission",
+  "type": "object",
+  "required": ["submission_id", "obligation_id", "actor_id", "organization_id", "verdict", "evidence_digest", "provenance_group", "signature", "key_id"],
+  "properties": {
+    "submission_id": {"type": "string"},
+    "obligation_id": {"type": "string"},
+    "actor_id": {"type": "string"},
+    "organization_id": {"type": "string"},
+    "verdict": {"enum": ["SUPPORTS", "REFUTES", "INCONCLUSIVE"]},
+    "evidence_kind": {"type": "string"},
+    "summary": {"type": "string"},
+    "evidence_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "provenance_group": {"type": "string", "minLength": 1},
+    "scope": {"type": "string"},
+    "signature": {"type": "string"},
+    "key_id": {"type": "string"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "actual_experiment": "regime_split-discriminate",
+      "case_id": "regime_split",
+      "expected_experiment": "regime_split-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "regime_split-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "SCOPE_CONFLICT",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    },
+    {
+      "actual_experiment": "calibration_anomaly-discriminate",
+      "case_id": "calibration_anomaly",
+      "expected_experiment": "calibration_anomaly-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "calibration_anomaly-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "MODEL_DATA_MISMATCH",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    },
+    {
+      "actual_experiment": "hidden_dependency-discriminate",
+      "case_id": "hidden_dependency",
+      "expected_experiment": "hidden_dependency-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "hidden_dependency-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "CAUSAL_CONFLICT",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    },
+    {
+      "actual_experiment": "resource_transition-discriminate",
+      "case_id": "resource_transition",
+      "expected_experiment": "resource_transition-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "resource_transition-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "RESOURCE_CONFLICT",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    },
+    {
+      "actual_experiment": "composition_failure-discriminate",
+      "case_id": "composition_failure",
+      "expected_experiment": "composition_failure-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "composition_failure-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "COMPOSITION_FAILURE",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    },
+    {
+      "actual_experiment": "mechanism_revision-discriminate",
+      "case_id": "mechanism_revision",
+      "expected_experiment": "mechanism_revision-discriminate",
+      "matched": true,
+      "static_baseline_experiment": "mechanism_revision-repeat",
+      "static_baseline_matched": false,
+      "tension_detected": true,
+      "tension_kind": "CONTRADICTION",
+      "tension_reduction": 0.713603,
+      "tension_score_after": 0.286397,
+      "tension_score_before": 1.0
+    }
+  ],
+  "completed_at": 1784023978.451273,
+  "schema": "https://nexus-u.dev/tension-discovery-benchmark/v1",
+  "started_at": 1784023978.4492764,
+  "summary": {
+    "case_count": 6,
+    "detection_rate": 1.0,
+    "discovery_advantage": 1.0,
+    "experiment_match_rate": 1.0,
+    "experiment_matches": 6,
+    "mean_tension_reduction": 0.713603,
+    "static_baseline_matches": 0,
+    "static_baseline_rate": 0.0,
+    "tension_reduced_cases": 6,
+    "tensions_detected": 6
+  }
+}

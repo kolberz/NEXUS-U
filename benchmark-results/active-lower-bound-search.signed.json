@@ -1,0 +1,743 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "active-lower-bound-search-local",
+  "payload": {
+    "completed_at": 1784023996.1641273,
+    "schema": "https://nexus-u.dev/active-lower-bound-search-benchmark/v1",
+    "search_report": {
+      "attacks": [
+        {
+          "attacks": [],
+          "inherited_obstructions": [],
+          "obligation_debt": 0.58,
+          "reasons": [
+            "No blocking scope, evidence, reversibility, or mechanism defect was found."
+          ],
+          "route_id": "formalize_transposition_reduction",
+          "status": "FORMALIZATION_READY",
+          "survives": true
+        },
+        {
+          "attacks": [],
+          "inherited_obstructions": [],
+          "obligation_debt": 0.44,
+          "reasons": [
+            "No blocking scope, evidence, reversibility, or mechanism defect was found."
+          ],
+          "route_id": "query_model_read_all_bits",
+          "status": "DERIVED_RESTRICTED",
+          "survives": true
+        },
+        {
+          "attacks": [
+            "OPEN_PREMISE"
+          ],
+          "inherited_obstructions": [
+            "REDUCTION_PREMISE_OPEN"
+          ],
+          "obligation_debt": 1.33,
+          "reasons": [
+            "The route is valuable but remains conditional on an open lower bound."
+          ],
+          "route_id": "multiscale_transposition_cut",
+          "status": "CONDITIONAL",
+          "survives": true
+        },
+        {
+          "attacks": [],
+          "inherited_obstructions": [],
+          "obligation_debt": 0.66,
+          "reasons": [
+            "No blocking scope, evidence, reversibility, or mechanism defect was found."
+          ],
+          "route_id": "oblivious_crossing_sequence",
+          "status": "CONDITIONAL",
+          "survives": true
+        },
+        {
+          "attacks": [],
+          "inherited_obstructions": [],
+          "obligation_debt": 0.46,
+          "reasons": [
+            "No blocking scope, evidence, reversibility, or mechanism defect was found."
+          ],
+          "route_id": "proof_barrier_information_counting",
+          "status": "FORMALIZATION_READY",
+          "survives": true
+        },
+        {
+          "attacks": [
+            "INFORMATION_COST_GAP",
+            "REVERSIBILITY"
+          ],
+          "inherited_obstructions": [
+            "INFORMATION_COUNTING_TOO_WEAK",
+            "REVERSIBILITY_ESCAPE"
+          ],
+          "obligation_debt": 0.5,
+          "reasons": [
+            "Information volume alone does not force the required time or data movement.",
+            "The route ignores reversible computation and uncomputation."
+          ],
+          "route_id": "landauer_erasure_optimality",
+          "status": "BLOCKED",
+          "survives": false
+        },
+        {
+          "attacks": [
+            "EMPIRICAL_ONLY"
+          ],
+          "inherited_obstructions": [
+            "EMPIRICAL_TO_ASYMPTOTIC_GAP"
+          ],
+          "obligation_debt": 0.15,
+          "reasons": [
+            "Finite observations cannot establish a universal asymptotic lower bound."
+          ],
+          "route_id": "empirical_crossover_extrapolation",
+          "status": "BLOCKED",
+          "survives": false
+        },
+        {
+          "attacks": [
+            "MODEL_SCOPE",
+            "UNIVERSALIZATION"
+          ],
+          "inherited_obstructions": [
+            "MODEL_MISMATCH",
+            "ONLINE_OFFLINE_GAP",
+            "RESTRICTED_TO_UNIVERSAL_GAP"
+          ],
+          "obligation_debt": 0.45,
+          "reasons": [
+            "The route changes machine model without a proved transfer theorem.",
+            "An online lower bound cannot be promoted to the offline target without a transfer proof.",
+            "A restricted-model result is being universalized."
+          ],
+          "route_id": "online_bound_transfer",
+          "status": "BLOCKED",
+          "survives": false
+        },
+        {
+          "attacks": [
+            "MODEL_SCOPE",
+            "UNIVERSALIZATION"
+          ],
+          "inherited_obstructions": [
+            "MODEL_MISMATCH",
+            "RESTRICTED_TO_UNIVERSAL_GAP"
+          ],
+          "obligation_debt": 0.3,
+          "reasons": [
+            "The route changes machine model without a proved transfer theorem.",
+            "A restricted-model result is being universalized."
+          ],
+          "route_id": "bounded_circuit_transfer",
+          "status": "BLOCKED",
+          "survives": false
+        }
+      ],
+      "candidates": [
+        {
+          "assumptions": [
+            "published reduction is accurately encoded"
+          ],
+          "estimated_cost": 0.52,
+          "evidence_kind": "PROVED_REDUCTION",
+          "falsification_tests": [
+            "mutate size map",
+            "inflate simulated step cost",
+            "change source model"
+          ],
+          "kind": "FORMALIZE_REDUCTION",
+          "leverage": 0.88,
+          "mechanism": "Replay every reduction step in a proof assistant while preserving the exact multitape model and asymptotic overhead.",
+          "metadata": {
+            "universalize": false
+          },
+          "novelty": 0.42,
+          "proof_obligations": [
+            "formal Turing-machine semantics",
+            "packing correctness",
+            "simulation correctness",
+            "overhead preservation"
+          ],
+          "requested_status": "FORMALIZATION_TARGET",
+          "route_id": "formalize_transposition_reduction",
+          "statement": "Formalize the published reduction with explicit packing, simulation, size map, and time overhead.",
+          "target_complexity": "conditional Omega(n log n)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Machine-check the 2025 transposition reduction",
+          "tractability": 0.72
+        },
+        {
+          "assumptions": [
+            "deterministic exact decision tree",
+            "individual input-bit query cost"
+          ],
+          "estimated_cost": 0.18,
+          "evidence_kind": "FINITE_TESTS",
+          "falsification_tests": [
+            "search for a witness-insensitive bit",
+            "enumerate small n decision functions"
+          ],
+          "kind": "RESTRICTED_THEOREM",
+          "leverage": 0.48,
+          "mechanism": "Use x=y=2^n-1 as a single input at which every one of the 2n input bits is sensitive.",
+          "metadata": {
+            "restricted_scope": true,
+            "symbolic_derivation": true,
+            "universalize": false
+          },
+          "novelty": 0.28,
+          "proof_obligations": [
+            "formalize sensitivity argument",
+            "formalize decision-tree path lemma"
+          ],
+          "requested_status": "FORMALIZATION_TARGET",
+          "route_id": "query_model_read_all_bits",
+          "statement": "Exact multiplication requires 2n bit queries in the worst case in the deterministic adaptive bit-query model.",
+          "target_complexity": "Omega(n)",
+          "target_model_id": "deterministic_bit_query_model",
+          "target_problem_id": "integer_multiplication_query_model",
+          "title": "Exact query lower bound from a common sensitivity witness",
+          "tractability": 0.96
+        },
+        {
+          "assumptions": [
+            "a non-double-counting crossing lemma",
+            "head movement and rewriting cannot bypass charged cuts"
+          ],
+          "estimated_cost": 0.86,
+          "evidence_kind": "NONE",
+          "falsification_tests": [
+            "construct a packing schedule that crosses several scales in one move",
+            "test whether one crossing can discharge multiple charges"
+          ],
+          "kind": "COMMUNICATION_CUT",
+          "leverage": 1.0,
+          "mechanism": "Partition tape positions at nested scales and charge matrix bits whose source and destination lie on opposite sides of each cut.",
+          "metadata": {
+            "depends_on_open_premise": true
+          },
+          "novelty": 0.82,
+          "proof_obligations": [
+            "define scale cuts",
+            "prove crossing necessity",
+            "bound reuse across scales",
+            "handle multiple tapes"
+          ],
+          "requested_status": "HEURISTIC",
+          "route_id": "multiscale_transposition_cut",
+          "statement": "Each logarithmic spatial scale forces Omega(m^2) aggregate information crossing, yielding Omega(m^2 log m).",
+          "target_complexity": "Omega(m^2 log m)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "binary_matrix_transposition",
+          "title": "Multiscale communication cuts for binary transposition",
+          "tractability": 0.38
+        },
+        {
+          "assumptions": [
+            "oblivious schedule",
+            "bounded tape count",
+            "finite alphabet"
+          ],
+          "estimated_cost": 0.62,
+          "evidence_kind": "NONE",
+          "falsification_tests": [
+            "search for compressed crossing-sequence reuse",
+            "remove obliviousness and test failure"
+          ],
+          "kind": "DATA_MOVEMENT",
+          "leverage": 0.66,
+          "mechanism": "Associate crossing sequences with information that must move between input blocks and output blocks under an oblivious head schedule.",
+          "metadata": {
+            "restricted_scope": true,
+            "universalize": false
+          },
+          "novelty": 0.7,
+          "proof_obligations": [
+            "crossing-sequence encoding bound",
+            "input family with independent cross-cut influence",
+            "amortization lemma"
+          ],
+          "requested_status": "HEURISTIC",
+          "route_id": "oblivious_crossing_sequence",
+          "statement": "Oblivious bounded-tape multiplication requires superlinear information transport across tape cuts.",
+          "target_complexity": "restricted superlinear lower bound",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Crossing-sequence bound for oblivious multiplication",
+          "tractability": 0.52
+        },
+        {
+          "assumptions": [
+            "precise class of cardinality-only arguments"
+          ],
+          "estimated_cost": 0.4,
+          "evidence_kind": "NONE",
+          "falsification_tests": [
+            "attempt to derive a time bound from the declared argument class"
+          ],
+          "kind": "BARRIER_THEOREM",
+          "leverage": 0.58,
+          "mechanism": "Construct a family of computations sharing the same information cardinality but having different time costs, exposing the missing transport premise.",
+          "metadata": {
+            "universalize": false
+          },
+          "novelty": 0.64,
+          "proof_obligations": [
+            "define argument class",
+            "construct separating examples",
+            "prove insufficiency theorem"
+          ],
+          "requested_status": "FORMALIZATION_TARGET",
+          "route_id": "proof_barrier_information_counting",
+          "statement": "Bare input/output cardinality arguments cannot by themselves yield Omega(n log n) time in a model permitting reversible computation.",
+          "target_complexity": "negative meta-result",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Formal barrier theorem for bare information counting",
+          "tractability": 0.7
+        },
+        {
+          "assumptions": [
+            "fixed temperature",
+            "erasure count equals search work"
+          ],
+          "estimated_cost": 0.25,
+          "evidence_kind": "INFORMATION_COUNTING",
+          "falsification_tests": [
+            "construct reversible implementation"
+          ],
+          "kind": "INFORMATION_COUNTING",
+          "leverage": 0.9,
+          "mechanism": "Convert an asserted number of erased bits into a time lower bound.",
+          "metadata": {
+            "reversibility_accounted": false,
+            "universalize": true
+          },
+          "novelty": 0.95,
+          "proof_obligations": [],
+          "requested_status": "PROVED",
+          "route_id": "landauer_erasure_optimality",
+          "statement": "Thermodynamic erasure cost proves every multiplication algorithm takes Omega(n log n) Turing steps.",
+          "target_complexity": "Omega(n log n)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Landauer erasure proves optimal multiplication time",
+          "tractability": 0.55
+        },
+        {
+          "assumptions": [],
+          "estimated_cost": 0.18,
+          "evidence_kind": "EMPIRICAL_TIMING",
+          "falsification_tests": [
+            "introduce an algorithm with a large asymptotic crossover"
+          ],
+          "kind": "EMPIRICAL_EXTRAPOLATION",
+          "leverage": 0.86,
+          "mechanism": "Extrapolate finite performance curves to all algorithms and input sizes.",
+          "metadata": {
+            "universalize": true
+          },
+          "novelty": 0.56,
+          "proof_obligations": [],
+          "requested_status": "PROVED",
+          "route_id": "empirical_crossover_extrapolation",
+          "statement": "No measured implementation beats n log n, therefore no asymptotically faster algorithm exists.",
+          "target_complexity": "Omega(n log n)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Benchmark crossover proves asymptotic optimality",
+          "tractability": 0.9
+        },
+        {
+          "assumptions": [],
+          "estimated_cost": 0.15,
+          "evidence_kind": "PUBLISHED_PROOF",
+          "falsification_tests": [
+            "exhibit an offline algorithm that violates online access restrictions"
+          ],
+          "kind": "MODEL_TRANSFER",
+          "leverage": 0.95,
+          "mechanism": "Treat the online theorem as if it applied to the larger offline algorithm class.",
+          "metadata": {
+            "online_to_offline": true,
+            "restricted_scope": true,
+            "source_model_id": "online_multitape_turing_binary",
+            "universalize": true
+          },
+          "novelty": 0.35,
+          "proof_obligations": [],
+          "requested_status": "PROVED",
+          "route_id": "online_bound_transfer",
+          "statement": "The known online Omega(n log n) result proves the unrestricted offline lower bound.",
+          "target_complexity": "Omega(n log n)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Transfer the online lower bound directly to offline multiplication",
+          "tractability": 0.78
+        },
+        {
+          "assumptions": [],
+          "estimated_cost": 0.22,
+          "evidence_kind": "PUBLISHED_PROOF",
+          "falsification_tests": [
+            "compare operations and access patterns of the two models"
+          ],
+          "kind": "MODEL_TRANSFER",
+          "leverage": 0.84,
+          "mechanism": "Identify two different computational models without an explicit reduction.",
+          "metadata": {
+            "restricted_scope": true,
+            "source_model_id": "bounded_coefficient_circuit",
+            "universalize": true
+          },
+          "novelty": 0.44,
+          "proof_obligations": [],
+          "requested_status": "PROVED",
+          "route_id": "bounded_circuit_transfer",
+          "statement": "A bounded-coefficient circuit lower bound automatically proves the multitape Turing lower bound.",
+          "target_complexity": "Omega(n log n)",
+          "target_model_id": "multitape_turing_binary",
+          "target_problem_id": "integer_multiplication_offline",
+          "title": "Transfer a bounded-circuit lower bound without simulation theorem",
+          "tractability": 0.74
+        }
+      ],
+      "certificates": [
+        {
+          "bound": "Omega(n) with exact depth lower bound 2n",
+          "certificate_id": "query-sensitivity-lower-bound-v1",
+          "kernel_verified": false,
+          "machine_model": "deterministic adaptive bit-query decision tree",
+          "proof_steps": [
+            "At x = y = 2^n - 1, flipping any input bit of x changes the product by a nonzero multiple of y.",
+            "At the same witness, flipping any input bit of y changes the product by a nonzero multiple of x.",
+            "Therefore every one of the 2n input bits is sensitive at this single input.",
+            "A deterministic decision-tree path that omits a sensitive bit is identical on a one-bit-flipped input but would output the wrong product.",
+            "Hence the path for the witness queries all 2n bits, establishing worst-case depth at least 2n."
+          ],
+          "status": "DERIVED_RESTRICTED",
+          "theorem": "Any deterministic bit-query decision tree computing exact multiplication of two n-bit integers has worst-case query depth at least 2n.",
+          "verified_instances": [
+            {
+              "n": 1,
+              "sensitive_bits": 2,
+              "valid": true,
+              "witness_x": 1,
+              "witness_y": 1
+            },
+            {
+              "n": 2,
+              "sensitive_bits": 4,
+              "valid": true,
+              "witness_x": 3,
+              "witness_y": 3
+            },
+            {
+              "n": 3,
+              "sensitive_bits": 6,
+              "valid": true,
+              "witness_x": 7,
+              "witness_y": 7
+            },
+            {
+              "n": 4,
+              "sensitive_bits": 8,
+              "valid": true,
+              "witness_x": 15,
+              "witness_y": 15
+            },
+            {
+              "n": 5,
+              "sensitive_bits": 10,
+              "valid": true,
+              "witness_x": 31,
+              "witness_y": 31
+            },
+            {
+              "n": 6,
+              "sensitive_bits": 12,
+              "valid": true,
+              "witness_x": 63,
+              "witness_y": 63
+            },
+            {
+              "n": 7,
+              "sensitive_bits": 14,
+              "valid": true,
+              "witness_x": 127,
+              "witness_y": 127
+            },
+            {
+              "n": 8,
+              "sensitive_bits": 16,
+              "valid": true,
+              "witness_x": 255,
+              "witness_y": 255
+            },
+            {
+              "n": 9,
+              "sensitive_bits": 18,
+              "valid": true,
+              "witness_x": 511,
+              "witness_y": 511
+            },
+            {
+              "n": 10,
+              "sensitive_bits": 20,
+              "valid": true,
+              "witness_x": 1023,
+              "witness_y": 1023
+            },
+            {
+              "n": 11,
+              "sensitive_bits": 22,
+              "valid": true,
+              "witness_x": 2047,
+              "witness_y": 2047
+            },
+            {
+              "n": 12,
+              "sensitive_bits": 24,
+              "valid": true,
+              "witness_x": 4095,
+              "witness_y": 4095
+            },
+            {
+              "n": 13,
+              "sensitive_bits": 26,
+              "valid": true,
+              "witness_x": 8191,
+              "witness_y": 8191
+            },
+            {
+              "n": 14,
+              "sensitive_bits": 28,
+              "valid": true,
+              "witness_x": 16383,
+              "witness_y": 16383
+            },
+            {
+              "n": 15,
+              "sensitive_bits": 30,
+              "valid": true,
+              "witness_x": 32767,
+              "witness_y": 32767
+            },
+            {
+              "n": 16,
+              "sensitive_bits": 32,
+              "valid": true,
+              "witness_x": 65535,
+              "witness_y": 65535
+            }
+          ],
+          "witness": "x = y = 2^n - 1"
+        }
+      ],
+      "challenge_id": "integer-multiplication-optimality-v1",
+      "created_at": 1784023996.1639392,
+      "rankings": [
+        {
+          "expected_obligation_reduction": 0.4568,
+          "obligation_debt": 0.44,
+          "rationale": [
+            "Leverage=0.48",
+            "Novelty=0.28",
+            "Tractability=0.96",
+            "EstimatedCost=0.18",
+            "ObligationDebt=0.44",
+            "A correct restricted theorem discharges a real but scoped obligation."
+          ],
+          "route_id": "query_model_read_all_bits",
+          "score": 0.4044,
+          "status": "DERIVED_RESTRICTED",
+          "title": "Exact query lower bound from a common sensitivity witness"
+        },
+        {
+          "expected_obligation_reduction": 0.36724,
+          "obligation_debt": 0.58,
+          "rationale": [
+            "Leverage=0.88",
+            "Novelty=0.42",
+            "Tractability=0.72",
+            "EstimatedCost=0.52",
+            "ObligationDebt=0.58",
+            "The route is ready for machine-checking without pretending to prove an open premise."
+          ],
+          "route_id": "formalize_transposition_reduction",
+          "score": 0.24696,
+          "status": "FORMALIZATION_READY",
+          "title": "Machine-check the 2025 transposition reduction"
+        },
+        {
+          "expected_obligation_reduction": 0.2044,
+          "obligation_debt": 0.46,
+          "rationale": [
+            "Leverage=0.58",
+            "Novelty=0.64",
+            "Tractability=0.7",
+            "EstimatedCost=0.4",
+            "ObligationDebt=0.46",
+            "The route is ready for machine-checking without pretending to prove an open premise."
+          ],
+          "route_id": "proof_barrier_information_counting",
+          "score": 0.23976,
+          "status": "FORMALIZATION_READY",
+          "title": "Formal barrier theorem for bare information counting"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 0.66,
+          "rationale": [
+            "Leverage=0.66",
+            "Novelty=0.7",
+            "Tractability=0.52",
+            "EstimatedCost=0.62",
+            "ObligationDebt=0.66",
+            "The route remains useful only with its unresolved premises visible."
+          ],
+          "route_id": "oblivious_crossing_sequence",
+          "score": 0.082832,
+          "status": "CONDITIONAL",
+          "title": "Crossing-sequence bound for oblivious multiplication"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 0.3,
+          "rationale": [
+            "Leverage=0.84",
+            "Novelty=0.44",
+            "Tractability=0.74",
+            "EstimatedCost=0.22",
+            "ObligationDebt=0.3",
+            "Blocked routes receive zero discovery priority."
+          ],
+          "route_id": "bounded_circuit_transfer",
+          "score": 0.0,
+          "status": "BLOCKED",
+          "title": "Transfer a bounded-circuit lower bound without simulation theorem"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 0.15,
+          "rationale": [
+            "Leverage=0.86",
+            "Novelty=0.56",
+            "Tractability=0.9",
+            "EstimatedCost=0.18",
+            "ObligationDebt=0.15",
+            "Blocked routes receive zero discovery priority."
+          ],
+          "route_id": "empirical_crossover_extrapolation",
+          "score": 0.0,
+          "status": "BLOCKED",
+          "title": "Benchmark crossover proves asymptotic optimality"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 0.5,
+          "rationale": [
+            "Leverage=0.9",
+            "Novelty=0.95",
+            "Tractability=0.55",
+            "EstimatedCost=0.25",
+            "ObligationDebt=0.5",
+            "Blocked routes receive zero discovery priority."
+          ],
+          "route_id": "landauer_erasure_optimality",
+          "score": 0.0,
+          "status": "BLOCKED",
+          "title": "Landauer erasure proves optimal multiplication time"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 1.33,
+          "rationale": [
+            "Leverage=1.0",
+            "Novelty=0.82",
+            "Tractability=0.38",
+            "EstimatedCost=0.86",
+            "ObligationDebt=1.33",
+            "The route remains useful only with its unresolved premises visible."
+          ],
+          "route_id": "multiscale_transposition_cut",
+          "score": 0.0,
+          "status": "CONDITIONAL",
+          "title": "Multiscale communication cuts for binary transposition"
+        },
+        {
+          "expected_obligation_reduction": 0.0,
+          "obligation_debt": 0.45,
+          "rationale": [
+            "Leverage=0.95",
+            "Novelty=0.35",
+            "Tractability=0.78",
+            "EstimatedCost=0.15",
+            "ObligationDebt=0.45",
+            "Blocked routes receive zero discovery priority."
+          ],
+          "route_id": "online_bound_transfer",
+          "score": 0.0,
+          "status": "BLOCKED",
+          "title": "Transfer the online lower bound directly to offline multiplication"
+        }
+      ],
+      "run_id": "fa26fbc6-27d9-4471-83ac-173b8bb92e97",
+      "schema": "https://nexus-u.dev/active-lower-bound-search/v1",
+      "summary": {
+        "active_search_status": "RESTRICTED_PROGRESS_WITH_OPEN_UNIVERSAL_TARGET",
+        "blocked_count": 4,
+        "candidate_count": 9,
+        "derived_restricted_count": 1,
+        "false_universal_promotions": [],
+        "formalization_ready_count": 2,
+        "no_false_solution_claim": true,
+        "restricted_query_bound": "Omega(n) with exact depth lower bound 2n",
+        "restricted_query_certificate_valid": true,
+        "surviving_count": 5,
+        "top_route_id": "query_model_read_all_bits",
+        "top_route_score": 0.4044,
+        "top_route_status": "DERIVED_RESTRICTED",
+        "total_expected_obligation_reduction": 1.02844,
+        "universal_offline_lower_bound_status": "OPEN"
+      }
+    },
+    "started_at": 1784023996.163013,
+    "summary": {
+      "check_count": 10,
+      "checks": {
+        "all_known_invalid_routes_blocked": true,
+        "candidate_portfolio_nontrivial": true,
+        "formalization_route_present": true,
+        "naive_novelty_baseline_selects_invalid_route": true,
+        "nexus_top_routes_clean": true,
+        "no_false_solution_claim": true,
+        "obligation_reduction_positive": true,
+        "restricted_query_certificate_valid": true,
+        "restricted_result_present": true,
+        "universal_target_remains_open": true
+      },
+      "checks_passed": 10,
+      "naive_invalid_top3": 1,
+      "naive_top3": [
+        "landauer_erasure_optimality",
+        "multiscale_transposition_cut",
+        "oblivious_crossing_sequence"
+      ],
+      "nexus_invalid_top3": 0,
+      "nexus_top3": [
+        "query_model_read_all_bits",
+        "formalize_transposition_reduction",
+        "proof_barrier_information_counting"
+      ],
+      "pass_rate": 1.0,
+      "search_safety_advantage": 1.0
+    }
+  },
+  "signature": "9e9b7ef58d244b794b2abdfa60913f70b0029c17a9579ea2fcd1e148e778f3b3"
+}

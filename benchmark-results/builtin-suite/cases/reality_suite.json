@@ -1,0 +1,205 @@
+{
+  "suite": "nexus-u-reality-loop-v1",
+  "cases": [
+    {
+      "id": "good_delivery",
+      "expected_baseline": true,
+      "expected_nexus": true,
+      "task": {
+        "artifact_type": "software",
+        "modes": [
+          "SOFTWARE_ENGINEERING"
+        ],
+        "adapter": "git_delivery",
+        "success_conditions": [
+          "All declared Git delivery checks pass"
+        ],
+        "assumptions": [
+          "The fixture repository is trusted local code"
+        ],
+        "budget": {
+          "wall_clock_seconds": 20,
+          "memory_mb": 512,
+          "output_bytes": 1000000
+        },
+        "intent": "Add multiplication without breaking addition",
+        "inputs": {
+          "test_commands": [
+            "python -m unittest discover -s tests -v"
+          ],
+          "security_commands": [],
+          "build_commands": [
+            "python -m compileall -q ."
+          ],
+          "required_paths": [
+            "calc.py",
+            "tests/test_calc.py"
+          ],
+          "repository": "../fixtures/good",
+          "changes": {
+            "calc.py": "def add(a: int, b: int) -> int:\n    return a + b\n\ndef multiply(a: int, b: int) -> int:\n    return a * b\n"
+          },
+          "required_patterns": [
+            {
+              "path": "calc.py",
+              "pattern": "def multiply"
+            }
+          ],
+          "forbidden_patterns": [
+            {
+              "path": "calc.py",
+              "pattern": "eval("
+            }
+          ],
+          "rollback_required": true,
+          "rollback_command": "git reset --hard HEAD"
+        }
+      }
+    },
+    {
+      "id": "hidden_security_violation",
+      "expected_baseline": true,
+      "expected_nexus": false,
+      "task": {
+        "artifact_type": "software",
+        "modes": [
+          "SOFTWARE_ENGINEERING"
+        ],
+        "adapter": "git_delivery",
+        "success_conditions": [
+          "All declared Git delivery checks pass"
+        ],
+        "assumptions": [
+          "The fixture repository is trusted local code"
+        ],
+        "budget": {
+          "wall_clock_seconds": 20,
+          "memory_mb": 512,
+          "output_bytes": 1000000
+        },
+        "intent": "Add expression evaluation while preserving existing behavior",
+        "inputs": {
+          "test_commands": [
+            "python -m unittest discover -s tests -v"
+          ],
+          "security_commands": [],
+          "build_commands": [
+            "python -m compileall -q ."
+          ],
+          "required_paths": [
+            "calc.py",
+            "tests/test_calc.py"
+          ],
+          "repository": "../fixtures/security",
+          "changes": {
+            "calc.py": "def add(a: int, b: int) -> int:\n    return a + b\n\ndef evaluate(expression: str):\n    return eval(expression)\n"
+          },
+          "forbidden_patterns": [
+            {
+              "path": "calc.py",
+              "pattern": "eval("
+            }
+          ],
+          "rollback_required": true,
+          "rollback_command": "git reset --hard HEAD"
+        }
+      }
+    },
+    {
+      "id": "missing_rollback",
+      "expected_baseline": true,
+      "expected_nexus": false,
+      "task": {
+        "artifact_type": "software",
+        "modes": [
+          "SOFTWARE_ENGINEERING"
+        ],
+        "adapter": "git_delivery",
+        "success_conditions": [
+          "All declared Git delivery checks pass"
+        ],
+        "assumptions": [
+          "The fixture repository is trusted local code"
+        ],
+        "budget": {
+          "wall_clock_seconds": 20,
+          "memory_mb": 512,
+          "output_bytes": 1000000
+        },
+        "intent": "Add multiplication with a production rollback contract",
+        "inputs": {
+          "test_commands": [
+            "python -m unittest discover -s tests -v"
+          ],
+          "security_commands": [],
+          "build_commands": [
+            "python -m compileall -q ."
+          ],
+          "required_paths": [
+            "calc.py",
+            "tests/test_calc.py"
+          ],
+          "repository": "../fixtures/rollback",
+          "changes": {
+            "calc.py": "def add(a: int, b: int) -> int:\n    return a + b\n\ndef multiply(a: int, b: int) -> int:\n    return a * b\n"
+          },
+          "required_patterns": [
+            {
+              "path": "calc.py",
+              "pattern": "def multiply"
+            }
+          ],
+          "rollback_required": true
+        }
+      }
+    },
+    {
+      "id": "intent_drift",
+      "expected_baseline": true,
+      "expected_nexus": false,
+      "task": {
+        "artifact_type": "software",
+        "modes": [
+          "SOFTWARE_ENGINEERING"
+        ],
+        "adapter": "git_delivery",
+        "success_conditions": [
+          "All declared Git delivery checks pass"
+        ],
+        "assumptions": [
+          "The fixture repository is trusted local code"
+        ],
+        "budget": {
+          "wall_clock_seconds": 20,
+          "memory_mb": 512,
+          "output_bytes": 1000000
+        },
+        "intent": "Add multiplication while preserving addition",
+        "inputs": {
+          "test_commands": [
+            "python -m unittest discover -s tests -v"
+          ],
+          "security_commands": [],
+          "build_commands": [
+            "python -m compileall -q ."
+          ],
+          "required_paths": [
+            "calc.py",
+            "tests/test_calc.py"
+          ],
+          "repository": "../fixtures/intent",
+          "changes": {
+            "calc.py": "def add(a: int, b: int) -> int:\n    return a + b\n\n# Documentation-only change\n"
+          },
+          "required_patterns": [
+            {
+              "path": "calc.py",
+              "pattern": "def multiply"
+            }
+          ],
+          "rollback_required": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "arithmetic_certificate": {
+    "certificate_sha256": "5fb163c952129d5c1adbe40dc94ded7d44a8b1abd7b205c6c8b3ec6ac8845a19",
+    "checker_sha256": "12f66bed12dd5256b7dc9c48b3d201c1df634b14e9ef9e6bef51793b37c34dc8",
+    "machine_model": "deterministic adaptive bit-query decision tree",
+    "status": "SPECIALIZED_CHECKER_VERIFIED",
+    "valid": true
+  },
+  "completed_at": 1784023999.4492636,
+  "composition_sha256": "b744e2497140fdc950534a6ccb5f31dd908be15c458843c443ff16c34b3d59aa",
+  "logical_certificate": {
+    "certificate_sha256": "62ff4fcadbb3c2ea6c97ac11aebe8367462ed14636e0dbc4dda28198ffc3582c",
+    "external_proof_assistant": false,
+    "inferred": "Imp(left=And(left=Atom(name='same_transcript'), right=Imp(left=Atom(name='equal_output'), right=Bottom())), right=Imp(left=Imp(left=Imp(left=Atom(name='queried'), right=Bottom()), right=Atom(name='same_transcript')), right=Imp(left=Imp(left=Atom(name='same_transcript'), right=Atom(name='equal_output')), right=Atom(name='queried'))))",
+    "kernel": "nexus-nd-microkernel-v1",
+    "kernel_sha256": "c62a2fb67a59989321b309a341d6baaefb87ca967b396d6a0c605cf4526a3c5a",
+    "schema": "https://nexus-u.dev/natural-deduction-certificate/v1",
+    "scope": "propositional logical core of sensitivity-to-query path argument",
+    "theorem": "Imp(left=And(left=Atom(name='same_transcript'), right=Imp(left=Atom(name='equal_output'), right=Bottom())), right=Imp(left=Imp(left=Imp(left=Atom(name='queried'), right=Bottom()), right=Atom(name='same_transcript')), right=Imp(left=Imp(left=Atom(name='same_transcript'), right=Atom(name='equal_output')), right=Atom(name='queried'))))",
+    "valid": true
+  },
+  "logical_mutations": {
+    "reject_argument_mismatch": true,
+    "reject_missing_sensitivity_negation": true,
+    "reject_unbound_hypothesis": true,
+    "reject_unlicensed_dne": true,
+    "reject_wrong_path_direction": true
+  },
+  "schema": "https://nexus-u.dev/cross-kernel-lower-bound/v1",
+  "started_at": 1784023999.4442225,
+  "summary": {
+    "arithmetic_certificate_verified": true,
+    "check_count": 8,
+    "checks_passed": 8,
+    "composed_restricted_result": true,
+    "lean_kernel_verified": false,
+    "logical_microkernel_verified": true,
+    "logical_mutations_rejected": true,
+    "restricted_status": "CROSS_KERNEL_SCOPED_VERIFIED",
+    "universal_offline_lower_bound_status": "OPEN"
+  }
+}

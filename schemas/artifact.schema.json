@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.local/schemas/artifact.schema.json",
+  "title": "NEXUS-U Artifact Record",
+  "type": "object",
+  "required": [
+    "task",
+    "status",
+    "artifact_id",
+    "output",
+    "claims",
+    "events",
+    "unresolved_obligations",
+    "obligation_graph",
+    "obligation_summary",
+    "obligation_metrics",
+    "epistemic_potential"
+  ],
+  "properties": {
+    "task": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "output": {
+      "type": "object"
+    },
+    "claims": {
+      "type": "array"
+    },
+    "events": {
+      "type": "array"
+    },
+    "unresolved_obligations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "audit_root": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reproducible": {
+      "type": "boolean"
+    },
+    "released": {
+      "type": "boolean"
+    },
+    "obligation_graph_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "obligation_graph": {
+      "type": "object"
+    },
+    "obligation_summary": {
+      "type": "object"
+    },
+    "epistemic_potential": {
+      "type": "number",
+      "minimum": 0
+    },
+    "obligation_metrics": {
+      "type": "object"
+    }
+  }
+}

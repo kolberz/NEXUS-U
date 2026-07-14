@@ -1,0 +1,11 @@
+{
+  "intent": "Verify a simple Dafny method against its specification",
+  "artifact_type": "software",
+  "modes": ["SOFTWARE_ENGINEERING", "FORMAL_PROOF"],
+  "adapter": "dafny",
+  "inputs": {
+    "file_name": "NexusArtifact.dfy",
+    "source": "method Inc(x: int) returns (y: int)\n  ensures y == x + 1\n{\n  y := x + 1;\n}\n"
+  },
+  "budget": {"wall_clock_seconds": 30, "memory_mb": 512, "output_bytes": 200000}
+}

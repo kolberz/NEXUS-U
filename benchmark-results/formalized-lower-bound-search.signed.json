@@ -1,0 +1,290 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "formalized-lower-bound-local",
+  "payload": {
+    "completed_at": 1784023997.7727845,
+    "formalization_report": {
+      "certificate": {
+        "certificate_id": "decision-tree-sensitivity-proof-v1",
+        "checker_digest": "12f66bed12dd5256b7dc9c48b3d201c1df634b14e9ef9e6bef51793b37c34dc8",
+        "checker_version": "nexus-dt-kernel-v1",
+        "input_width": "2*n",
+        "lower_bound": "2*n",
+        "machine_model": "deterministic adaptive bit-query decision tree",
+        "parameter_domain": {
+          "constraint": "n >= 1",
+          "parameter": "n",
+          "type": "Nat"
+        },
+        "proof_steps": [
+          {
+            "rule": "UNQUERIED_BIT_PRESERVES_TRANSCRIPT",
+            "statement": "If a coordinate is not queried on the witness path, flipping it preserves all query answers on that path."
+          },
+          {
+            "rule": "DETERMINISM_PRESERVES_LEAF",
+            "statement": "Equal query transcripts in a deterministic tree reach the same output leaf."
+          },
+          {
+            "rule": "EXACTNESS_FORBIDS_EQUAL_OUTPUT_ON_SENSITIVE_PAIR",
+            "statement": "An exact algorithm cannot return the same leaf value on two inputs with different products."
+          },
+          {
+            "rule": "ALL_SENSITIVE_COORDINATES_FORCE_DEPTH",
+            "statement": "Because all 2n coordinates are sensitive at one witness, its path queries all 2n coordinates."
+          }
+        ],
+        "sensitivity_classes": [
+          {
+            "coordinate_range": "0 <= i < n",
+            "count": "n",
+            "flipped_input": "x - 2^i",
+            "input": "x",
+            "nonzero_reason": "n >= 1 implies y = 2^n - 1 > 0",
+            "product_delta": "2^i * y"
+          },
+          {
+            "coordinate_range": "0 <= i < n",
+            "count": "n",
+            "flipped_input": "y - 2^i",
+            "input": "y",
+            "nonzero_reason": "n >= 1 implies x = 2^n - 1 > 0",
+            "product_delta": "2^i * x"
+          }
+        ],
+        "status": "SPECIALIZED_CHECKER_VERIFIED",
+        "theorem_id": "exact-multiplication-bit-query-depth-2n",
+        "theorem_statement": "For every n >= 1, any deterministic adaptive bit-query decision tree computing exact multiplication of two n-bit unsigned integers has worst-case query depth at least 2n.",
+        "trusted_rules": [
+          "ALL_SENSITIVE_COORDINATES_FORCE_DEPTH",
+          "BIT_FLIP_SUBTRACTION",
+          "DETERMINISM_PRESERVES_LEAF",
+          "EXACTNESS_FORBIDS_EQUAL_OUTPUT_ON_SENSITIVE_PAIR",
+          "POSITIVE_DELTA",
+          "PRODUCT_DELTA_X",
+          "PRODUCT_DELTA_Y",
+          "UNQUERIED_BIT_PRESERVES_TRANSCRIPT"
+        ],
+        "witness": {
+          "x": "2^n - 1",
+          "y": "2^n - 1"
+        }
+      },
+      "certificate_check": {
+        "checker_digest": "12f66bed12dd5256b7dc9c48b3d201c1df634b14e9ef9e6bef51793b37c34dc8",
+        "discharged_rules": [
+          "ALL_SENSITIVE_COORDINATES_FORCE_DEPTH",
+          "BIT_FLIP_SUBTRACTION",
+          "DETERMINISM_PRESERVES_LEAF",
+          "EXACTNESS_FORBIDS_EQUAL_OUTPUT_ON_SENSITIVE_PAIR",
+          "POSITIVE_DELTA",
+          "PRODUCT_DELTA_X",
+          "PRODUCT_DELTA_Y",
+          "UNQUERIED_BIT_PRESERVES_TRANSCRIPT"
+        ],
+        "errors": [],
+        "mutation_resistance": {
+          "reject_checker_substitution": true,
+          "reject_insensitive_witness": true,
+          "reject_missing_exactness_step": true,
+          "reject_missing_y_coordinates": true,
+          "reject_model_laundering": true,
+          "reject_stronger_false_bound": true
+        },
+        "status": "SPECIALIZED_CHECKER_VERIFIED",
+        "valid": true
+      },
+      "challenge_id": "integer-multiplication-optimality-v1",
+      "created_at": 1784023997.7727582,
+      "run_id": "6e94b7f6-c2f7-40f4-b0a0-eeb560be1979",
+      "schema": "https://nexus-u.dev/formalized-lower-bound-search/v1",
+      "summary": {
+        "all_mutations_rejected": true,
+        "external_kernel_available": false,
+        "external_kernel_verified": false,
+        "formalization_status": "SPECIALIZED_CERTIFICATE_VERIFIED_EXTERNAL_KERNEL_PENDING",
+        "kernel_verified_claim_emitted": false,
+        "mutation_checks": {
+          "reject_checker_substitution": true,
+          "reject_insensitive_witness": true,
+          "reject_missing_exactness_step": true,
+          "reject_missing_y_coordinates": true,
+          "reject_model_laundering": true,
+          "reject_stronger_false_bound": true
+        },
+        "no_false_solution_claim": true,
+        "proof_assistant_target_forbidden_declarations": [],
+        "proof_assistant_target_generated": true,
+        "restricted_theorem_status": "SPECIALIZED_CHECKER_VERIFIED",
+        "specialized_certificate_digest": "5fb163c952129d5c1adbe40dc94ded7d44a8b1abd7b205c6c8b3ec6ac8845a19",
+        "specialized_certificate_status": "SPECIALIZED_CHECKER_VERIFIED",
+        "specialized_certificate_valid": true,
+        "transposition_open_obligations": [
+          "T1",
+          "T2",
+          "T3",
+          "T4",
+          "T5",
+          "T6",
+          "T7",
+          "T8"
+        ],
+        "transposition_plan_errors": [],
+        "transposition_plan_order": [
+          "T0",
+          "T1",
+          "T2",
+          "T3",
+          "T4",
+          "T5",
+          "T6",
+          "T7",
+          "T8"
+        ],
+        "transposition_plan_valid": true,
+        "transposition_route_status": "FORMALIZATION_PLAN_WITH_OPEN_PREMISE",
+        "universal_offline_lower_bound_status": "OPEN"
+      },
+      "theorem_target": {
+        "contains_forbidden_declarations": [],
+        "external_kernel_available": false,
+        "external_kernel_verified": false,
+        "format": "Lean 4 source target",
+        "path": "benchmark-results/formalization/DecisionTreeMultiplicationTarget.lean",
+        "sha256": "eac6f308279b5956458b0d09e23e9a9ebdb96927af01953fb363e5a6a252241b",
+        "status": "PROOF_ASSISTANT_READY"
+      },
+      "transposition_plan": [
+        {
+          "category": "SOURCE",
+          "dependencies": [],
+          "evidence": [
+            "integer-multiplication-challenge.json:harvey_vdh_2025"
+          ],
+          "obligation_id": "T0",
+          "scope": "Metadata identity only; mathematical content still requires encoding.",
+          "statement": "Pin the exact published reduction statement and source revision.",
+          "status": "DISCHARGED"
+        },
+        {
+          "category": "SEMANTICS",
+          "dependencies": [
+            "T0"
+          ],
+          "evidence": [],
+          "obligation_id": "T1",
+          "scope": "",
+          "statement": "Define the offline constant-tape multitape Turing-machine semantics used by both problems.",
+          "status": "OPEN"
+        },
+        {
+          "category": "ENCODING",
+          "dependencies": [
+            "T1"
+          ],
+          "evidence": [],
+          "obligation_id": "T2",
+          "scope": "",
+          "statement": "Define row-major binary matrix encoding, transpose semantics, and size measure.",
+          "status": "OPEN"
+        },
+        {
+          "category": "ENCODING",
+          "dependencies": [
+            "T1"
+          ],
+          "evidence": [],
+          "obligation_id": "T3",
+          "scope": "",
+          "statement": "Define packed integer encoding and the multiplication interface used by the reduction.",
+          "status": "OPEN"
+        },
+        {
+          "category": "CONSTRUCTION",
+          "dependencies": [
+            "T2",
+            "T3"
+          ],
+          "evidence": [],
+          "obligation_id": "T4",
+          "scope": "Requires primary-source recovery and line-by-line formal transcription.",
+          "statement": "Encode the published reduction algorithm without changing its machine model.",
+          "status": "EXTERNAL_REQUIRED"
+        },
+        {
+          "category": "CORRECTNESS",
+          "dependencies": [
+            "T4"
+          ],
+          "evidence": [],
+          "obligation_id": "T5",
+          "scope": "",
+          "statement": "Prove functional correctness: decoded multiplication output equals matrix transposition.",
+          "status": "OPEN"
+        },
+        {
+          "category": "COMPLEXITY",
+          "dependencies": [
+            "T4"
+          ],
+          "evidence": [],
+          "obligation_id": "T6",
+          "scope": "",
+          "statement": "Prove the size map and simulation overhead preserve the claimed asymptotic implication.",
+          "status": "OPEN"
+        },
+        {
+          "category": "MODEL",
+          "dependencies": [
+            "T1",
+            "T4"
+          ],
+          "evidence": [],
+          "obligation_id": "T7",
+          "scope": "",
+          "statement": "Prove model preservation, including tape count, alphabet, head movement, and uniformity.",
+          "status": "OPEN"
+        },
+        {
+          "category": "COMPOSITION",
+          "dependencies": [
+            "T5",
+            "T6",
+            "T7"
+          ],
+          "evidence": [],
+          "obligation_id": "T8",
+          "scope": "Conclusion remains conditional until the matrix-transposition lower bound is proved.",
+          "statement": "Compose T5-T7 into the conditional lower-bound theorem without discharging the open transposition premise.",
+          "status": "OPEN"
+        }
+      ]
+    },
+    "schema": "https://nexus-u.dev/formalized-lower-bound-benchmark/v1",
+    "started_at": 1784023997.7600546,
+    "summary": {
+      "check_count": 12,
+      "checks": {
+        "all_adversarial_mutations_rejected": true,
+        "checker_digest_present": true,
+        "external_kernel_not_falsely_claimed": true,
+        "formalization_has_open_obligations": true,
+        "no_false_solution_claim": true,
+        "proof_assistant_target_generated": true,
+        "proof_target_contains_no_forbidden_declarations": true,
+        "restricted_status_is_scoped": true,
+        "specialized_certificate_verified": true,
+        "transposition_open_premise_preserved": true,
+        "transposition_plan_is_acyclic": true,
+        "universal_target_remains_open": true
+      },
+      "checks_passed": 12,
+      "external_kernel_verified": false,
+      "open_transposition_obligations": 8,
+      "pass_rate": 1.0,
+      "specialized_status": "SPECIALIZED_CHECKER_VERIFIED",
+      "universal_status": "OPEN"
+    }
+  },
+  "signature": "808cd4bfeb296c2660dbcf382dc78d2014a2a1daf08ce50b345080e57f974d5a"
+}

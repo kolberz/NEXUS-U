@@ -1,151 +1,150 @@
 from __future__ import annotations
 
-from dataclasses import fields, is_dataclass
-
-from .ast import (
-    App,
-    Case,
-    Const,
-    Empty,
-    EmptyElim,
-    Inl,
-    Inr,
-    Lam,
-    Let,
-    Pi,
-    Sort,
-    Sum,
-    Term,
-    Var,
-)
-
-
-class TermOperationError(ValueError):
-    pass
+from .ast import App, Case, Const, EmptyElim, EmptyType, Inl, Inr, Lam, Let, Pi, Sort, SumType, Term, Var
 
 
 def shift(term: Term, delta: int, cutoff: int = 0) -> Term:
-    """Shift free de Bruijn indices by ``delta`` above ``cutoff``."""
-    match term:
-        case Sort() | Const() | Empty():
-            return term
-        case Var(index=i):
-            if i < cutoff:
-                return term
-            shifted = i + delta
-            if shifted < 0:
-                raise TermOperationError("negative de Bruijn index")
-            return Var(shifted)
-        case Pi(domain=a, codomain=b):
-            return Pi(shift(a, delta, cutoff), shift(b, delta, cutoff + 1))
-        case Lam(domain=a, body=b):
-            return Lam(shift(a, delta, cutoff), shift(b, delta, cutoff + 1))
-        case App(function=f, argument=a):
-            return App(shift(f, delta, cutoff), shift(a, delta, cutoff))
-        case Let(value_type=t, value=v, body=b):
-            return Let(
-                shift(t, delta, cutoff),
-                shift(v, delta, cutoff),
-                shift(b, delta, cutoff + 1),
-            )
-        case EmptyElim(result_type=t, proof=p):
-            return EmptyElim(shift(t, delta, cutoff), shift(p, delta, cutoff))
-        case Sum(left=a, right=b):
-            return Sum(shift(a, delta, cutoff), shift(b, delta, cutoff))
-        case Inl(value=v, right_type=t):
-            return Inl(shift(v, delta, cutoff), shift(t, delta, cutoff))
-        case Inr(value=v, left_type=t):
-            return Inr(shift(v, delta, cutoff), shift(t, delta, cutoff))
-        case Case(scrutinee=s, left_branch=l, right_branch=r, result_type=t):
-            return Case(
-                shift(s, delta, cutoff),
-                shift(l, delta, cutoff),
-                shift(r, delta, cutoff),
-                shift(t, delta, cutoff),
-            )
-        case _:
-            raise TermOperationError(f"unsupported term: {type(term).__name__}")
+    if isinstance(term, Var):
+        new_index = term.index + delta if term.index >= cutoff else term.index
+        if new_index < 0:
+            raise ValueError("invalid negative de Bruijn index after shift")
+        return Var(new_index)
+    if isinstance(term, (Sort, Const, EmptyType)):
+        return term
+    if isinstance(term, Pi):
+        return Pi(shift(term.domain, delta, cutoff), shift(term.codomain, delta, cutoff + 1))
+    if isinstance(term, Lam):
+        return Lam(shift(term.domain, delta, cutoff), shift(term.body, delta, cutoff + 1))
+    if isinstance(term, App):
+        return App(shift(term.function, delta, cutoff), shift(term.argument, delta, cutoff))
+    if isinstance(term, Let):
+        return Let(
+            shift(term.annotation, delta, cutoff),
+            shift(term.value, delta, cutoff),
+            shift(term.body, delta, cutoff + 1),
+        )
+    if isinstance(term, SumType):
+        return SumType(shift(term.left, delta, cutoff), shift(term.right, delta, cutoff))
+    if isinstance(term, Inl):
+        return Inl(shift(term.value, delta, cutoff), shift(term.right_type, delta, cutoff))
+    if isinstance(term, Inr):
+        return Inr(shift(term.left_type, delta, cutoff), shift(term.value, delta, cutoff))
+    if isinstance(term, Case):
+        return Case(
+            shift(term.scrutinee, delta, cutoff),
+            shift(term.left_branch, delta, cutoff),
+            shift(term.right_branch, delta, cutoff),
+            shift(term.result_type, delta, cutoff),
+        )
+    if isinstance(term, EmptyElim):
+        return EmptyElim(shift(term.proof, delta, cutoff), shift(term.result_type, delta, cutoff))
+    raise TypeError(f"unsupported term: {type(term).__name__}")
 
 
-def substitute(term: Term, index: int, replacement: Term, cutoff: int = 0) -> Term:
-    """Replace variable ``index`` with a term, respecting binders."""
-    match term:
-        case Sort() | Const() | Empty():
-            return term
-        case Var(index=i):
-            target = index + cutoff
-            if i == target:
-                return shift(replacement, cutoff)
-            return term
-        case Pi(domain=a, codomain=b):
-            return Pi(
-                substitute(a, index, replacement, cutoff),
-                substitute(b, index, replacement, cutoff + 1),
-            )
-        case Lam(domain=a, body=b):
-            return Lam(
-                substitute(a, index, replacement, cutoff),
-                substitute(b, index, replacement, cutoff + 1),
-            )
-        case App(function=f, argument=a):
-            return App(
-                substitute(f, index, replacement, cutoff),
-                substitute(a, index, replacement, cutoff),
-            )
-        case Let(value_type=t, value=v, body=b):
-            return Let(
-                substitute(t, index, replacement, cutoff),
-                substitute(v, index, replacement, cutoff),
-                substitute(b, index, replacement, cutoff + 1),
-            )
-        case EmptyElim(result_type=t, proof=p):
-            return EmptyElim(
-                substitute(t, index, replacement, cutoff),
-                substitute(p, index, replacement, cutoff),
-            )
-        case Sum(left=a, right=b):
-            return Sum(
-                substitute(a, index, replacement, cutoff),
-                substitute(b, index, replacement, cutoff),
-            )
-        case Inl(value=v, right_type=t):
-            return Inl(
-                substitute(v, index, replacement, cutoff),
-                substitute(t, index, replacement, cutoff),
-            )
-        case Inr(value=v, left_type=t):
-            return Inr(
-                substitute(v, index, replacement, cutoff),
-                substitute(t, index, replacement, cutoff),
-            )
-        case Case(scrutinee=s, left_branch=l, right_branch=r, result_type=t):
-            return Case(
-                substitute(s, index, replacement, cutoff),
-                substitute(l, index, replacement, cutoff),
-                substitute(r, index, replacement, cutoff),
-                substitute(t, index, replacement, cutoff),
-            )
-        case _:
-            raise TermOperationError(f"unsupported term: {type(term).__name__}")
+def substitute(term: Term, index: int, replacement: Term, depth: int = 0) -> Term:
+    if isinstance(term, Var):
+        if term.index == index + depth:
+            return shift(replacement, depth)
+        return term
+    if isinstance(term, (Sort, Const, EmptyType)):
+        return term
+    if isinstance(term, Pi):
+        return Pi(
+            substitute(term.domain, index, replacement, depth),
+            substitute(term.codomain, index, replacement, depth + 1),
+        )
+    if isinstance(term, Lam):
+        return Lam(
+            substitute(term.domain, index, replacement, depth),
+            substitute(term.body, index, replacement, depth + 1),
+        )
+    if isinstance(term, App):
+        return App(
+            substitute(term.function, index, replacement, depth),
+            substitute(term.argument, index, replacement, depth),
+        )
+    if isinstance(term, Let):
+        return Let(
+            substitute(term.annotation, index, replacement, depth),
+            substitute(term.value, index, replacement, depth),
+            substitute(term.body, index, replacement, depth + 1),
+        )
+    if isinstance(term, SumType):
+        return SumType(
+            substitute(term.left, index, replacement, depth),
+            substitute(term.right, index, replacement, depth),
+        )
+    if isinstance(term, Inl):
+        return Inl(
+            substitute(term.value, index, replacement, depth),
+            substitute(term.right_type, index, replacement, depth),
+        )
+    if isinstance(term, Inr):
+        return Inr(
+            substitute(term.left_type, index, replacement, depth),
+            substitute(term.value, index, replacement, depth),
+        )
+    if isinstance(term, Case):
+        return Case(
+            substitute(term.scrutinee, index, replacement, depth),
+            substitute(term.left_branch, index, replacement, depth),
+            substitute(term.right_branch, index, replacement, depth),
+            substitute(term.result_type, index, replacement, depth),
+        )
+    if isinstance(term, EmptyElim):
+        return EmptyElim(
+            substitute(term.proof, index, replacement, depth),
+            substitute(term.result_type, index, replacement, depth),
+        )
+    raise TypeError(f"unsupported term: {type(term).__name__}")
 
 
-def substitute_top(body: Term, value: Term) -> Term:
-    return shift(substitute(body, 0, shift(value, 1)), -1)
+def substitute_top(replacement: Term, body: Term) -> Term:
+    return shift(substitute(body, 0, shift(replacement, 1)), -1)
 
 
-def term_size(term: Term) -> int:
-    total = 1
-    for field in fields(term) if is_dataclass(term) else ():
-        value = getattr(term, field.name)
-        if is_dataclass(value):
-            total += term_size(value)
-    return total
+def node_count(term: Term) -> int:
+    if isinstance(term, (Sort, Var, Const, EmptyType)):
+        return 1
+    if isinstance(term, (Pi, Lam, App, SumType)):
+        left = term.domain if isinstance(term, (Pi, Lam)) else term.function if isinstance(term, App) else term.left
+        right = term.codomain if isinstance(term, Pi) else term.body if isinstance(term, Lam) else term.argument if isinstance(term, App) else term.right
+        return 1 + node_count(left) + node_count(right)
+    if isinstance(term, Let):
+        return 1 + node_count(term.annotation) + node_count(term.value) + node_count(term.body)
+    if isinstance(term, Inl):
+        return 1 + node_count(term.value) + node_count(term.right_type)
+    if isinstance(term, Inr):
+        return 1 + node_count(term.left_type) + node_count(term.value)
+    if isinstance(term, Case):
+        return 1 + sum(node_count(x) for x in (term.scrutinee, term.left_branch, term.right_branch, term.result_type))
+    if isinstance(term, EmptyElim):
+        return 1 + node_count(term.proof) + node_count(term.result_type)
+    raise TypeError(type(term).__name__)
 
 
-def term_depth(term: Term) -> int:
-    child_depths = []
-    for field in fields(term) if is_dataclass(term) else ():
-        value = getattr(term, field.name)
-        if is_dataclass(value):
-            child_depths.append(term_depth(value))
-    return 1 + max(child_depths, default=0)
+def max_depth(term: Term) -> int:
+    if isinstance(term, (Sort, Var, Const, EmptyType)):
+        return 1
+    children: tuple[Term, ...]
+    if isinstance(term, Pi):
+        children = (term.domain, term.codomain)
+    elif isinstance(term, Lam):
+        children = (term.domain, term.body)
+    elif isinstance(term, App):
+        children = (term.function, term.argument)
+    elif isinstance(term, Let):
+        children = (term.annotation, term.value, term.body)
+    elif isinstance(term, SumType):
+        children = (term.left, term.right)
+    elif isinstance(term, Inl):
+        children = (term.value, term.right_type)
+    elif isinstance(term, Inr):
+        children = (term.left_type, term.value)
+    elif isinstance(term, Case):
+        children = (term.scrutinee, term.left_branch, term.right_branch, term.result_type)
+    elif isinstance(term, EmptyElim):
+        children = (term.proof, term.result_type)
+    else:
+        raise TypeError(type(term).__name__)
+    return 1 + max(max_depth(child) for child in children)

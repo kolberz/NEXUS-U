@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/tension-discovery.schema.json",
+  "title": "NEXUS-U Tension-Driven Discovery Input",
+  "type": "object",
+  "required": ["obligation_id", "actors", "submissions"],
+  "properties": {
+    "obligation_id": {"type": "string", "minLength": 1},
+    "actors": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "submissions": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "policy": {"type": "object"},
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "kind"],
+        "properties": {
+          "hypothesis_id": {"type": "string"},
+          "description": {"type": "string"},
+          "kind": {"type": "string"},
+          "prior": {"type": "number", "minimum": 0, "maximum": 1},
+          "complexity": {"type": "number", "exclusiveMinimum": 0},
+          "predicted_resolution": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "outcomes", "likelihoods"],
+        "properties": {
+          "experiment_id": {"type": "string"},
+          "description": {"type": "string"},
+          "outcomes": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+          "likelihoods": {"type": "object"},
+          "cost": {"type": "number", "exclusiveMinimum": 0},
+          "risk": {"type": "number", "minimum": 0}
+        }
+      }
+    },
+    "observed_result": {
+      "type": "object",
+      "required": ["experiment_id", "outcome"],
+      "properties": {
+        "experiment_id": {"type": "string"},
+        "outcome": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}

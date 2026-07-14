@@ -1,27 +1,36 @@
 [build-system]
-requires = ["setuptools>=70", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nexus-u"
 version = "2.6.0"
-description = "Obligation-centered computing with a small auditable dependent-type kernel"
+description = "Unified discovery, construction, assurance, and production automation runtime"
 readme = "README.md"
 requires-python = ">=3.11"
-license = {text = "Apache-2.0"}
-authors = [{name = "Zach Kolber", email = "kolberzach@gmail.com"}]
-classifiers = [
-  "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: Apache Software License",
-  "Operating System :: OS Independent",
-]
+license = "Apache-2.0"
+authors = [{name = "NEXUS-U Project"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
 
 [project.scripts]
 nexus-u = "nexus_u.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = "-q"
 testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["reality: end-to-end Reality Loop benchmark"]
+addopts = '-m "not reality"'
+
+[tool.setuptools.package-data]
+"nexus_u.trials" = ["data/*.json"]
+"nexus_u.external_challenge" = ["data/*.json"]
+"nexus_u.lower_bounds" = ["data/*.json"]

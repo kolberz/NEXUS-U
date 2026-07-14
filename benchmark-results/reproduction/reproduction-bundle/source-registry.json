@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "citation": "Diggelmann et al., CLIMATE-FEVER, 2020",
+      "homepage": "https://github.com/tdiggelm/climate-fever-dataset",
+      "license": "Upstream dataset terms; compact attributed benchmark excerpts only",
+      "snapshot_method": "Deterministic records selected by upstream claim_id and evidence_id",
+      "source_id": "climate-fever",
+      "title": "CLIMATE-FEVER",
+      "upstream_record_ids": [
+        "55",
+        "60",
+        "65",
+        "69"
+      ],
+      "version": "1.0.1"
+    },
+    {
+      "citation": "Wadden et al., Fact or Fiction: Verifying Scientific Claims, EMNLP 2020",
+      "homepage": "https://github.com/allenai/scifact",
+      "license": "Claims and evidence annotations CC BY 4.0; abstracts ODC-By 1.0",
+      "snapshot_method": "Examples published in the upstream data-format documentation",
+      "source_id": "scifact",
+      "title": "SciFact",
+      "upstream_record_ids": [
+        "123",
+        "263"
+      ],
+      "version": "latest public release"
+    },
+    {
+      "citation": "Koreeda and Manning, ContractNLI, Findings of EMNLP 2021",
+      "homepage": "https://stanfordnlp.github.io/contract-nli/",
+      "license": "CC BY 4.0",
+      "snapshot_method": "Published task and schema examples from the official dataset page",
+      "source_id": "contract-nli",
+      "title": "ContractNLI",
+      "upstream_record_ids": [
+        "nda-1",
+        "nda-2"
+      ],
+      "version": "2021-12-13"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "obligation_id": "release:payment-service:v2",
+  "actors": [
+    {
+      "actor_id": "quality-reviewer",
+      "organization_id": "quality",
+      "roles": ["REVIEWER"],
+      "key_id": "quality-key",
+      "secret": "quality-demo-secret",
+      "trust_weight": 1.0
+    },
+    {
+      "actor_id": "formal-verifier",
+      "organization_id": "assurance",
+      "roles": ["VERIFIER"],
+      "key_id": "assurance-key",
+      "secret": "assurance-demo-secret",
+      "trust_weight": 1.2
+    }
+  ],
+  "dependencies": {
+    "repo:shared-contracts@abc123": true
+  },
+  "submissions": [
+    {
+      "actor_id": "quality-reviewer",
+      "organization_id": "quality",
+      "verdict": "SUPPORTS",
+      "evidence_kind": "test-suite",
+      "summary": "Integration and regression suite passed",
+      "provenance_group": "ci-run-481"
+    },
+    {
+      "actor_id": "formal-verifier",
+      "organization_id": "assurance",
+      "verdict": "SUPPORTS",
+      "evidence_kind": "contract-verification",
+      "summary": "Payment invariant verified against approved specification",
+      "provenance_group": "formal-run-92"
+    }
+  ],
+  "policy": {
+    "policy_id": "production-federation-v1",
+    "minimum_organizations": 2,
+    "minimum_weight": 2.0,
+    "minimum_independent_evidence": 2,
+    "required_roles": ["REVIEWER", "VERIFIER"],
+    "required_dependencies": ["repo:shared-contracts@abc123"]
+  }
+}

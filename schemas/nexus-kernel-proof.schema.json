@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/nexus-kernel-proof.schema.json",
+  "title": "NEXUS Kernel Proof Bundle",
+  "type": "object",
+  "required": ["schema", "kernel", "kernel_sha256", "theorem_id", "theorem", "proof", "verification", "bundle_sha256"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/nexus-kernel-proof/v1"},
+    "kernel": {"type": "string"},
+    "kernel_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "theorem_id": {"type": "string"},
+    "theorem": {"type": "object"},
+    "proof": {"type": "object"},
+    "verification": {"type": "object"},
+    "bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/obligation-graph.schema.json",
+  "title": "NEXUS-U Obligation Graph",
+  "type": "object",
+  "required": ["schema", "graph_id", "nodes", "edges", "events", "summary"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/obligation-graph/v1"},
+    "graph_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "number"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "statement", "kind", "status", "severity", "blocking", "source"],
+        "properties": {
+          "node_id": {"type": "string"},
+          "statement": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["INTENT", "SPECIFICATION", "REQUIREMENT", "ASSUMPTION", "CLAIM", "TEST", "PROOF", "SAFETY", "POLICY", "RESOURCE", "RISK", "PROVENANCE", "EVIDENCE", "UNKNOWN"]},
+          "status": {"enum": ["OPEN", "ACKNOWLEDGED", "DISCHARGED", "DEFERRED", "REFUTED", "ESCALATED", "TRANSFERRED"]},
+          "severity": {"enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+          "blocking": {"type": "boolean"},
+          "source": {"type": "string"},
+          "metadata": {"type": "object"},
+          "created_at": {"type": "number"},
+          "updated_at": {"type": "number"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["edge_id", "source", "target", "relation"],
+        "properties": {
+          "edge_id": {"type": "string"},
+          "source": {"type": "string"},
+          "target": {"type": "string"},
+          "relation": {"enum": ["DEPENDS_ON", "DISCHARGES", "INTRODUCES", "REFINES", "DECOMPOSES", "TRANSFERS", "VERIFIES", "CONTRADICTS", "BLOCKS", "SUPPORTS"]},
+          "metadata": {"type": "object"},
+          "created_at": {"type": "number"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "events": {"type": "array", "items": {"type": "object"}},
+    "summary": {"type": "object"}
+  },
+  "additionalProperties": false
+}

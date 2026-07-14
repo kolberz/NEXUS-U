@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/routing-outcome-v1.json",
+  "title": "NEXUS-U Routing Outcome",
+  "type": "object",
+  "required": ["obligation_signature", "strategy", "success", "cost_seconds"],
+  "properties": {
+    "obligation_signature": {"type": "string", "minLength": 1},
+    "strategy": {"type": "string"},
+    "success": {"type": "boolean"},
+    "cost_seconds": {"type": "number", "minimum": 0},
+    "debt_delta": {"type": "number"},
+    "artifact_id": {"type": ["string", "null"]},
+    "obligation_id": {"type": ["string", "null"]},
+    "result": {"type": "string"}
+  },
+  "additionalProperties": true
+}

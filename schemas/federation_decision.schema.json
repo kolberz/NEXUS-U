@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/federation_decision.schema.json",
+  "title": "NEXUS-U Federated Decision",
+  "type": "object",
+  "required": ["decision_id", "obligation_id", "policy_id", "status", "approved", "reasons"],
+  "properties": {
+    "decision_id": {"type": "string"},
+    "obligation_id": {"type": "string"},
+    "policy_id": {"type": "string"},
+    "status": {"enum": ["APPROVED", "BLOCKED", "CONFLICT", "INSUFFICIENT_QUORUM", "MISSING_DEPENDENCY"]},
+    "approved": {"type": "boolean"},
+    "reasons": {"type": "array", "items": {"type": "string"}},
+    "participating_organizations": {"type": "array", "items": {"type": "string"}},
+    "independent_evidence_groups": {"type": "array", "items": {"type": "string"}},
+    "total_weight": {"type": "number", "minimum": 0}
+  },
+  "additionalProperties": true
+}

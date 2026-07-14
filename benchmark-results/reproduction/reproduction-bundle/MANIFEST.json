@@ -1,0 +1,11 @@
+{
+  "files": {
+    "README.md": "8e9ff174c54f1f5baef9907c20d501a0f5685f5247b83e8047dea8009bfcc397",
+    "blind/corpus.json": "32187451dae45d70b6dbeda8e402daf8bcd966f46f74798f8a6e8ea73af096e5",
+    "evaluator-registry.json": "292ef62df24532e0e11d48b7a3fa9df8312e42a3fffa418556171a5f0010e5b4",
+    "preregistration.json": "9f3577f20c933042bb35370fe564c5a7c1d1c534875d81657303a119bb5d918d",
+    "scoring/labels.json": "4d2f5ef0034bfd332521d91f57931619047346afac5232763c114bf53c3115f9",
+    "source-registry.json": "68edf996786da351f5b7a8f969d9347f7beb9e56d96eea7b89e22700b5f85e84"
+  },
+  "schema": "https://nexus-u.dev/reproduction-bundle/v1"
+}

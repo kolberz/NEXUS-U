@@ -1,0 +1,1138 @@
+{
+  "cases": [
+    {
+      "abstained_correctly": false,
+      "case_id": "climate-fever-55",
+      "expected_kind": "CONTRADICTION",
+      "expected_tension": true,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": "CONTRADICTION",
+      "predicted_tension": true,
+      "recommended_experiment": "Stratified replication across regimes",
+      "report": {
+        "created_at": 1784023981.1639338,
+        "experiments": [
+          {
+            "cost": 1.0,
+            "description": "Stratified replication across regimes",
+            "experiment_id": "2dccf080-b5cb-45ed-83dc-ec7f31a6355e",
+            "likelihoods": {
+              "1821b259-a265-4e6a-8d04-b7e5733f2809": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "466aa1d3-2334-4d59-8c48-200e3ba9e0e6": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "76fd8980-82fa-4804-b56e-07a8f2b3906c": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.125,
+                "supports_scope_split": 0.75
+              },
+              "ae741899-cf32-4556-8cbd-a81d89f1cf0f": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "76fd8980-82fa-4804-b56e-07a8f2b3906c",
+                "ae741899-cf32-4556-8cbd-a81d89f1cf0f",
+                "466aa1d3-2334-4d59-8c48-200e3ba9e0e6",
+                "1821b259-a265-4e6a-8d04-b7e5733f2809"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.2,
+            "description": "Independent recalibration and blinded replication",
+            "experiment_id": "3b65b94b-d384-47a5-8e56-acea65e026db",
+            "likelihoods": {
+              "1821b259-a265-4e6a-8d04-b7e5733f2809": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              },
+              "466aa1d3-2334-4d59-8c48-200e3ba9e0e6": {
+                "supports_measurement_error": 0.75,
+                "supports_new_mechanism": 0.125,
+                "supports_scope_split": 0.125
+              },
+              "76fd8980-82fa-4804-b56e-07a8f2b3906c": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              },
+              "ae741899-cf32-4556-8cbd-a81d89f1cf0f": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "76fd8980-82fa-4804-b56e-07a8f2b3906c",
+                "ae741899-cf32-4556-8cbd-a81d89f1cf0f",
+                "466aa1d3-2334-4d59-8c48-200e3ba9e0e6",
+                "1821b259-a265-4e6a-8d04-b7e5733f2809"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.5,
+            "description": "Targeted intervention on the suspected latent dependency",
+            "experiment_id": "2a7e32da-f62f-4142-a2fc-6e3d28df3e10",
+            "likelihoods": {
+              "1821b259-a265-4e6a-8d04-b7e5733f2809": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.75,
+                "supports_scope_split": 0.125
+              },
+              "466aa1d3-2334-4d59-8c48-200e3ba9e0e6": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "76fd8980-82fa-4804-b56e-07a8f2b3906c": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "ae741899-cf32-4556-8cbd-a81d89f1cf0f": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.75,
+                "supports_scope_split": 0.125
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "76fd8980-82fa-4804-b56e-07a8f2b3906c",
+                "ae741899-cf32-4556-8cbd-a81d89f1cf0f",
+                "466aa1d3-2334-4d59-8c48-200e3ba9e0e6",
+                "1821b259-a265-4e6a-8d04-b7e5733f2809"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          }
+        ],
+        "hypotheses": [
+          {
+            "assumptions": [],
+            "complexity": 1.0,
+            "description": "The claim is valid only under a narrower boundary condition or regime.",
+            "discovery_value": 0.466667,
+            "hypothesis_id": "76fd8980-82fa-4804-b56e-07a8f2b3906c",
+            "kind": "NARROW_SCOPE",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test narrow_scope explanation"
+            ],
+            "predicted_resolution": 0.7,
+            "prior": 0.25,
+            "tension_id": "92cb9d0c-bd38-4f49-8b59-28d70aeda5b8"
+          },
+          {
+            "assumptions": [],
+            "complexity": 2.0,
+            "description": "A latent variable separates the apparently conflicting observations.",
+            "discovery_value": 0.34,
+            "hypothesis_id": "ae741899-cf32-4556-8cbd-a81d89f1cf0f",
+            "kind": "HIDDEN_VARIABLE",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test hidden_variable explanation"
+            ],
+            "predicted_resolution": 0.85,
+            "prior": 0.25,
+            "tension_id": "92cb9d0c-bd38-4f49-8b59-28d70aeda5b8"
+          },
+          {
+            "assumptions": [],
+            "complexity": 1.5,
+            "description": "One evidence stream contains calibration, measurement, or labeling error.",
+            "discovery_value": 0.3,
+            "hypothesis_id": "466aa1d3-2334-4d59-8c48-200e3ba9e0e6",
+            "kind": "CALIBRATION_ERROR",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test calibration_error explanation"
+            ],
+            "predicted_resolution": 0.6,
+            "prior": 0.25,
+            "tension_id": "92cb9d0c-bd38-4f49-8b59-28d70aeda5b8"
+          },
+          {
+            "assumptions": [],
+            "complexity": 3.0,
+            "description": "The current explanatory model is incomplete and requires a new mechanism.",
+            "discovery_value": 0.257143,
+            "hypothesis_id": "1821b259-a265-4e6a-8d04-b7e5733f2809",
+            "kind": "MODEL_REVISION",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test model_revision explanation"
+            ],
+            "predicted_resolution": 0.9,
+            "prior": 0.25,
+            "tension_id": "92cb9d0c-bd38-4f49-8b59-28d70aeda5b8"
+          }
+        ],
+        "obligation_id": "climate-fever-55",
+        "observed_result": null,
+        "posterior_probabilities": {
+          "1821b259-a265-4e6a-8d04-b7e5733f2809": 0.25,
+          "466aa1d3-2334-4d59-8c48-200e3ba9e0e6": 0.25,
+          "76fd8980-82fa-4804-b56e-07a8f2b3906c": 0.25,
+          "ae741899-cf32-4556-8cbd-a81d89f1cf0f": 0.25
+        },
+        "prior_probabilities": {
+          "1821b259-a265-4e6a-8d04-b7e5733f2809": 0.25,
+          "466aa1d3-2334-4d59-8c48-200e3ba9e0e6": 0.25,
+          "76fd8980-82fa-4804-b56e-07a8f2b3906c": 0.25,
+          "ae741899-cf32-4556-8cbd-a81d89f1cf0f": 0.25
+        },
+        "reasons": [
+          "Independent supporting and refuting evidence creates an obligation tension",
+          "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+        ],
+        "recommendation": {
+          "expected_information_gain": 0.178141,
+          "expected_outcome_probabilities": {
+            "supports_measurement_error": 0.33125,
+            "supports_new_mechanism": 0.33125,
+            "supports_scope_split": 0.3375
+          },
+          "experiment_id": "2dccf080-b5cb-45ed-83dc-ec7f31a6355e",
+          "rationale": [
+            "Maximizes expected reduction in hypothesis uncertainty",
+            "Penalizes experiment cost and declared risk"
+          ],
+          "utility": 0.169658
+        },
+        "run_id": "0bd58082-9fe7-4c50-a3eb-8e0e874d6236",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "climate-fever"
+        ],
+        "status": "EXPERIMENT_RECOMMENDED",
+        "tension_reduction": 0.0,
+        "tension_score_after": 1.0,
+        "tension_score_before": 1.0,
+        "tensions": [
+          {
+            "kind": "CONTRADICTION",
+            "metadata": {
+              "claim_id": "cf55-refute",
+              "inconclusive_count": 0,
+              "source_id": "climate-fever:55:Hockey-stick-144",
+              "statement": "Has the United States cooled for roughly 80 to 90 years?",
+              "tension_kind": "CONTRADICTION",
+              "upstream_claim_id": "55",
+              "upstream_label": "DISPUTED"
+            },
+            "obligation_id": "climate-fever-55",
+            "organizations": [
+              "climate-fever"
+            ],
+            "provenance_groups": [
+              "Hockey-stick-144",
+              "Hockey-stick-175"
+            ],
+            "refute_weight": 1.0,
+            "refuting_evidence": [
+              "3dddf314-96f7-4f73-9be4-7ebc4d037a0a"
+            ],
+            "score": 1.0,
+            "statement": "Has the United States cooled for roughly 80 to 90 years?",
+            "support_weight": 1.0,
+            "supporting_evidence": [
+              "53a5bc47-a004-41cf-bc07-73e8fcfe5a3b"
+            ],
+            "tension_id": "92cb9d0c-bd38-4f49-8b59-28d70aeda5b8"
+          }
+        ]
+      },
+      "source_count": 2,
+      "tension_score": 1.0
+    },
+    {
+      "abstained_correctly": false,
+      "case_id": "climate-fever-60",
+      "expected_kind": "CONTRADICTION",
+      "expected_tension": true,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": "CONTRADICTION",
+      "predicted_tension": true,
+      "recommended_experiment": "Stratified replication across regimes",
+      "report": {
+        "created_at": 1784023981.1644135,
+        "experiments": [
+          {
+            "cost": 1.0,
+            "description": "Stratified replication across regimes",
+            "experiment_id": "c913820a-a57d-440b-916c-1b284fb41c5f",
+            "likelihoods": {
+              "2a716bd5-d84a-45c1-961a-baa9d0d5eb44": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.125,
+                "supports_scope_split": 0.75
+              },
+              "5cfe2758-9bde-4972-8fa1-3705a38eba2a": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "fef1ca08-6264-40e2-8adf-fe8b1b12e944": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "2a716bd5-d84a-45c1-961a-baa9d0d5eb44",
+                "fef1ca08-6264-40e2-8adf-fe8b1b12e944",
+                "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3",
+                "5cfe2758-9bde-4972-8fa1-3705a38eba2a"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.2,
+            "description": "Independent recalibration and blinded replication",
+            "experiment_id": "62dbc52f-a921-40ba-83bb-d0ae3d074deb",
+            "likelihoods": {
+              "2a716bd5-d84a-45c1-961a-baa9d0d5eb44": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              },
+              "5cfe2758-9bde-4972-8fa1-3705a38eba2a": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              },
+              "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3": {
+                "supports_measurement_error": 0.75,
+                "supports_new_mechanism": 0.125,
+                "supports_scope_split": 0.125
+              },
+              "fef1ca08-6264-40e2-8adf-fe8b1b12e944": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "2a716bd5-d84a-45c1-961a-baa9d0d5eb44",
+                "fef1ca08-6264-40e2-8adf-fe8b1b12e944",
+                "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3",
+                "5cfe2758-9bde-4972-8fa1-3705a38eba2a"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.5,
+            "description": "Targeted intervention on the suspected latent dependency",
+            "experiment_id": "2fd48d3a-4506-4aaa-89e0-c7a8b155a0f2",
+            "likelihoods": {
+              "2a716bd5-d84a-45c1-961a-baa9d0d5eb44": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "5cfe2758-9bde-4972-8fa1-3705a38eba2a": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.75,
+                "supports_scope_split": 0.125
+              },
+              "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "fef1ca08-6264-40e2-8adf-fe8b1b12e944": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.75,
+                "supports_scope_split": 0.125
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "2a716bd5-d84a-45c1-961a-baa9d0d5eb44",
+                "fef1ca08-6264-40e2-8adf-fe8b1b12e944",
+                "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3",
+                "5cfe2758-9bde-4972-8fa1-3705a38eba2a"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          }
+        ],
+        "hypotheses": [
+          {
+            "assumptions": [],
+            "complexity": 1.0,
+            "description": "The claim is valid only under a narrower boundary condition or regime.",
+            "discovery_value": 0.466667,
+            "hypothesis_id": "2a716bd5-d84a-45c1-961a-baa9d0d5eb44",
+            "kind": "NARROW_SCOPE",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test narrow_scope explanation"
+            ],
+            "predicted_resolution": 0.7,
+            "prior": 0.25,
+            "tension_id": "8e4f1b94-04dd-4b9a-b4a9-04eedad554e9"
+          },
+          {
+            "assumptions": [],
+            "complexity": 2.0,
+            "description": "A latent variable separates the apparently conflicting observations.",
+            "discovery_value": 0.34,
+            "hypothesis_id": "fef1ca08-6264-40e2-8adf-fe8b1b12e944",
+            "kind": "HIDDEN_VARIABLE",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test hidden_variable explanation"
+            ],
+            "predicted_resolution": 0.85,
+            "prior": 0.25,
+            "tension_id": "8e4f1b94-04dd-4b9a-b4a9-04eedad554e9"
+          },
+          {
+            "assumptions": [],
+            "complexity": 1.5,
+            "description": "One evidence stream contains calibration, measurement, or labeling error.",
+            "discovery_value": 0.3,
+            "hypothesis_id": "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3",
+            "kind": "CALIBRATION_ERROR",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test calibration_error explanation"
+            ],
+            "predicted_resolution": 0.6,
+            "prior": 0.25,
+            "tension_id": "8e4f1b94-04dd-4b9a-b4a9-04eedad554e9"
+          },
+          {
+            "assumptions": [],
+            "complexity": 3.0,
+            "description": "The current explanatory model is incomplete and requires a new mechanism.",
+            "discovery_value": 0.257143,
+            "hypothesis_id": "5cfe2758-9bde-4972-8fa1-3705a38eba2a",
+            "kind": "MODEL_REVISION",
+            "metadata": {
+              "tension_kind": "CONTRADICTION",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test model_revision explanation"
+            ],
+            "predicted_resolution": 0.9,
+            "prior": 0.25,
+            "tension_id": "8e4f1b94-04dd-4b9a-b4a9-04eedad554e9"
+          }
+        ],
+        "obligation_id": "climate-fever-60",
+        "observed_result": null,
+        "posterior_probabilities": {
+          "2a716bd5-d84a-45c1-961a-baa9d0d5eb44": 0.25,
+          "5cfe2758-9bde-4972-8fa1-3705a38eba2a": 0.25,
+          "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3": 0.25,
+          "fef1ca08-6264-40e2-8adf-fe8b1b12e944": 0.25
+        },
+        "prior_probabilities": {
+          "2a716bd5-d84a-45c1-961a-baa9d0d5eb44": 0.25,
+          "5cfe2758-9bde-4972-8fa1-3705a38eba2a": 0.25,
+          "d4f68e9b-c568-4331-9ed0-6223a6b1c6e3": 0.25,
+          "fef1ca08-6264-40e2-8adf-fe8b1b12e944": 0.25
+        },
+        "reasons": [
+          "Independent supporting and refuting evidence creates an obligation tension",
+          "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+        ],
+        "recommendation": {
+          "expected_information_gain": 0.178141,
+          "expected_outcome_probabilities": {
+            "supports_measurement_error": 0.33125,
+            "supports_new_mechanism": 0.33125,
+            "supports_scope_split": 0.3375
+          },
+          "experiment_id": "c913820a-a57d-440b-916c-1b284fb41c5f",
+          "rationale": [
+            "Maximizes expected reduction in hypothesis uncertainty",
+            "Penalizes experiment cost and declared risk"
+          ],
+          "utility": 0.169658
+        },
+        "run_id": "e8ba5e8b-14fd-4307-bafc-aa059ae7d814",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "climate-fever"
+        ],
+        "status": "EXPERIMENT_RECOMMENDED",
+        "tension_reduction": 0.0,
+        "tension_score_after": 1.0,
+        "tension_score_before": 1.0,
+        "tensions": [
+          {
+            "kind": "CONTRADICTION",
+            "metadata": {
+              "claim_id": "cf60-refute",
+              "inconclusive_count": 0,
+              "source_id": "climate-fever:60:Consensus-150",
+              "statement": "Did greenhouse gases cause only about half of observed warming?",
+              "tension_kind": "CONTRADICTION",
+              "upstream_claim_id": "60",
+              "upstream_label": "DISPUTED"
+            },
+            "obligation_id": "climate-fever-60",
+            "organizations": [
+              "climate-fever"
+            ],
+            "provenance_groups": [
+              "Consensus-150",
+              "Patrick-Michaels-30"
+            ],
+            "refute_weight": 1.0,
+            "refuting_evidence": [
+              "e966698e-560a-4e70-b2a8-01fcaefeacd2"
+            ],
+            "score": 1.0,
+            "statement": "Did greenhouse gases cause only about half of observed warming?",
+            "support_weight": 1.0,
+            "supporting_evidence": [
+              "12c2d1e0-415b-4a53-8d74-59093546f612"
+            ],
+            "tension_id": "8e4f1b94-04dd-4b9a-b4a9-04eedad554e9"
+          }
+        ]
+      },
+      "source_count": 2,
+      "tension_score": 1.0
+    },
+    {
+      "abstained_correctly": false,
+      "case_id": "climate-fever-65",
+      "expected_kind": "RESOURCE_CONFLICT",
+      "expected_tension": true,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": "RESOURCE_CONFLICT",
+      "predicted_tension": true,
+      "recommended_experiment": "Independent recalibration and blinded replication",
+      "report": {
+        "created_at": 1784023981.1648176,
+        "experiments": [
+          {
+            "cost": 1.0,
+            "description": "Stratified replication across regimes",
+            "experiment_id": "903e2940-d8a1-491c-bb26-157caa0f5827",
+            "likelihoods": {
+              "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "7bebabed-0425-4955-8836-6db3dd5bf507": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              },
+              "f19ca637-0819-4d3b-be34-b9265f3246a4": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.2
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "7bebabed-0425-4955-8836-6db3dd5bf507",
+                "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd",
+                "f19ca637-0819-4d3b-be34-b9265f3246a4"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.2,
+            "description": "Independent recalibration and blinded replication",
+            "experiment_id": "e11090df-8ea8-4ecd-94c5-9d0141711038",
+            "likelihoods": {
+              "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd": {
+                "supports_measurement_error": 0.75,
+                "supports_new_mechanism": 0.125,
+                "supports_scope_split": 0.125
+              },
+              "7bebabed-0425-4955-8836-6db3dd5bf507": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              },
+              "f19ca637-0819-4d3b-be34-b9265f3246a4": {
+                "supports_measurement_error": 0.2,
+                "supports_new_mechanism": 0.4,
+                "supports_scope_split": 0.4
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "7bebabed-0425-4955-8836-6db3dd5bf507",
+                "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd",
+                "f19ca637-0819-4d3b-be34-b9265f3246a4"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          },
+          {
+            "cost": 1.5,
+            "description": "Targeted intervention on the suspected latent dependency",
+            "experiment_id": "a843c5d9-5709-4306-a676-f6b435da032b",
+            "likelihoods": {
+              "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "7bebabed-0425-4955-8836-6db3dd5bf507": {
+                "supports_measurement_error": 0.4,
+                "supports_new_mechanism": 0.2,
+                "supports_scope_split": 0.4
+              },
+              "f19ca637-0819-4d3b-be34-b9265f3246a4": {
+                "supports_measurement_error": 0.125,
+                "supports_new_mechanism": 0.75,
+                "supports_scope_split": 0.125
+              }
+            },
+            "metadata": {
+              "default_generated": true,
+              "hypothesis_ids": [
+                "7bebabed-0425-4955-8836-6db3dd5bf507",
+                "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd",
+                "f19ca637-0819-4d3b-be34-b9265f3246a4"
+              ]
+            },
+            "outcomes": [
+              "supports_scope_split",
+              "supports_measurement_error",
+              "supports_new_mechanism"
+            ],
+            "prerequisites": [],
+            "risk": 0.05
+          }
+        ],
+        "hypotheses": [
+          {
+            "assumptions": [],
+            "complexity": 1.0,
+            "description": "The result changes across resource or scale regimes.",
+            "discovery_value": 0.5,
+            "hypothesis_id": "7bebabed-0425-4955-8836-6db3dd5bf507",
+            "kind": "RESOURCE_REGIME",
+            "metadata": {
+              "tension_kind": "RESOURCE_CONFLICT",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test resource_regime explanation"
+            ],
+            "predicted_resolution": 0.75,
+            "prior": 0.3333333333333333,
+            "tension_id": "964e4aee-edb3-4fa6-846a-de60c5528895"
+          },
+          {
+            "assumptions": [],
+            "complexity": 1.5,
+            "description": "One resource measurement or cost model is miscalibrated.",
+            "discovery_value": 0.3,
+            "hypothesis_id": "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd",
+            "kind": "CALIBRATION_ERROR",
+            "metadata": {
+              "tension_kind": "RESOURCE_CONFLICT",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test calibration_error explanation"
+            ],
+            "predicted_resolution": 0.6,
+            "prior": 0.3333333333333333,
+            "tension_id": "964e4aee-edb3-4fa6-846a-de60c5528895"
+          },
+          {
+            "assumptions": [],
+            "complexity": 2.5,
+            "description": "The current resource model omits a dominant cost channel.",
+            "discovery_value": 0.266667,
+            "hypothesis_id": "f19ca637-0819-4d3b-be34-b9265f3246a4",
+            "kind": "MODEL_REVISION",
+            "metadata": {
+              "tension_kind": "RESOURCE_CONFLICT",
+              "tension_score": 1.0
+            },
+            "new_obligations": [
+              "Test model_revision explanation"
+            ],
+            "predicted_resolution": 0.8,
+            "prior": 0.3333333333333333,
+            "tension_id": "964e4aee-edb3-4fa6-846a-de60c5528895"
+          }
+        ],
+        "obligation_id": "climate-fever-65",
+        "observed_result": null,
+        "posterior_probabilities": {
+          "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd": 0.333333,
+          "7bebabed-0425-4955-8836-6db3dd5bf507": 0.333333,
+          "f19ca637-0819-4d3b-be34-b9265f3246a4": 0.333333
+        },
+        "prior_probabilities": {
+          "7bcc58f4-fda1-4b17-bd75-1b1dd3e1b8cd": 0.333333,
+          "7bebabed-0425-4955-8836-6db3dd5bf507": 0.333333,
+          "f19ca637-0819-4d3b-be34-b9265f3246a4": 0.333333
+        },
+        "reasons": [
+          "Independent supporting and refuting evidence creates an obligation tension",
+          "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+        ],
+        "recommendation": {
+          "expected_information_gain": 0.208651,
+          "expected_outcome_probabilities": {
+            "supports_measurement_error": 0.383333,
+            "supports_new_mechanism": 0.308333,
+            "supports_scope_split": 0.308333
+          },
+          "experiment_id": "e11090df-8ea8-4ecd-94c5-9d0141711038",
+          "rationale": [
+            "Maximizes expected reduction in hypothesis uncertainty",
+            "Penalizes experiment cost and declared risk"
+          ],
+          "utility": 0.165596
+        },
+        "run_id": "cf54ae58-4616-4369-8d6e-58381da076f2",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "climate-fever"
+        ],
+        "status": "EXPERIMENT_RECOMMENDED",
+        "tension_reduction": 0.0,
+        "tension_score_after": 1.0,
+        "tension_score_before": 1.0,
+        "tensions": [
+          {
+            "kind": "RESOURCE_CONFLICT",
+            "metadata": {
+              "claim_id": "cf65-refute",
+              "inconclusive_count": 0,
+              "source_id": "climate-fever:65:Wind-farm-150",
+              "statement": "Can a wind turbine recover the energy invested in building it?",
+              "tension_kind": "RESOURCE_CONFLICT",
+              "upstream_claim_id": "65",
+              "upstream_label": "DISPUTED"
+            },
+            "obligation_id": "climate-fever-65",
+            "organizations": [
+              "climate-fever"
+            ],
+            "provenance_groups": [
+              "Wind-farm-150",
+              "Windmill-30"
+            ],
+            "refute_weight": 1.0,
+            "refuting_evidence": [
+              "60188f19-bfcb-4d5c-bf4a-1a760d91562a"
+            ],
+            "score": 1.0,
+            "statement": "Can a wind turbine recover the energy invested in building it?",
+            "support_weight": 1.0,
+            "supporting_evidence": [
+              "66d5a949-e5be-47bd-9d0f-90d07d9626ed"
+            ],
+            "tension_id": "964e4aee-edb3-4fa6-846a-de60c5528895"
+          }
+        ]
+      },
+      "source_count": 2,
+      "tension_score": 1.0
+    },
+    {
+      "abstained_correctly": true,
+      "case_id": "climate-fever-69",
+      "expected_kind": null,
+      "expected_tension": false,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": null,
+      "predicted_tension": false,
+      "recommended_experiment": null,
+      "report": {
+        "created_at": 1784023981.1650512,
+        "experiments": [],
+        "hypotheses": [],
+        "obligation_id": "climate-fever-69",
+        "observed_result": null,
+        "posterior_probabilities": {},
+        "prior_probabilities": {},
+        "reasons": [
+          "No independently supported contradiction was detected"
+        ],
+        "recommendation": null,
+        "run_id": "67bb9016-31c3-4143-8321-685bfcc30e6d",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "climate-fever"
+        ],
+        "status": "NO_TENSION",
+        "tension_reduction": 0.0,
+        "tension_score_after": 0.0,
+        "tension_score_before": 0.0,
+        "tensions": []
+      },
+      "source_count": 2,
+      "tension_score": 0.0
+    },
+    {
+      "abstained_correctly": true,
+      "case_id": "scifact-123",
+      "expected_kind": null,
+      "expected_tension": false,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": null,
+      "predicted_tension": false,
+      "recommended_experiment": null,
+      "report": {
+        "created_at": 1784023981.1652203,
+        "experiments": [],
+        "hypotheses": [],
+        "obligation_id": "scifact-123",
+        "observed_result": null,
+        "posterior_probabilities": {},
+        "prior_probabilities": {},
+        "reasons": [
+          "No independently supported contradiction was detected"
+        ],
+        "recommendation": null,
+        "run_id": "0621f484-50a6-450c-a31b-88f8b2be18fa",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "scifact"
+        ],
+        "status": "NO_TENSION",
+        "tension_reduction": 0.0,
+        "tension_score_after": 0.0,
+        "tension_score_before": 0.0,
+        "tensions": []
+      },
+      "source_count": 2,
+      "tension_score": 0.0
+    },
+    {
+      "abstained_correctly": true,
+      "case_id": "scifact-263",
+      "expected_kind": null,
+      "expected_tension": false,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": null,
+      "predicted_tension": false,
+      "recommended_experiment": null,
+      "report": {
+        "created_at": 1784023981.1653779,
+        "experiments": [],
+        "hypotheses": [],
+        "obligation_id": "scifact-263",
+        "observed_result": null,
+        "posterior_probabilities": {},
+        "prior_probabilities": {},
+        "reasons": [
+          "No independently supported contradiction was detected"
+        ],
+        "recommendation": null,
+        "run_id": "e2c21986-178f-4b04-8ec2-287be002e047",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "scifact"
+        ],
+        "status": "NO_TENSION",
+        "tension_reduction": 0.0,
+        "tension_score_after": 0.0,
+        "tension_score_before": 0.0,
+        "tensions": []
+      },
+      "source_count": 2,
+      "tension_score": 0.0
+    },
+    {
+      "abstained_correctly": true,
+      "case_id": "contract-nli-nda-1",
+      "expected_kind": null,
+      "expected_tension": false,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": null,
+      "predicted_tension": false,
+      "recommended_experiment": null,
+      "report": {
+        "created_at": 1784023981.1654894,
+        "experiments": [],
+        "hypotheses": [],
+        "obligation_id": "contract-nli-nda-1",
+        "observed_result": null,
+        "posterior_probabilities": {},
+        "prior_probabilities": {},
+        "reasons": [
+          "No independently supported contradiction was detected"
+        ],
+        "recommendation": null,
+        "run_id": "b4da0343-3f6e-429d-aaa3-0f621bb0b4ab",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "contract-nli"
+        ],
+        "status": "NO_TENSION",
+        "tension_reduction": 0.0,
+        "tension_score_after": 0.0,
+        "tension_score_before": 0.0,
+        "tensions": []
+      },
+      "source_count": 1,
+      "tension_score": 0.0
+    },
+    {
+      "abstained_correctly": true,
+      "case_id": "contract-nli-nda-2",
+      "expected_kind": null,
+      "expected_tension": false,
+      "experiment_match": true,
+      "false_discovery": false,
+      "kind_match": true,
+      "missed_tension": false,
+      "predicted_kind": null,
+      "predicted_tension": false,
+      "recommended_experiment": null,
+      "report": {
+        "created_at": 1784023981.1656008,
+        "experiments": [],
+        "hypotheses": [],
+        "obligation_id": "contract-nli-nda-2",
+        "observed_result": null,
+        "posterior_probabilities": {},
+        "prior_probabilities": {},
+        "reasons": [
+          "No independently supported contradiction was detected"
+        ],
+        "recommendation": null,
+        "run_id": "b29356f7-929d-437e-98b6-e2c5fa522301",
+        "schema": "https://nexus-u.dev/tension-discovery/v1",
+        "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+        "source_ids": [
+          "contract-nli"
+        ],
+        "status": "NO_TENSION",
+        "tension_reduction": 0.0,
+        "tension_score_after": 0.0,
+        "tension_score_before": 0.0,
+        "tensions": []
+      },
+      "source_count": 1,
+      "tension_score": 0.0
+    }
+  ],
+  "challenge_id": "nexus-u-independent-discovery-v1",
+  "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+  "created_at": 1784023981.1663163,
+  "engine_version": "2.6.0",
+  "label_firewall_verified": true,
+  "labels_hash": "6ca08eabf3115837329f7d868718aa546d849d2fe6eefcb381c848a5ac857a39",
+  "metadata": {
+    "corpus_origin": "independently published external datasets",
+    "corpus_path": "/mnt/data/nexus_u_prod_v2_6/src/nexus_u/external_challenge/data/external-corpus.json",
+    "evaluation_mode": "blind-label-firewall",
+    "labels_path": "/mnt/data/nexus_u_prod_v2_6/src/nexus_u/external_challenge/data/external-labels.json",
+    "limitations": "Compact benchmark snapshots test evidence conflict detection and abstention, not open-domain retrieval or scientific novelty.",
+    "sealed_inference_hash": "960d6cc33cc785862f2eac8990089721a415c8ab9a525a9f1458dc11e6a8c387",
+    "source_registry": [
+      {
+        "citation": "Diggelmann et al., CLIMATE-FEVER, 2020",
+        "homepage": "https://github.com/tdiggelm/climate-fever-dataset",
+        "license": "Upstream dataset terms; compact attributed benchmark excerpts only",
+        "snapshot_method": "Deterministic records selected by upstream claim_id and evidence_id",
+        "source_id": "climate-fever",
+        "title": "CLIMATE-FEVER",
+        "upstream_record_ids": [
+          "55",
+          "60",
+          "65",
+          "69"
+        ],
+        "version": "1.0.1"
+      },
+      {
+        "citation": "Wadden et al., Fact or Fiction: Verifying Scientific Claims, EMNLP 2020",
+        "homepage": "https://github.com/allenai/scifact",
+        "license": "Claims and evidence annotations CC BY 4.0; abstracts ODC-By 1.0",
+        "snapshot_method": "Examples published in the upstream data-format documentation",
+        "source_id": "scifact",
+        "title": "SciFact",
+        "upstream_record_ids": [
+          "123",
+          "263"
+        ],
+        "version": "latest public release"
+      },
+      {
+        "citation": "Koreeda and Manning, ContractNLI, Findings of EMNLP 2021",
+        "homepage": "https://stanfordnlp.github.io/contract-nli/",
+        "license": "CC BY 4.0",
+        "snapshot_method": "Published task and schema examples from the official dataset page",
+        "source_id": "contract-nli",
+        "title": "ContractNLI",
+        "upstream_record_ids": [
+          "nda-1",
+          "nda-2"
+        ],
+        "version": "2021-12-13"
+      }
+    ],
+    "source_registry_metadata": {
+      "purpose": "Independent external-corpus discovery evaluation",
+      "registry_version": "1.0",
+      "snapshot_policy": "Only compact attributed records required by the benchmark are bundled. Full upstream datasets are not redistributed."
+    }
+  },
+  "run_id": "70c237d8-64ed-47c5-8625-92882e2b9ab3",
+  "schema": "https://nexus-u.dev/independent-discovery-challenge/v1",
+  "source_registry_hash": "bf0df0e2fc9c9dbe2664353550a9d3287fa746e95ee3e1d80db896d503e8014b",
+  "summary": {
+    "case_count": 8,
+    "correct_abstentions": 5,
+    "experiment_matches": 3,
+    "external_sources": 3,
+    "f1": 1.0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "kind_matches": 3,
+    "label_firewall_verified": true,
+    "negative_controls": 5,
+    "positive_cases": 3,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "true_negatives": 5,
+    "true_positives": 3
+  }
+}

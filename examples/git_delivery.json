@@ -1,0 +1,26 @@
+{
+  "intent": "Deliver a Git-backed calculator feature with tests, build checks, security policy, and rollback readiness",
+  "artifact_type": "software",
+  "modes": ["SOFTWARE_ENGINEERING"],
+  "adapter": "git_delivery",
+  "success_conditions": ["All declared Git delivery checks pass"],
+  "assumptions": ["The repository is trusted local code"],
+  "inputs": {
+    "repository": "benchmarks/fixtures/good",
+    "changes": {
+      "calc.py": "def add(a: int, b: int) -> int:\n    return a + b\n\ndef multiply(a: int, b: int) -> int:\n    return a * b\n"
+    },
+    "test_commands": ["python -m unittest discover -s tests -v"],
+    "build_commands": ["python -m compileall -q ."],
+    "required_paths": ["calc.py", "tests/test_calc.py"],
+    "required_patterns": [{"path": "calc.py", "pattern": "def multiply"}],
+    "forbidden_patterns": [{"path": "calc.py", "pattern": "eval("}],
+    "rollback_required": true,
+    "rollback_command": "git reset --hard HEAD"
+  },
+  "budget": {
+    "wall_clock_seconds": 20,
+    "memory_mb": 512,
+    "output_bytes": 1000000
+  }
+}

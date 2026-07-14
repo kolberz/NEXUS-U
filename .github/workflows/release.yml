@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip build
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m pytest -q
+      - run: python -m pytest -q -m reality
+      - run: nexus-u capabilities
+      - run: nexus-u validate examples/discovery.json
+      - run: nexus-u run examples/discovery.json --output artifacts
+      - run: nexus-u run examples/hello_python.json --output artifacts
+      - run: nexus-u run examples/obligation_aware.json --output artifacts
+      - run: nexus-u verify-obligations "$(ls -t artifacts/*.obligations.json | head -1)"
+      - run: nexus-u reality-benchmark --builtin --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u routing-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u federation-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u tension-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u discovery-trials --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u independent-challenge --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u preregistered-reproduction --output benchmark-results/reproduction
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u lower-bound-lab --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u lower-bound-search --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u formalized-lower-bound --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: python -m build
+      - run: python scripts/release_gate.py
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+            artifacts/*
+            benchmark-results/*

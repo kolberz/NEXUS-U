@@ -1,0 +1,19 @@
+services:
+  nexus-u:
+    build: .
+    image: nexus-u:1.5.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - nexus-artifacts:/app/artifacts
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+volumes:
+  nexus-artifacts:

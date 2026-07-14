@@ -1,0 +1,83 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "kernel-bridge-local",
+  "payload": {
+    "bridge_report": {
+      "created_at": 1784024001.0627887,
+      "execution": {
+        "attempted": false,
+        "available": false,
+        "command": [],
+        "duration_seconds": 0.0,
+        "executable": null,
+        "executable_sha256": null,
+        "returncode": null,
+        "status": "EXTERNAL_KERNEL_PENDING",
+        "stderr": "",
+        "stdout": "",
+        "trusted_identity": false,
+        "verified": false,
+        "version_output": ""
+      },
+      "project_id": "nexus-u-decision-tree-kernel-bridge",
+      "project_path": "benchmark-results/kernel-bridge",
+      "replay_manifest_path": "benchmark-results/kernel-bridge/replay-manifest.json",
+      "replay_manifest_sha256": "881d7ed3a0cd9e90a603b8fb7d21addeaa5a998648aada1691231fe408b51f72",
+      "run_id": "620d5f8e-96c4-4b6d-82fc-18dbf7bd494e",
+      "schema": "https://nexus-u.dev/kernel-verification-bridge/v1",
+      "source_files": {
+        ".github/workflows/kernel-check.yml": "bc44cfc1d29ea967b2a96f5893b19a1bd3476999f8625260f3b64318bd6424b2",
+        "NexusUKernelBridge/AllSensitive.lean": "49cd90a500dc2af18750bfbc741da5a68a210b6aa5d9b82b6dad82b99385cb2d",
+        "lakefile.toml": "8aed453afeec533bd01a0c614d399eb526299efda2eaf36a07530ae6bbfba910",
+        "lean-toolchain": "7dc000621e0046d1aada809e2b7177e64454645cf4c741e9daaf79c99ec2e7a2",
+        "verify.sh": "974ddf7356993e4ee4dca6534a59e77f6bea7074206b107b40d77bd83e3edf95"
+      },
+      "static_checks": {
+        "balanced_brackets": true,
+        "balanced_parentheses": true,
+        "ci_workflow_present": true,
+        "forbidden_declarations": [],
+        "lakefile_present": true,
+        "lean_source_present": true,
+        "multiplication_specialization_present": true,
+        "passed": true,
+        "pinned_toolchain_present": true,
+        "replay_script_present": true,
+        "theorem_present": true,
+        "universal_solution_claim_absent": true
+      },
+      "status": "PROOF_PROJECT_READY_KERNEL_PENDING",
+      "theorem": "allSensitive_forces_allQueried",
+      "toolchain": "leanprover/lean4:v4.29.1",
+      "universal_target_status": "OPEN"
+    },
+    "completed_at": 1784024001.062793,
+    "schema": "https://nexus-u.dev/kernel-bridge-benchmark/v1",
+    "started_at": 1784024001.0599597,
+    "summary": {
+      "bridge_status": "PROOF_PROJECT_READY_KERNEL_PENDING",
+      "check_count": 12,
+      "checks": {
+        "ci_kernel_job_present": true,
+        "generic_sensitivity_theorem_present": true,
+        "kernel_status_consistent": true,
+        "multiplication_specialization_present": true,
+        "no_false_kernel_claim": true,
+        "no_forbidden_declarations": true,
+        "pinned_toolchain": true,
+        "proof_project_generated": true,
+        "replay_manifest_present": true,
+        "static_checks_pass": true,
+        "toolchain_unavailability_is_explicit": true,
+        "universal_target_remains_open": true
+      },
+      "checks_passed": 12,
+      "external_kernel_available": false,
+      "external_kernel_verified": false,
+      "pass_rate": 1.0,
+      "trusted_toolchain_identity": false,
+      "universal_status": "OPEN"
+    }
+  },
+  "signature": "44f61ffd05b2eca71bd3be20451daf524feeb2049d9c56a5c68c62c6fa6b6f8b"
+}

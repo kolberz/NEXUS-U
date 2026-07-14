@@ -1,0 +1,96 @@
+{
+  "obligation_id": "model:thermal-response",
+  "actors": [
+    {
+      "actor_id": "simulation-lab",
+      "organization_id": "modeling",
+      "roles": ["REVIEWER"],
+      "key_id": "simulation-key",
+      "secret": "simulation-secret",
+      "trust_weight": 1.0
+    },
+    {
+      "actor_id": "measurement-lab",
+      "organization_id": "experiments",
+      "roles": ["VERIFIER"],
+      "key_id": "measurement-key",
+      "secret": "measurement-secret",
+      "trust_weight": 1.0
+    }
+  ],
+  "submissions": [
+    {
+      "actor_id": "simulation-lab",
+      "organization_id": "modeling",
+      "verdict": "SUPPORTS",
+      "provenance_group": "simulation-v4",
+      "summary": "The current model predicts a monotonic thermal response.",
+      "metadata": {
+        "tension_kind": "MODEL_DATA_MISMATCH",
+        "statement": "Simulation predicts monotonic response while calibrated measurements show a regime reversal."
+      }
+    },
+    {
+      "actor_id": "measurement-lab",
+      "organization_id": "experiments",
+      "verdict": "REFUTES",
+      "provenance_group": "calibrated-sensor-run-12",
+      "summary": "Independent measurements show a response reversal above the transition temperature.",
+      "metadata": {
+        "tension_kind": "MODEL_DATA_MISMATCH",
+        "statement": "Simulation predicts monotonic response while calibrated measurements show a regime reversal."
+      }
+    }
+  ],
+  "policy": {
+    "policy_id": "discovery-evidence-policy",
+    "minimum_organizations": 2,
+    "minimum_weight": 2.0,
+    "minimum_independent_evidence": 2
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "scope-regime",
+      "kind": "NARROW_SCOPE",
+      "description": "The model is valid below the transition temperature but not above it.",
+      "prior": 0.5,
+      "complexity": 1.0,
+      "predicted_resolution": 0.8
+    },
+    {
+      "hypothesis_id": "missing-mechanism",
+      "kind": "MODEL_REVISION",
+      "description": "A missing phase-transition mechanism causes the reversal.",
+      "prior": 0.5,
+      "complexity": 2.5,
+      "predicted_resolution": 0.9
+    }
+  ],
+  "experiments": [
+    {
+      "experiment_id": "repeat-aggregate",
+      "description": "Repeat the original aggregate measurement.",
+      "outcomes": ["scope", "mechanism"],
+      "likelihoods": {
+        "scope-regime": {"scope": 0.6, "mechanism": 0.4},
+        "missing-mechanism": {"scope": 0.4, "mechanism": 0.6}
+      },
+      "cost": 1.0
+    },
+    {
+      "experiment_id": "temperature-stratification",
+      "description": "Measure densely on both sides of the transition and perturb the suspected phase variable.",
+      "outcomes": ["scope", "mechanism"],
+      "likelihoods": {
+        "scope-regime": {"scope": 0.95, "mechanism": 0.05},
+        "missing-mechanism": {"scope": 0.05, "mechanism": 0.95}
+      },
+      "cost": 1.2,
+      "risk": 0.05
+    }
+  ],
+  "observed_result": {
+    "experiment_id": "temperature-stratification",
+    "outcome": "mechanism"
+  }
+}

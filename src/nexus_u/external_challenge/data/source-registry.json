@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "registry_version": "1.0",
+    "purpose": "Independent external-corpus discovery evaluation",
+    "snapshot_policy": "Only compact attributed records required by the benchmark are bundled. Full upstream datasets are not redistributed."
+  },
+  "sources": [
+    {
+      "source_id": "climate-fever",
+      "title": "CLIMATE-FEVER",
+      "homepage": "https://github.com/tdiggelm/climate-fever-dataset",
+      "citation": "Diggelmann et al., CLIMATE-FEVER, 2020",
+      "license": "Upstream dataset terms; compact attributed benchmark excerpts only",
+      "version": "1.0.1",
+      "snapshot_method": "Deterministic records selected by upstream claim_id and evidence_id",
+      "upstream_record_ids": ["55", "60", "65", "69"]
+    },
+    {
+      "source_id": "scifact",
+      "title": "SciFact",
+      "homepage": "https://github.com/allenai/scifact",
+      "citation": "Wadden et al., Fact or Fiction: Verifying Scientific Claims, EMNLP 2020",
+      "license": "Claims and evidence annotations CC BY 4.0; abstracts ODC-By 1.0",
+      "version": "latest public release",
+      "snapshot_method": "Examples published in the upstream data-format documentation",
+      "upstream_record_ids": ["123", "263"]
+    },
+    {
+      "source_id": "contract-nli",
+      "title": "ContractNLI",
+      "homepage": "https://stanfordnlp.github.io/contract-nli/",
+      "citation": "Koreeda and Manning, ContractNLI, Findings of EMNLP 2021",
+      "license": "CC BY 4.0",
+      "version": "2021-12-13",
+      "snapshot_method": "Published task and schema examples from the official dataset page",
+      "upstream_record_ids": ["nda-1", "nda-2"]
+    }
+  ]
+}

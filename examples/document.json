@@ -1,0 +1,12 @@
+{
+  "intent": "Create a documented production architecture",
+  "artifact_type": "document",
+  "modes": ["SYSTEM_ARCHITECTURE"],
+  "adapter": "document",
+  "success_conditions": ["release", "audit"],
+  "inputs": {
+    "title": "Production Architecture",
+    "body": "This release includes an auditable production pipeline.",
+    "format": "markdown"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/preregistered-reproduction.schema.json",
+  "title": "NEXUS-U Preregistered Reproduction Report",
+  "type": "object",
+  "required": ["schema", "run_id", "protocol", "summary", "evaluator_results", "replay_bundle_hash"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/preregistered-reproduction/report/v1"},
+    "run_id": {"type": "string"},
+    "protocol": {
+      "type": "object",
+      "required": ["protocol_id", "protocol_hash", "corpus_hash", "labels_hash", "selected_case_ids", "evaluators"]
+    },
+    "summary": {
+      "type": "object",
+      "required": ["status", "evaluator_count", "evaluator_quorum", "reproduced", "external_independence_claimed"]
+    },
+    "evaluator_results": {"type": "array", "minItems": 1},
+    "replay_bundle_hash": {"type": "string", "minLength": 64, "maxLength": 64}
+  }
+}

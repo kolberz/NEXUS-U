@@ -1,0 +1,214 @@
+{
+  "challenge_id": "nexus-u-independent-discovery-v1",
+  "metadata": {
+    "evaluation_mode": "blind-label-firewall",
+    "corpus_origin": "independently published external datasets",
+    "limitations": "Compact benchmark snapshots test evidence conflict detection and abstention, not open-domain retrieval or scientific novelty."
+  },
+  "cases": [
+    {
+      "case_id": "climate-fever-55",
+      "title": "Has the United States cooled for roughly 80 to 90 years?",
+      "source_ids": ["climate-fever"],
+      "notes": "Upstream claim 55 is labeled DISPUTED.",
+      "claims": [
+        {
+          "claim_id": "cf55-support",
+          "statement": "A cited statement says satellite data showed no appreciable atmospheric warming since 1979.",
+          "verdict": "SUPPORTS",
+          "source_id": "climate-fever:55:Hockey-stick-175",
+          "source_title": "CLIMATE-FEVER claim 55 support evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Hockey-stick-175",
+          "metadata": {"upstream_claim_id": "55", "upstream_label": "DISPUTED", "tension_kind": "CONTRADICTION"}
+        },
+        {
+          "claim_id": "cf55-refute",
+          "statement": "A reconstruction reports rapid twentieth-century warming, with the 1990s the warmest decade.",
+          "verdict": "REFUTES",
+          "source_id": "climate-fever:55:Hockey-stick-144",
+          "source_title": "CLIMATE-FEVER claim 55 refuting evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Hockey-stick-144",
+          "metadata": {"upstream_claim_id": "55", "upstream_label": "DISPUTED", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "climate-fever-60",
+      "title": "Did greenhouse gases cause only about half of observed warming?",
+      "source_ids": ["climate-fever"],
+      "notes": "Upstream claim 60 is labeled DISPUTED.",
+      "claims": [
+        {
+          "claim_id": "cf60-support",
+          "statement": "A source records the assertion that roughly half of total warming might be greenhouse-gas caused.",
+          "verdict": "SUPPORTS",
+          "source_id": "climate-fever:60:Patrick-Michaels-30",
+          "source_title": "CLIMATE-FEVER claim 60 support evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Patrick-Michaels-30",
+          "metadata": {"upstream_claim_id": "60", "upstream_label": "DISPUTED", "tension_kind": "CONTRADICTION"}
+        },
+        {
+          "claim_id": "cf60-refute",
+          "statement": "Consensus evidence says human greenhouse-gas increases caused most observed average surface warming.",
+          "verdict": "REFUTES",
+          "source_id": "climate-fever:60:Consensus-150",
+          "source_title": "CLIMATE-FEVER claim 60 refuting evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Consensus-150",
+          "metadata": {"upstream_claim_id": "60", "upstream_label": "DISPUTED", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "climate-fever-65",
+      "title": "Can a wind turbine recover the energy invested in building it?",
+      "source_ids": ["climate-fever"],
+      "notes": "Upstream claim 65 is labeled DISPUTED.",
+      "claims": [
+        {
+          "claim_id": "cf65-support",
+          "statement": "One evidence sentence notes that tower mills were more expensive to build.",
+          "verdict": "SUPPORTS",
+          "source_id": "climate-fever:65:Windmill-30",
+          "source_title": "CLIMATE-FEVER claim 65 support evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Windmill-30",
+          "metadata": {"upstream_claim_id": "65", "upstream_label": "DISPUTED", "tension_kind": "RESOURCE_CONFLICT"}
+        },
+        {
+          "claim_id": "cf65-refute",
+          "statement": "Another source says manufacturing and transport energy is repaid within a few months.",
+          "verdict": "REFUTES",
+          "source_id": "climate-fever:65:Wind-farm-150",
+          "source_title": "CLIMATE-FEVER claim 65 refuting evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Wind-farm-150",
+          "metadata": {"upstream_claim_id": "65", "upstream_label": "DISPUTED", "tension_kind": "RESOURCE_CONFLICT"}
+        }
+      ]
+    },
+    {
+      "case_id": "climate-fever-69",
+      "title": "Will sea level rise occur?",
+      "source_ids": ["climate-fever"],
+      "notes": "Negative control: upstream claim 69 is REFUTES with aligned evidence.",
+      "claims": [
+        {
+          "claim_id": "cf69-refute-1",
+          "statement": "The IPCC projection cited in the dataset anticipates substantial sea-level rise under high emissions.",
+          "verdict": "REFUTES",
+          "source_id": "climate-fever:69:Sea-level-160",
+          "source_title": "CLIMATE-FEVER claim 69 evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Sea-level-160",
+          "metadata": {"upstream_claim_id": "69", "upstream_label": "REFUTES", "tension_kind": "CONTRADICTION"}
+        },
+        {
+          "claim_id": "cf69-refute-2",
+          "statement": "A second cited passage expects glacier melt to contribute to global sea levels this century.",
+          "verdict": "REFUTES",
+          "source_id": "climate-fever:69:Sea-level-139",
+          "source_title": "CLIMATE-FEVER claim 69 evidence",
+          "organization_id": "climate-fever",
+          "provenance_group": "Sea-level-139",
+          "metadata": {"upstream_claim_id": "69", "upstream_label": "REFUTES", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "scifact-123",
+      "title": "Does antiretroviral therapy increase tuberculosis across CD4 strata?",
+      "source_ids": ["scifact"],
+      "notes": "Negative control from the official SciFact documentation example.",
+      "claims": [
+        {
+          "claim_id": "sf123-refute-1",
+          "statement": "The cited study associates antiretroviral therapy with reduced tuberculosis incidence across all CD4 categories.",
+          "verdict": "REFUTES",
+          "source_id": "scifact:123:4883040:set0",
+          "source_title": "SciFact example 123 rationale",
+          "organization_id": "scifact",
+          "provenance_group": "4883040-set0",
+          "metadata": {"upstream_claim_id": "123", "upstream_label": "REFUTES", "tension_kind": "CONTRADICTION"}
+        },
+        {
+          "claim_id": "sf123-refute-2",
+          "statement": "The study conclusion likewise reports reduced tuberculosis incidence across all CD4 strata.",
+          "verdict": "REFUTES",
+          "source_id": "scifact:123:4883040:set1",
+          "source_title": "SciFact example 123 rationale",
+          "organization_id": "scifact",
+          "provenance_group": "4883040-set1",
+          "metadata": {"upstream_claim_id": "123", "upstream_label": "REFUTES", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "scifact-263",
+      "title": "Do externalized citrullinated proteins indirectly disrupt the inflammatory cycle?",
+      "source_ids": ["scifact"],
+      "notes": "Negative control from the official SciFact data schema example.",
+      "claims": [
+        {
+          "claim_id": "sf263-refute-1",
+          "statement": "Document 11328820 is annotated as contradicting the claim.",
+          "verdict": "REFUTES",
+          "source_id": "scifact:263:11328820",
+          "source_title": "SciFact example 263 annotation",
+          "organization_id": "scifact",
+          "provenance_group": "11328820",
+          "metadata": {"upstream_claim_id": "263", "upstream_label": "CONTRADICT", "tension_kind": "CONTRADICTION"}
+        },
+        {
+          "claim_id": "sf263-refute-2",
+          "statement": "Document 30041340 is separately annotated as contradicting the same claim.",
+          "verdict": "REFUTES",
+          "source_id": "scifact:263:30041340",
+          "source_title": "SciFact example 263 annotation",
+          "organization_id": "scifact",
+          "provenance_group": "30041340",
+          "metadata": {"upstream_claim_id": "263", "upstream_label": "CONTRADICT", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "contract-nli-nda-1",
+      "title": "Must all confidential information be expressly identified?",
+      "source_ids": ["contract-nli"],
+      "notes": "Negative control from the official schema example: nda-1 is Entailment.",
+      "claims": [
+        {
+          "claim_id": "cnli-nda1-entail",
+          "statement": "The published schema example labels the explicit-identification hypothesis as Entailment.",
+          "verdict": "SUPPORTS",
+          "source_id": "contract-nli:nda-1",
+          "source_title": "ContractNLI official schema example",
+          "organization_id": "contract-nli",
+          "provenance_group": "contract-nli-schema-nda1",
+          "metadata": {"upstream_claim_id": "nda-1", "upstream_label": "Entailment", "tension_kind": "CONTRADICTION"}
+        }
+      ]
+    },
+    {
+      "case_id": "contract-nli-nda-2",
+      "title": "Is the second published NDA hypothesis stated in the example contract?",
+      "source_ids": ["contract-nli"],
+      "notes": "Negative control from the official schema example: nda-2 is NotMentioned.",
+      "claims": [
+        {
+          "claim_id": "cnli-nda2-neutral",
+          "statement": "The published schema example labels nda-2 as NotMentioned.",
+          "verdict": "INCONCLUSIVE",
+          "source_id": "contract-nli:nda-2",
+          "source_title": "ContractNLI official schema example",
+          "organization_id": "contract-nli",
+          "provenance_group": "contract-nli-schema-nda2",
+          "metadata": {"upstream_claim_id": "nda-2", "upstream_label": "NotMentioned", "tension_kind": "EVIDENCE_GAP"}
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
-name: Native kernel recovery CI
+name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
@@ -14,8 +15,55 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-      - run: python -m pip install . pytest
-      - run: pytest
-      - run: nexus-u nexus-kernel-benchmark --output benchmark-results
-      - run: nexus-u kernel-check benchmark-results/nexus-kernel-proof.json
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip build
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m pytest -q
+      - run: python -m pytest -q -m reality
+      - run: python -m compileall -q src tests
+      - run: nexus-u validate examples/hello_python.json
+      - run: nexus-u capabilities
+      - run: nexus-u validate examples/discovery.json
+      - run: nexus-u run examples/discovery.json --output artifacts
+      - run: nexus-u run examples/hello_python.json --output artifacts
+      - run: nexus-u run examples/obligation_aware.json --output artifacts
+      - run: nexus-u verify-obligations "$(ls -t artifacts/*.obligations.json | head -1)"
+      - run: nexus-u reality-benchmark --builtin --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u routing-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u federation-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u tension-benchmark --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u discovery-trials --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u independent-challenge --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u preregistered-reproduction --output benchmark-results/reproduction
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u lower-bound-lab --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u lower-bound-search --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: nexus-u formalized-lower-bound --output benchmark-results
+        env:
+          NEXUS_U_SIGNING_KEY: ci-ephemeral-reality-key
+      - run: python -m build
+      - run: python scripts/release_gate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nexus-u-dist
+          path: |
+            dist/
+            artifacts/
+            benchmark-results/

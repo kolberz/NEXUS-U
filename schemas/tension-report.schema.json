@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/tension-report.schema.json",
+  "title": "NEXUS-U Tension Discovery Report",
+  "type": "object",
+  "required": [
+    "schema", "run_id", "obligation_id", "status", "tensions", "hypotheses",
+    "experiments", "tension_score_before", "tension_score_after", "tension_reduction"
+  ],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/tension-discovery/v1"},
+    "run_id": {"type": "string"},
+    "obligation_id": {"type": "string"},
+    "status": {"type": "string"},
+    "tensions": {"type": "array"},
+    "hypotheses": {"type": "array"},
+    "experiments": {"type": "array"},
+    "recommendation": {"type": ["object", "null"]},
+    "tension_score_before": {"type": "number", "minimum": 0},
+    "tension_score_after": {"type": "number", "minimum": 0},
+    "tension_reduction": {"type": "number", "minimum": 0}
+  },
+  "additionalProperties": true
+}

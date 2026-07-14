@@ -1,18 +1,22 @@
 from .ast import *
-from .codec import DecodeError, canonical_json, decode_term, encode_term, sha256_payload
-from .core import Kernel, KernelError, KernelLimits
-from .environment import Declaration, Environment, EnvironmentError
+from .codec import read_json, term_from_dict, term_to_dict, write_json
+from .core import KernelError, KernelLimits, NexusKernel, ReductionLimitError, TypeCheckError
+from .environment import Declaration, Environment
+from .theorems import proof_bundle, sensitivity_to_query_core, verify_bundle
 
 __all__ = [
-    "Kernel",
     "KernelError",
     "KernelLimits",
-    "Environment",
-    "EnvironmentError",
+    "NexusKernel",
+    "ReductionLimitError",
+    "TypeCheckError",
     "Declaration",
-    "DecodeError",
-    "encode_term",
-    "decode_term",
-    "canonical_json",
-    "sha256_payload",
+    "Environment",
+    "proof_bundle",
+    "sensitivity_to_query_core",
+    "verify_bundle",
+    "read_json",
+    "write_json",
+    "term_from_dict",
+    "term_to_dict",
 ]

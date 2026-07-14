@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/active-lower-bound-search.schema.json",
+  "title": "NEXUS-U Active Lower-Bound Search Report",
+  "type": "object",
+  "required": ["schema", "run_id", "challenge_id", "candidates", "attacks", "rankings", "certificates", "summary"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/active-lower-bound-search/v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "challenge_id": {"type": "string", "minLength": 1},
+    "candidates": {"type": "array", "minItems": 1},
+    "attacks": {"type": "array", "minItems": 1},
+    "rankings": {"type": "array", "minItems": 1},
+    "certificates": {"type": "array", "minItems": 1},
+    "summary": {
+      "type": "object",
+      "required": [
+        "candidate_count",
+        "blocked_count",
+        "derived_restricted_count",
+        "universal_offline_lower_bound_status",
+        "no_false_solution_claim"
+      ],
+      "properties": {
+        "candidate_count": {"type": "integer", "minimum": 1},
+        "blocked_count": {"type": "integer", "minimum": 0},
+        "derived_restricted_count": {"type": "integer", "minimum": 0},
+        "universal_offline_lower_bound_status": {"const": "OPEN"},
+        "no_false_solution_claim": {"const": true}
+      }
+    }
+  }
+}

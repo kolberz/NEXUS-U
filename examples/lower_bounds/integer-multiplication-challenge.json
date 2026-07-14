@@ -1,0 +1,327 @@
+{
+  "challenge_id": "integer-multiplication-optimality-v1",
+  "title": "Optimal asymptotic complexity of binary integer multiplication",
+  "trigger": {
+    "title": "Mathematicians still don’t know the fastest way to multiply numbers",
+    "publisher": "Scientific American",
+    "published": "2026-07-13",
+    "url": "https://www.scientificamerican.com/article/mathematicians-still-dont-know-the-fastest-way-to-multiply-numbers/"
+  },
+  "sources": [
+    {
+      "source_id": "harvey_vdh_2021",
+      "title": "Integer multiplication in time O(n log n)",
+      "authors": ["David Harvey", "Joris van der Hoeven"],
+      "year": 2021,
+      "source_type": "peer_reviewed_article",
+      "url": "https://annals.math.princeton.edu/2021/193-2/p04",
+      "doi": "10.4007/annals.2021.193.2.4",
+      "primary": true,
+      "notes": "Proves O(n log n) bit complexity in the multitape Turing model with binary encoding."
+    },
+    {
+      "source_id": "harvey_vdh_2025",
+      "title": "Integer multiplication is at least as hard as matrix transposition",
+      "authors": ["David Harvey", "Joris van der Hoeven"],
+      "year": 2025,
+      "source_type": "conference_preprint",
+      "url": "https://arxiv.org/abs/2503.22848",
+      "doi": "10.1109/FOCS63196.2025.00072",
+      "primary": true,
+      "notes": "Proves reductions from binary matrix transposition to integer multiplication in the multitape Turing model."
+    },
+    {
+      "source_id": "paterson_1974",
+      "title": "An Improved Overlap Argument for On-line Multiplication",
+      "authors": ["Michael S. Paterson"],
+      "year": 1974,
+      "source_type": "technical_report",
+      "url": "https://dspace.mit.edu/entities/publication/f88aa763-f842-43e9-a2f5-9247e9c36559",
+      "primary": true,
+      "notes": "Published lower-bound result for an online multitape multiplication model; not a universal offline lower bound."
+    },
+    {
+      "source_id": "furer_2009",
+      "title": "Faster Integer Multiplication",
+      "authors": ["Martin Fürer"],
+      "year": 2009,
+      "source_type": "peer_reviewed_article",
+      "url": "https://epubs.siam.org/doi/10.1137/070711761",
+      "doi": "10.1137/070711761",
+      "primary": true,
+      "notes": "Discusses earlier upper bounds and restricted matching lower-bound settings."
+    }
+  ],
+  "machine_models": [
+    {
+      "model_id": "multitape_turing_binary",
+      "name": "Offline multitape Turing machine with binary input",
+      "input_encoding": "ordinary binary representation",
+      "access_pattern": "sequential_tapes",
+      "online": false,
+      "randomized": false,
+      "tape_count": "constant",
+      "bounded_coefficients": null,
+      "notes": "Primary model for the Harvey–van der Hoeven upper bound and transposition reduction."
+    },
+    {
+      "model_id": "online_multitape_turing_binary",
+      "name": "Online multitape Turing machine",
+      "input_encoding": "binary digits arriving online",
+      "access_pattern": "sequential_tapes",
+      "online": true,
+      "randomized": false,
+      "tape_count": "constant",
+      "bounded_coefficients": null,
+      "notes": "Restricted online model; results do not automatically transfer to offline multiplication."
+    },
+    {
+      "model_id": "bounded_coefficient_circuit",
+      "name": "Bounded-coefficient arithmetic circuit",
+      "input_encoding": "binary or arithmetic inputs",
+      "access_pattern": "circuit",
+      "online": false,
+      "randomized": false,
+      "tape_count": null,
+      "bounded_coefficients": true,
+      "notes": "Useful restricted model; a transfer theorem is required before applying results to multitape Turing machines."
+    }
+  ],
+  "problems": [
+    {
+      "problem_id": "integer_multiplication_offline",
+      "name": "Offline binary integer multiplication",
+      "machine_model_id": "multitape_turing_binary",
+      "size_parameter": "n input bits per integer",
+      "input_description": "Two n-bit integers in ordinary binary representation",
+      "output_description": "Their exact 2n-bit product",
+      "tags": ["integer multiplication", "offline", "bit complexity"]
+    },
+    {
+      "problem_id": "binary_matrix_transposition",
+      "name": "Binary matrix transposition",
+      "machine_model_id": "multitape_turing_binary",
+      "size_parameter": "m for an m by m binary matrix",
+      "input_description": "A row-major m by m binary matrix",
+      "output_description": "The transposed matrix",
+      "tags": ["data movement", "transposition", "lower bounds"]
+    },
+    {
+      "problem_id": "integer_multiplication_online",
+      "name": "Online binary integer multiplication",
+      "machine_model_id": "online_multitape_turing_binary",
+      "size_parameter": "n input digits",
+      "input_description": "Binary digits supplied under an online access restriction",
+      "output_description": "Product digits under the online output contract",
+      "tags": ["online multiplication", "restricted model"]
+    },
+    {
+      "problem_id": "bounded_circuit_multiplication",
+      "name": "Bounded-coefficient circuit multiplication",
+      "machine_model_id": "bounded_coefficient_circuit",
+      "size_parameter": "n",
+      "input_description": "Arithmetic inputs under bounded-coefficient circuit constraints",
+      "output_description": "Multiplication-related outputs",
+      "tags": ["circuits", "restricted model"]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "hvdh_upper_2021",
+      "problem_id": "integer_multiplication_offline",
+      "kind": "UPPER",
+      "complexity": "O(n log n)",
+      "status": "PROVED",
+      "evidence_kind": "PEER_REVIEWED_PROOF",
+      "source_ids": ["harvey_vdh_2021"],
+      "assumptions": ["multitape Turing model", "ordinary binary representation"],
+      "scope": "asymptotic bit complexity",
+      "statement": "Two n-bit integers can be multiplied in O(n log n) bit operations."
+    },
+    {
+      "claim_id": "offline_matching_lower_open",
+      "problem_id": "integer_multiplication_offline",
+      "kind": "LOWER",
+      "complexity": "Omega(n log n)",
+      "status": "OPEN",
+      "evidence_kind": "NONE",
+      "source_ids": ["harvey_vdh_2025"],
+      "assumptions": ["multitape Turing model", "ordinary binary representation"],
+      "scope": "unconditional universal lower bound",
+      "statement": "Every offline multitape Turing machine multiplying n-bit integers requires Omega(n log n) steps."
+    },
+    {
+      "claim_id": "transposition_matching_lower_open",
+      "problem_id": "binary_matrix_transposition",
+      "kind": "LOWER",
+      "complexity": "Omega(m^2 log m)",
+      "status": "OPEN",
+      "evidence_kind": "NONE",
+      "source_ids": ["harvey_vdh_2025"],
+      "assumptions": ["multitape Turing model"],
+      "scope": "expected matching lower bound",
+      "statement": "Transposing an m by m binary matrix requires Omega(m^2 log m) steps."
+    },
+    {
+      "claim_id": "online_multiplication_lower_1974",
+      "problem_id": "integer_multiplication_online",
+      "kind": "LOWER",
+      "complexity": "Omega(n log n)",
+      "status": "PUBLISHED_RESULT",
+      "evidence_kind": "PUBLISHED_PROOF",
+      "source_ids": ["paterson_1974"],
+      "assumptions": ["online multitape model", "mean-time formulation"],
+      "scope": "restricted online model",
+      "statement": "Online multitape multiplication has an Omega(n log n) mean-time lower bound in the cited model."
+    }
+  ],
+  "reductions": [
+    {
+      "reduction_id": "transpose_to_integer_multiplication_2025",
+      "source_problem_id": "binary_matrix_transposition",
+      "target_problem_id": "integer_multiplication_offline",
+      "premise_bound": "Omega(m^2 log m)",
+      "consequence_bound": "Omega(n log n)",
+      "status": "PROVED",
+      "evidence_kind": "PROVED_REDUCTION",
+      "source_ids": ["harvey_vdh_2025"],
+      "model_preserving": true,
+      "size_map": "matrix dimension and packed integer length as specified by the reduction",
+      "overhead": "proved sufficiently small in the cited reduction",
+      "assumptions": ["binary matrices", "multitape Turing model"]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "empirical_timings_prove_optimality",
+      "statement": "Timing many implementations proves Omega(n log n) for all algorithms.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "EMPIRICAL_TIMING",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {}
+    },
+    {
+      "candidate_id": "consensus_proves_optimality",
+      "statement": "Expert consensus that O(n log n) is optimal proves the lower bound.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "CONSENSUS",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {}
+    },
+    {
+      "candidate_id": "online_transfers_offline",
+      "statement": "The online Omega(n log n) result proves the offline lower bound.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "PUBLISHED_PROOF",
+      "source_problem_id": "integer_multiplication_online",
+      "source_model_id": "online_multitape_turing_binary",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {"restricted_scope": true, "universalize": true}
+    },
+    {
+      "candidate_id": "information_counting_only",
+      "statement": "There are 2^(2n) inputs, so multiplication needs Omega(n log n) work.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "INFORMATION_COUNTING",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {"reversibility_accounted": false}
+    },
+    {
+      "candidate_id": "bounded_circuit_universalized",
+      "statement": "A bounded-coefficient circuit lower bound proves the multitape Turing lower bound.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "PUBLISHED_PROOF",
+      "source_problem_id": "bounded_circuit_multiplication",
+      "source_model_id": "bounded_coefficient_circuit",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {"restricted_scope": true, "universalize": true, "circuit_result": true}
+    },
+    {
+      "candidate_id": "transpose_route_is_complete",
+      "statement": "The 2025 reduction alone proves Omega(n log n) integer multiplication.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "PROVED",
+      "evidence_kind": "PROVED_REDUCTION",
+      "source_problem_id": "binary_matrix_transposition",
+      "source_model_id": "multitape_turing_binary",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {"depends_on_open_premise": true}
+    },
+    {
+      "candidate_id": "record_open_problem_honestly",
+      "statement": "The matching universal offline lower bound remains open.",
+      "target_problem_id": "integer_multiplication_offline",
+      "requested_status": "OPEN",
+      "evidence_kind": "NONE",
+      "target_model_id": "multitape_turing_binary",
+      "metadata": {}
+    },
+    {
+      "candidate_id": "online_result_as_restricted_progress",
+      "statement": "The online Omega(n log n) theorem is valid restricted-model progress.",
+      "target_problem_id": "integer_multiplication_online",
+      "requested_status": "PUBLISHED_RESULT",
+      "evidence_kind": "PUBLISHED_PROOF",
+      "source_model_id": "online_multitape_turing_binary",
+      "target_model_id": "online_multitape_turing_binary",
+      "metadata": {"restricted_scope": true, "universalize": false}
+    }
+  ],
+  "theorem_targets": [
+    {
+      "target_id": "formalize_2025_transposition_reduction",
+      "statement": "Machine-check the published reduction with explicit size and time overhead.",
+      "problem_id": "integer_multiplication_offline",
+      "target_status": "FORMALIZATION_TARGET",
+      "prerequisites": [],
+      "leverage": 0.8,
+      "difficulty": 0.55,
+      "scope": "formalization target; does not prove the open premise"
+    },
+    {
+      "target_id": "transposition_lower_bound",
+      "statement": "Prove Omega(m^2 log m) for binary matrix transposition in the multitape Turing model.",
+      "problem_id": "binary_matrix_transposition",
+      "target_status": "PROVED",
+      "prerequisites": ["transposition_matching_lower_open"],
+      "leverage": 1.0,
+      "difficulty": 1.0,
+      "scope": "activates the 2025 reduction route"
+    },
+    {
+      "target_id": "restricted_oblivious_multiplication_lower_bound",
+      "statement": "Prove a superlinear lower bound for a precisely declared oblivious or locality-restricted multiplication model.",
+      "problem_id": "integer_multiplication_offline",
+      "target_status": "PUBLISHED_RESULT",
+      "prerequisites": [],
+      "leverage": 0.55,
+      "difficulty": 0.45,
+      "scope": "restricted theorem; must not be universalized"
+    },
+    {
+      "target_id": "data_movement_invariant",
+      "statement": "Identify a model-valid information-transport invariant forcing repeated global permutation or tape crossing.",
+      "problem_id": "integer_multiplication_offline",
+      "target_status": "HEURISTIC",
+      "prerequisites": [],
+      "leverage": 0.75,
+      "difficulty": 0.7,
+      "scope": "hypothesis generator for lower-bound lemmas"
+    },
+    {
+      "target_id": "proof_barrier_catalog",
+      "statement": "Prove that selected information-counting, online-transfer, or circuit-transfer arguments cannot establish the universal target without additional premises.",
+      "problem_id": "integer_multiplication_offline",
+      "target_status": "PUBLISHED_RESULT",
+      "prerequisites": [],
+      "leverage": 0.6,
+      "difficulty": 0.35,
+      "scope": "barrier theorem and negative knowledge"
+    }
+  ]
+}

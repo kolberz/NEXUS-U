@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "baseline_matched": true,
+      "case_id": "learned_test",
+      "escalation_required": false,
+      "expected": "TEST",
+      "expected_cost_seconds": 1.033333,
+      "matched": true,
+      "predicted_success": 0.862857,
+      "selected": "TEST",
+      "stagnation_kind": null,
+      "static_baseline": "TEST"
+    },
+    {
+      "baseline_matched": false,
+      "case_id": "formal_proof",
+      "escalation_required": false,
+      "expected": "FORMAL_PROOF",
+      "expected_cost_seconds": 13.5,
+      "matched": true,
+      "predicted_success": 0.72,
+      "selected": "FORMAL_PROOF",
+      "stagnation_kind": null,
+      "static_baseline": "TEST"
+    },
+    {
+      "baseline_matched": false,
+      "case_id": "resource_lowering",
+      "escalation_required": false,
+      "expected": "RESOURCE_LOWERING",
+      "expected_cost_seconds": 4.5,
+      "matched": true,
+      "predicted_success": 0.826667,
+      "selected": "RESOURCE_LOWERING",
+      "stagnation_kind": null,
+      "static_baseline": "TEST"
+    },
+    {
+      "baseline_matched": false,
+      "case_id": "stagnation_escalation",
+      "escalation_required": true,
+      "expected": "HUMAN_REVIEW",
+      "expected_cost_seconds": 30.0,
+      "matched": true,
+      "predicted_success": 0.9,
+      "selected": "HUMAN_REVIEW",
+      "stagnation_kind": "OSCILLATION",
+      "static_baseline": "TEST"
+    },
+    {
+      "baseline_matched": false,
+      "case_id": "human_authority",
+      "escalation_required": true,
+      "expected": "HUMAN_REVIEW",
+      "expected_cost_seconds": 30.0,
+      "matched": true,
+      "predicted_success": 0.94,
+      "selected": "HUMAN_REVIEW",
+      "stagnation_kind": null,
+      "static_baseline": "TEST"
+    },
+    {
+      "baseline_matched": false,
+      "case_id": "reject_invalid",
+      "escalation_required": false,
+      "expected": "REJECT",
+      "expected_cost_seconds": 1.0,
+      "matched": true,
+      "predicted_success": 0.99,
+      "selected": "REJECT",
+      "stagnation_kind": null,
+      "static_baseline": "TEST"
+    }
+  ],
+  "completed_at": 1784023975.7307844,
+  "schema": "https://nexus-u.dev/obligation-router-benchmark/v1",
+  "started_at": 1784023975.678767,
+  "summary": {
+    "case_count": 6,
+    "escalations": 2,
+    "router_match_rate": 1.0,
+    "router_matches": 6,
+    "routing_advantage": 0.833333,
+    "static_baseline_match_rate": 0.166667,
+    "static_baseline_matches": 1
+  }
+}

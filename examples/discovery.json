@@ -1,0 +1,16 @@
+{
+  "intent": "Select the strongest feasible architecture candidate",
+  "artifact_type": "experiment",
+  "modes": ["EXPERIMENTAL_RESEARCH", "SYSTEM_ARCHITECTURE"],
+  "adapter": "discovery",
+  "inputs": {
+    "weights": {"utility": 1.0, "risk": -2.0, "cost": -0.25},
+    "constraints": {"risk": {"max": 0.2}},
+    "minimum_score": 3.0,
+    "candidates": [
+      {"id": "fast", "metrics": {"utility": 7, "risk": 0.3, "cost": 4}, "payload": {"design": "fast"}},
+      {"id": "safe", "metrics": {"utility": 6, "risk": 0.1, "cost": 5}, "payload": {"design": "safe"}},
+      {"id": "cheap", "metrics": {"utility": 4, "risk": 0.1, "cost": 1}, "payload": {"design": "cheap"}}
+    ]
+  }
+}

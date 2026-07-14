@@ -1,0 +1,74 @@
+name: Deploy
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      image_ref:
+        description: Immutable container image reference
+        required: true
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: nexus-u-production
+  cancel-in-progress: false
+
+env:
+  IMAGE_REF: ${{ inputs.image_ref || format('ghcr.io/{0}:{1}', github.repository, github.event.release.tag_name) }}
+
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+      - name: Configure cluster
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          mkdir -p "$HOME/.kube"
+          echo "$KUBE_CONFIG" | base64 -d > "$HOME/.kube/config"
+          chmod 600 "$HOME/.kube/config"
+      - name: Render immutable deployment
+        run: python scripts/render_k8s.py
+      - name: Deploy staging
+        run: |
+          kubectl apply -f deploy/k8s/rendered.yaml
+          kubectl rollout status deployment/nexus-u --timeout=180s
+      - name: Smoke test
+        env:
+          NEXUS_BASE_URL: ${{ vars.NEXUS_BASE_URL }}
+        run: python scripts/smoke_test.py
+
+  production:
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+      - name: Configure cluster
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          mkdir -p "$HOME/.kube"
+          echo "$KUBE_CONFIG" | base64 -d > "$HOME/.kube/config"
+          chmod 600 "$HOME/.kube/config"
+      - name: Render immutable deployment
+        run: python scripts/render_k8s.py
+      - name: Deploy production
+        run: |
+          kubectl apply -f deploy/k8s/rendered.yaml
+          kubectl rollout status deployment/nexus-u --timeout=300s
+      - name: Smoke test
+        env:
+          NEXUS_BASE_URL: ${{ vars.NEXUS_BASE_URL }}
+        run: python scripts/smoke_test.py
+      - name: Capture rollout state
+        if: always()
+        run: kubectl get deployment,pods,service -l app=nexus-u -o wide

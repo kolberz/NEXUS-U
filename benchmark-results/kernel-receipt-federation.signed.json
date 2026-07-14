@@ -1,0 +1,80 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "kernel-receipt-local",
+  "payload": {
+    "checks": {
+      "external_independence_not_claimed": true,
+      "kernel_promotion_withheld": true,
+      "local_process_quorum_only": true,
+      "platform_diversity_recorded": true,
+      "request_hashes_present": true,
+      "two_organizations_counted": true,
+      "two_provenance_groups_counted": true,
+      "universal_target_open": true
+    },
+    "completed_at": 1784024002.4421132,
+    "decision": {
+      "accepted_receipts": [
+        "bf1e1272-f3ad-4510-809a-08fca86b4fd7",
+        "6cdd9093-58e8-459f-86a8-9e2526fd82c9"
+      ],
+      "created_at": 1784024002.442109,
+      "decision_id": "29376d31-91fb-43e8-a8de-7c7542236302",
+      "external_independence_claimed": false,
+      "invalid_receipts": {},
+      "organizations": [
+        "org-a",
+        "org-b"
+      ],
+      "platform_families": [
+        "linux",
+        "macos"
+      ],
+      "provenance_groups": [
+        "infra-a",
+        "infra-b"
+      ],
+      "reasons": [
+        "Quorum mechanics passed, but external signatures or institutional independence are absent"
+      ],
+      "rejected_receipts": [],
+      "request_id": "f2ed3e27-ee3c-4c8e-b808-b4b823933c92",
+      "schema": "https://nexus-u.dev/kernel-quorum-decision/v1",
+      "status": "LOCAL_PROCESS_QUORUM",
+      "theorem_status": "KERNEL_RECEIPT_QUORUM_PENDING_EXTERNAL",
+      "universal_target_status": "OPEN",
+      "valid_receipts": [
+        "bf1e1272-f3ad-4510-809a-08fca86b4fd7",
+        "6cdd9093-58e8-459f-86a8-9e2526fd82c9"
+      ]
+    },
+    "request": {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "created_at": 1784024002.4416125,
+      "expected_version_fragment": "4.29.1",
+      "project_id": "nexus-u-decision-tree-kernel-bridge",
+      "project_sha256": "cedacf4d7452b78860e7e8462244a66510f5c0b076fc0951acafa6d02484272d",
+      "request_id": "f2ed3e27-ee3c-4c8e-b808-b4b823933c92",
+      "schema": "https://nexus-u.dev/kernel-receipt-request/v1",
+      "source_sha256": "49cd90a500dc2af18750bfbc741da5a68a210b6aa5d9b82b6dad82b99385cb2d",
+      "theorem": "allSensitive_forces_allQueried",
+      "toolchain": "leanprover/lean4:v4.29.1",
+      "universal_target_status": "OPEN"
+    },
+    "schema": "https://nexus-u.dev/kernel-receipt-benchmark/v1",
+    "started_at": 1784024002.442113,
+    "summary": {
+      "check_count": 8,
+      "checks_passed": 8,
+      "external_independence_claimed": false,
+      "pass_rate": 1.0,
+      "quorum_status": "LOCAL_PROCESS_QUORUM",
+      "theorem_status": "KERNEL_RECEIPT_QUORUM_PENDING_EXTERNAL",
+      "universal_target_status": "OPEN"
+    }
+  },
+  "signature": "dc3cd0f98a7ecb20b71218a3848188fc60318db72c036de8a4628fffda7a3212"
+}

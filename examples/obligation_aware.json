@@ -1,0 +1,18 @@
+{
+  "intent": "Create a release whose success and provenance obligations are explicit",
+  "artifact_type": "software",
+  "modes": ["SOFTWARE_ENGINEERING", "POLICY_AND_COMPLIANCE"],
+  "adapter": "python",
+  "success_conditions": ["OBLIGATION GRAPH READY"],
+  "prohibited_shortcuts": ["TODO", "pass # placeholder"],
+  "assumptions": ["Python 3.11 or newer", "Execution occurs in a trusted local worker"],
+  "inputs": {
+    "code": "print('OBLIGATION GRAPH READY')"
+  },
+  "budget": {
+    "wall_clock_seconds": 10,
+    "memory_mb": 1024,
+    "output_bytes": 100000,
+    "external_calls": 0
+  }
+}

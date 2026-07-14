@@ -1,0 +1,61 @@
+{
+  "labels": [
+    {
+      "case_id": "climate-fever-60",
+      "expected_experiment_terms": [
+        "replication",
+        "recalibration"
+      ],
+      "expected_kind": "CONTRADICTION",
+      "expected_tension": true
+    },
+    {
+      "case_id": "scifact-123",
+      "expected_experiment_terms": [],
+      "expected_kind": null,
+      "expected_tension": false
+    },
+    {
+      "case_id": "climate-fever-69",
+      "expected_experiment_terms": [],
+      "expected_kind": null,
+      "expected_tension": false
+    },
+    {
+      "case_id": "climate-fever-65",
+      "expected_experiment_terms": [
+        "regimes",
+        "recalibration"
+      ],
+      "expected_kind": "RESOURCE_CONFLICT",
+      "expected_tension": true
+    },
+    {
+      "case_id": "contract-nli-nda-1",
+      "expected_experiment_terms": [],
+      "expected_kind": null,
+      "expected_tension": false
+    },
+    {
+      "case_id": "contract-nli-nda-2",
+      "expected_experiment_terms": [],
+      "expected_kind": null,
+      "expected_tension": false
+    },
+    {
+      "case_id": "scifact-263",
+      "expected_experiment_terms": [],
+      "expected_kind": null,
+      "expected_tension": false
+    },
+    {
+      "case_id": "climate-fever-55",
+      "expected_experiment_terms": [
+        "replication",
+        "recalibration"
+      ],
+      "expected_kind": "CONTRADICTION",
+      "expected_tension": true
+    }
+  ]
+}

@@ -1,200 +1,264 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import inspect
+from pathlib import Path
+from typing import Sequence
 
-from .ast import (
-    App,
-    Case,
-    Const,
-    Empty,
-    EmptyElim,
-    Inl,
-    Inr,
-    Lam,
-    Let,
-    Pi,
-    Sort,
-    Sum,
-    Term,
-    Var,
-)
-from .environment import Environment, EnvironmentError
-from .ops import shift, substitute_top, term_depth, term_size
+from .ast import App, Case, Const, EMPTY, EmptyElim, EmptyType, Inl, Inr, Lam, Let, Pi, Sort, SumType, Term, Var
+from .environment import Declaration, Environment
+from .ops import max_depth, node_count, shift, substitute_top
 
 
 class KernelError(ValueError):
     pass
 
 
+class TypeCheckError(KernelError):
+    pass
+
+
+class ReductionLimitError(KernelError):
+    pass
+
+
 @dataclass(frozen=True, slots=True)
 class KernelLimits:
-    max_nodes: int = 50_000
-    max_depth: int = 512
-    max_reduction_steps: int = 100_000
-    max_universe: int = 64
+    max_nodes: int = 100_000
+    max_depth: int = 2_000
+    max_reductions: int = 250_000
+    max_universe: int = 1_024
 
 
-class Kernel:
-    def __init__(self, environment: Environment | None = None, limits: KernelLimits | None = None):
+@dataclass(slots=True)
+class _Budget:
+    reductions: int = 0
+
+
+class NexusKernel:
+    """A small predicative dependent-type kernel.
+
+    Trusted rules:
+      * universes (`Sort u : Sort (u+1)`),
+      * dependent function formation/introduction/elimination,
+      * local definitions,
+      * binary sum formation/introduction/non-dependent elimination,
+      * the empty type and its eliminator,
+      * beta, delta, zeta, and sum-case reduction.
+
+    The kernel uses nameless de Bruijn terms. Parsers, pretty-printers, theorem
+    generators, automation, and search are outside the trusted proof rules.
+    """
+
+    version = "nexus-kernel-v0.1.0"
+
+    def __init__(self, environment: Environment | None = None, *, limits: KernelLimits | None = None) -> None:
         self.environment = environment or Environment()
         self.limits = limits or KernelLimits()
-        self._steps = 0
 
-    def _tick(self) -> None:
-        self._steps += 1
-        if self._steps > self.limits.max_reduction_steps:
-            raise KernelError("reduction step limit exceeded")
+    @classmethod
+    def source_digest(cls) -> str:
+        modules = [Path(inspect.getsourcefile(cls) or ""), Path(__file__).with_name("ast.py"), Path(__file__).with_name("ops.py"), Path(__file__).with_name("environment.py")]
+        digest = hashlib.sha256()
+        for path in sorted(modules):
+            digest.update(path.name.encode("utf-8"))
+            digest.update(path.read_bytes())
+        return digest.hexdigest()
 
-    def _validate_resource_bounds(self, term: Term) -> None:
-        if term_size(term) > self.limits.max_nodes:
-            raise KernelError("term node limit exceeded")
-        if term_depth(term) > self.limits.max_depth:
-            raise KernelError("term depth limit exceeded")
+    def _guard(self, term: Term) -> None:
+        count = node_count(term)
+        depth = max_depth(term)
+        if count > self.limits.max_nodes:
+            raise KernelError(f"term exceeds node limit: {count} > {self.limits.max_nodes}")
+        if depth > self.limits.max_depth:
+            raise KernelError(f"term exceeds depth limit: {depth} > {self.limits.max_depth}")
 
-    def _lookup_context(self, context: tuple[Term, ...], index: int) -> Term:
-        if index < 0 or index >= len(context):
-            raise KernelError(f"unbound variable: {index}")
+    def _step(self, budget: _Budget) -> None:
+        budget.reductions += 1
+        if budget.reductions > self.limits.max_reductions:
+            raise ReductionLimitError("normalization reduction limit exceeded")
+
+    def whnf(self, term: Term, *, budget: _Budget | None = None) -> Term:
+        work = budget or _Budget()
+        current = term
+        while True:
+            if isinstance(current, Const):
+                declaration = self.environment.get(current.name)
+                if declaration.value is not None and not declaration.opaque:
+                    self._step(work)
+                    current = declaration.value
+                    continue
+                return current
+            if isinstance(current, App):
+                fn = self.whnf(current.function, budget=work)
+                if isinstance(fn, Lam):
+                    self._step(work)
+                    current = substitute_top(current.argument, fn.body)
+                    continue
+                return App(fn, current.argument)
+            if isinstance(current, Let):
+                self._step(work)
+                current = substitute_top(current.value, current.body)
+                continue
+            if isinstance(current, Case):
+                scrutinee = self.whnf(current.scrutinee, budget=work)
+                if isinstance(scrutinee, Inl):
+                    self._step(work)
+                    current = App(current.left_branch, scrutinee.value)
+                    continue
+                if isinstance(scrutinee, Inr):
+                    self._step(work)
+                    current = App(current.right_branch, scrutinee.value)
+                    continue
+                return Case(scrutinee, current.left_branch, current.right_branch, current.result_type)
+            return current
+
+    def normalize(self, term: Term, *, budget: _Budget | None = None) -> Term:
+        work = budget or _Budget()
+        head = self.whnf(term, budget=work)
+        if isinstance(head, (Sort, Var, Const, EmptyType)):
+            return head
+        if isinstance(head, Pi):
+            return Pi(self.normalize(head.domain, budget=work), self.normalize(head.codomain, budget=work))
+        if isinstance(head, Lam):
+            return Lam(self.normalize(head.domain, budget=work), self.normalize(head.body, budget=work))
+        if isinstance(head, App):
+            return App(self.normalize(head.function, budget=work), self.normalize(head.argument, budget=work))
+        if isinstance(head, Let):
+            return self.normalize(self.whnf(head, budget=work), budget=work)
+        if isinstance(head, SumType):
+            return SumType(self.normalize(head.left, budget=work), self.normalize(head.right, budget=work))
+        if isinstance(head, Inl):
+            return Inl(self.normalize(head.value, budget=work), self.normalize(head.right_type, budget=work))
+        if isinstance(head, Inr):
+            return Inr(self.normalize(head.left_type, budget=work), self.normalize(head.value, budget=work))
+        if isinstance(head, Case):
+            return Case(
+                self.normalize(head.scrutinee, budget=work),
+                self.normalize(head.left_branch, budget=work),
+                self.normalize(head.right_branch, budget=work),
+                self.normalize(head.result_type, budget=work),
+            )
+        if isinstance(head, EmptyElim):
+            return EmptyElim(self.normalize(head.proof, budget=work), self.normalize(head.result_type, budget=work))
+        raise TypeError(type(head).__name__)
+
+    def convertible(self, left: Term, right: Term) -> bool:
+        self._guard(left)
+        self._guard(right)
+        budget = _Budget()
+        return self.normalize(left, budget=budget) == self.normalize(right, budget=budget)
+
+    @staticmethod
+    def _context_lookup(context: Sequence[Term], index: int) -> Term:
+        if index >= len(context):
+            raise TypeCheckError(f"unbound variable index {index}")
         return shift(context[index], index + 1)
 
-    def infer(self, term: Term, context: tuple[Term, ...] = ()) -> Term:
-        self._validate_resource_bounds(term)
-        match term:
-            case Sort(level=level):
-                if level < 0 or level > self.limits.max_universe:
-                    raise KernelError("invalid universe level")
-                if level == self.limits.max_universe:
-                    raise KernelError("universe successor exceeds configured limit")
-                return Sort(level + 1)
-            case Var(index=index):
-                return self._lookup_context(context, index)
-            case Const(name=name):
-                try:
-                    return self.environment.lookup(name).type
-                except EnvironmentError as exc:
-                    raise KernelError(str(exc)) from exc
-            case Empty():
-                return Sort(0)
-            case Pi(domain=domain, codomain=codomain):
-                domain_sort = self._expect_sort(self.infer(domain, context))
-                codomain_sort = self._expect_sort(self.infer(codomain, (domain,) + context))
-                return Sort(max(domain_sort, codomain_sort))
-            case Lam(domain=domain, body=body):
-                self._expect_sort(self.infer(domain, context))
-                body_type = self.infer(body, (domain,) + context)
-                return Pi(domain, body_type)
-            case App(function=function, argument=argument):
-                function_type = self.normalize(self.infer(function, context))
-                if not isinstance(function_type, Pi):
-                    raise KernelError("application target is not a function")
-                self.check(argument, function_type.domain, context)
-                return substitute_top(function_type.codomain, argument)
-            case Let(value_type=value_type, value=value, body=body):
-                self._expect_sort(self.infer(value_type, context))
-                self.check(value, value_type, context)
-                body_type = self.infer(body, (value_type,) + context)
-                return substitute_top(body_type, value)
-            case EmptyElim(result_type=result_type, proof=proof):
-                self._expect_sort(self.infer(result_type, context))
-                self.check(proof, Empty(), context)
-                return result_type
-            case Sum(left=left, right=right):
-                left_sort = self._expect_sort(self.infer(left, context))
-                right_sort = self._expect_sort(self.infer(right, context))
-                return Sort(max(left_sort, right_sort))
-            case Inl(value=value, right_type=right_type):
-                self._expect_sort(self.infer(right_type, context))
-                return Sum(self.infer(value, context), right_type)
-            case Inr(value=value, left_type=left_type):
-                self._expect_sort(self.infer(left_type, context))
-                return Sum(left_type, self.infer(value, context))
-            case Case(scrutinee=scrutinee, left_branch=left_branch, right_branch=right_branch, result_type=result_type):
-                self._expect_sort(self.infer(result_type, context))
-                scrutinee_type = self.normalize(self.infer(scrutinee, context))
-                if not isinstance(scrutinee_type, Sum):
-                    raise KernelError("case scrutinee is not a sum")
-                left_expected = Pi(scrutinee_type.left, shift(result_type, 1))
-                right_expected = Pi(scrutinee_type.right, shift(result_type, 1))
-                self.check(left_branch, left_expected, context)
-                self.check(right_branch, right_expected, context)
-                return result_type
-            case _:
-                raise KernelError(f"unsupported term: {type(term).__name__}")
+    def _expect_sort(self, term: Term, context: Sequence[Term], budget: _Budget) -> int:
+        inferred = self.whnf(self._infer(term, context, budget), budget=budget)
+        if not isinstance(inferred, Sort):
+            raise TypeCheckError(f"expected a type, inferred {inferred!r}")
+        if inferred.level > self.limits.max_universe:
+            raise TypeCheckError("universe limit exceeded")
+        return inferred.level
 
-    def _expect_sort(self, term: Term) -> int:
-        normalized = self.normalize(term)
-        if not isinstance(normalized, Sort):
-            raise KernelError("expected a type")
-        return normalized.level
+    def infer(self, term: Term, context: Sequence[Term] = ()) -> Term:
+        self._guard(term)
+        return self._infer(term, tuple(context), _Budget())
 
-    def check(self, term: Term, expected: Term, context: tuple[Term, ...] = ()) -> None:
-        inferred = self.infer(term, context)
-        if not self.definitionally_equal(inferred, expected):
-            raise KernelError(
-                f"type mismatch: inferred {inferred!r}, expected {expected!r}"
-            )
+    def _infer(self, term: Term, context: Sequence[Term], budget: _Budget) -> Term:
+        if isinstance(term, Sort):
+            if term.level >= self.limits.max_universe:
+                raise TypeCheckError("universe limit exceeded")
+            return Sort(term.level + 1)
+        if isinstance(term, Var):
+            return self._context_lookup(context, term.index)
+        if isinstance(term, Const):
+            return self.environment.get(term.name).type
+        if isinstance(term, Pi):
+            domain_level = self._expect_sort(term.domain, context, budget)
+            codomain_level = self._expect_sort(term.codomain, (term.domain, *context), budget)
+            return Sort(max(domain_level, codomain_level))
+        if isinstance(term, Lam):
+            self._expect_sort(term.domain, context, budget)
+            body_type = self._infer(term.body, (term.domain, *context), budget)
+            return Pi(term.domain, body_type)
+        if isinstance(term, App):
+            function_type = self.whnf(self._infer(term.function, context, budget), budget=budget)
+            if not isinstance(function_type, Pi):
+                raise TypeCheckError("application target does not have a dependent function type")
+            self.check(term.argument, function_type.domain, context=context, _budget=budget)
+            return substitute_top(term.argument, function_type.codomain)
+        if isinstance(term, Let):
+            self._expect_sort(term.annotation, context, budget)
+            self.check(term.value, term.annotation, context=context, _budget=budget)
+            body_type = self._infer(term.body, (term.annotation, *context), budget)
+            return substitute_top(term.value, body_type)
+        if isinstance(term, SumType):
+            left_level = self._expect_sort(term.left, context, budget)
+            right_level = self._expect_sort(term.right, context, budget)
+            return Sort(max(left_level, right_level))
+        if isinstance(term, Inl):
+            value_type = self._infer(term.value, context, budget)
+            self._expect_sort(term.right_type, context, budget)
+            return SumType(value_type, term.right_type)
+        if isinstance(term, Inr):
+            self._expect_sort(term.left_type, context, budget)
+            value_type = self._infer(term.value, context, budget)
+            return SumType(term.left_type, value_type)
+        if isinstance(term, Case):
+            sum_type = self.whnf(self._infer(term.scrutinee, context, budget), budget=budget)
+            if not isinstance(sum_type, SumType):
+                raise TypeCheckError("case scrutinee is not a sum")
+            self._expect_sort(term.result_type, context, budget)
+            left_expected = Pi(sum_type.left, shift(term.result_type, 1))
+            right_expected = Pi(sum_type.right, shift(term.result_type, 1))
+            self.check(term.left_branch, left_expected, context=context, _budget=budget)
+            self.check(term.right_branch, right_expected, context=context, _budget=budget)
+            return term.result_type
+        if isinstance(term, EmptyType):
+            return Sort(0)
+        if isinstance(term, EmptyElim):
+            self.check(term.proof, EMPTY, context=context, _budget=budget)
+            self._expect_sort(term.result_type, context, budget)
+            return term.result_type
+        raise TypeCheckError(f"unsupported term: {type(term).__name__}")
 
-    def normalize(self, term: Term) -> Term:
-        self._steps = 0
-        self._validate_resource_bounds(term)
-        return self._normalize(term)
+    def check(self, term: Term, expected: Term, context: Sequence[Term] = (), *, _budget: _Budget | None = None) -> None:
+        self._guard(term)
+        self._guard(expected)
+        budget = _budget or _Budget()
+        inferred = self._infer(term, tuple(context), budget)
+        if not self._convertible_with_budget(inferred, expected, budget):
+            raise TypeCheckError(f"type mismatch\n  inferred: {inferred!r}\n  expected: {expected!r}")
 
-    def _normalize(self, term: Term) -> Term:
-        self._tick()
-        match term:
-            case Sort() | Var() | Empty():
-                return term
-            case Const(name=name):
-                try:
-                    declaration = self.environment.lookup(name)
-                except EnvironmentError as exc:
-                    raise KernelError(str(exc)) from exc
-                if declaration.value is not None and not declaration.opaque:
-                    return self._normalize(declaration.value)
-                return term
-            case Pi(domain=domain, codomain=codomain):
-                return Pi(self._normalize(domain), self._normalize(codomain))
-            case Lam(domain=domain, body=body):
-                return Lam(self._normalize(domain), self._normalize(body))
-            case App(function=function, argument=argument):
-                normalized_function = self._normalize(function)
-                normalized_argument = self._normalize(argument)
-                if isinstance(normalized_function, Lam):
-                    return self._normalize(
-                        substitute_top(normalized_function.body, normalized_argument)
-                    )
-                return App(normalized_function, normalized_argument)
-            case Let(value_type=value_type, value=value, body=body):
-                normalized_value = self._normalize(value)
-                return self._normalize(substitute_top(body, normalized_value))
-            case EmptyElim(result_type=result_type, proof=proof):
-                return EmptyElim(self._normalize(result_type), self._normalize(proof))
-            case Sum(left=left, right=right):
-                return Sum(self._normalize(left), self._normalize(right))
-            case Inl(value=value, right_type=right_type):
-                return Inl(self._normalize(value), self._normalize(right_type))
-            case Inr(value=value, left_type=left_type):
-                return Inr(self._normalize(value), self._normalize(left_type))
-            case Case(scrutinee=scrutinee, left_branch=left_branch, right_branch=right_branch, result_type=result_type):
-                normalized_scrutinee = self._normalize(scrutinee)
-                normalized_left = self._normalize(left_branch)
-                normalized_right = self._normalize(right_branch)
-                if isinstance(normalized_scrutinee, Inl):
-                    return self._normalize(App(normalized_left, normalized_scrutinee.value))
-                if isinstance(normalized_scrutinee, Inr):
-                    return self._normalize(App(normalized_right, normalized_scrutinee.value))
-                return Case(
-                    normalized_scrutinee,
-                    normalized_left,
-                    normalized_right,
-                    self._normalize(result_type),
-                )
-            case _:
-                raise KernelError(f"unsupported term: {type(term).__name__}")
+    def _convertible_with_budget(self, left: Term, right: Term, budget: _Budget) -> bool:
+        return self.normalize(left, budget=budget) == self.normalize(right, budget=budget)
 
-    def definitionally_equal(self, left: Term, right: Term) -> bool:
-        return self.normalize(left) == self.normalize(right)
+    def declare_axiom(self, name: str, type_term: Term) -> Declaration:
+        self._expect_sort(type_term, (), _Budget())
+        declaration = Declaration(name=name, type=type_term)
+        self.environment.add_unchecked(declaration)
+        return declaration
 
-    def add_definition(self, name: str, type_: Term, value: Term, *, opaque: bool = False) -> None:
-        self._expect_sort(self.infer(type_))
-        self.check(value, type_)
-        self.environment.add_definition(name, type_, value, opaque=opaque)
+    def declare_definition(self, name: str, type_term: Term, value: Term, *, opaque: bool = False) -> Declaration:
+        self._expect_sort(type_term, (), _Budget())
+        self.check(value, type_term)
+        declaration = Declaration(name=name, type=type_term, value=value, opaque=opaque)
+        self.environment.add_unchecked(declaration)
+        return declaration
+
+    def verify(self, proof: Term, theorem: Term) -> dict[str, object]:
+        self._expect_sort(theorem, (), _Budget())
+        self.check(proof, theorem)
+        return {
+            "kernel": self.version,
+            "kernel_sha256": self.source_digest(),
+            "valid": True,
+            "proof_nodes": node_count(proof),
+            "proof_depth": max_depth(proof),
+            "theorem_nodes": node_count(theorem),
+            "axioms": list(self.environment.axioms()),
+        }

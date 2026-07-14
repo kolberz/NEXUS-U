@@ -1,0 +1,809 @@
+{
+  "created_at": 1784023986.5926147,
+  "evaluator_results": [
+    {
+      "algorithm": "HMAC-SHA256",
+      "key_id": "local-replay-key-a",
+      "payload": {
+        "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+        "created_at": 1784023984.1489408,
+        "evaluator_id": "local-replay-a",
+        "independence_scope": "process_isolated_not_external",
+        "inference_engine_version": "2.6.0",
+        "inference_process_id": 24327,
+        "key_id": "local-replay-key-a",
+        "label_firewall_verified": true,
+        "labels_hash": "70f53fd0b0f08badf6be0e4105859130f953ee2399f05ed2a6405301c8bf41be",
+        "metrics": {
+          "case_count": 8,
+          "cases": [
+            {
+              "case_id": "climate-fever-60",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "scifact-123",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-69",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-65",
+              "expected_kind": "RESOURCE_CONFLICT",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "RESOURCE_CONFLICT",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "contract-nli-nda-1",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "contract-nli-nda-2",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "scifact-263",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-55",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            }
+          ],
+          "experiment_matches": 3,
+          "f1": 1.0,
+          "false_negatives": 0,
+          "false_positives": 0,
+          "kind_matches": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "true_negatives": 5,
+          "true_positives": 3
+        },
+        "organization": "local-isolated-a",
+        "predictions": [
+          {
+            "case_id": "climate-fever-60",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "scifact-123",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-69",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-65",
+            "predicted_kind": "RESOURCE_CONFLICT",
+            "predicted_tension": true,
+            "recommended_experiment": "Independent recalibration and blinded replication",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "contract-nli-nda-1",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "contract-nli-nda-2",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "scifact-263",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-55",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          }
+        ],
+        "protocol_hash": "e805defc4957e857207d10bd071716bbbeaa38d13def0162a9a5e5e77bda655b",
+        "schema": "https://nexus-u.dev/preregistered-reproduction/evaluator-result/v1",
+        "sealed_predictions_hash": "c6d63f74dd26319aae6baeab6b922e4ace5f7d668415c7601d9fa11a189ae94f",
+        "selected_case_ids": [
+          "climate-fever-60",
+          "scifact-123",
+          "climate-fever-69",
+          "climate-fever-65",
+          "contract-nli-nda-1",
+          "contract-nli-nda-2",
+          "scifact-263",
+          "climate-fever-55"
+        ]
+      },
+      "signature": "062d0eb067c7e9e25169e0cf559519dc9df0786b703b8b1c900eb673847b9b1d"
+    },
+    {
+      "algorithm": "HMAC-SHA256",
+      "key_id": "local-replay-key-b",
+      "payload": {
+        "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+        "created_at": 1784023985.3197184,
+        "evaluator_id": "local-replay-b",
+        "independence_scope": "process_isolated_not_external",
+        "inference_engine_version": "2.6.0",
+        "inference_process_id": 24399,
+        "key_id": "local-replay-key-b",
+        "label_firewall_verified": true,
+        "labels_hash": "70f53fd0b0f08badf6be0e4105859130f953ee2399f05ed2a6405301c8bf41be",
+        "metrics": {
+          "case_count": 8,
+          "cases": [
+            {
+              "case_id": "climate-fever-60",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "scifact-123",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-69",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-65",
+              "expected_kind": "RESOURCE_CONFLICT",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "RESOURCE_CONFLICT",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "contract-nli-nda-1",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "contract-nli-nda-2",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "scifact-263",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-55",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            }
+          ],
+          "experiment_matches": 3,
+          "f1": 1.0,
+          "false_negatives": 0,
+          "false_positives": 0,
+          "kind_matches": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "true_negatives": 5,
+          "true_positives": 3
+        },
+        "organization": "local-isolated-b",
+        "predictions": [
+          {
+            "case_id": "climate-fever-60",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "scifact-123",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-69",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-65",
+            "predicted_kind": "RESOURCE_CONFLICT",
+            "predicted_tension": true,
+            "recommended_experiment": "Independent recalibration and blinded replication",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "contract-nli-nda-1",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "contract-nli-nda-2",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "scifact-263",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-55",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          }
+        ],
+        "protocol_hash": "e805defc4957e857207d10bd071716bbbeaa38d13def0162a9a5e5e77bda655b",
+        "schema": "https://nexus-u.dev/preregistered-reproduction/evaluator-result/v1",
+        "sealed_predictions_hash": "c6d63f74dd26319aae6baeab6b922e4ace5f7d668415c7601d9fa11a189ae94f",
+        "selected_case_ids": [
+          "climate-fever-60",
+          "scifact-123",
+          "climate-fever-69",
+          "climate-fever-65",
+          "contract-nli-nda-1",
+          "contract-nli-nda-2",
+          "scifact-263",
+          "climate-fever-55"
+        ]
+      },
+      "signature": "81165d51fcbf7dd145fd7c3c2a9502f2e82f45d539e1352ffc98de4c0bfc0659"
+    },
+    {
+      "algorithm": "HMAC-SHA256",
+      "key_id": "local-replay-key-c",
+      "payload": {
+        "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+        "created_at": 1784023986.5825038,
+        "evaluator_id": "local-replay-c",
+        "independence_scope": "process_isolated_not_external",
+        "inference_engine_version": "2.6.0",
+        "inference_process_id": 24471,
+        "key_id": "local-replay-key-c",
+        "label_firewall_verified": true,
+        "labels_hash": "70f53fd0b0f08badf6be0e4105859130f953ee2399f05ed2a6405301c8bf41be",
+        "metrics": {
+          "case_count": 8,
+          "cases": [
+            {
+              "case_id": "climate-fever-60",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "scifact-123",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-69",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-65",
+              "expected_kind": "RESOURCE_CONFLICT",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "RESOURCE_CONFLICT",
+              "predicted_tension": true
+            },
+            {
+              "case_id": "contract-nli-nda-1",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "contract-nli-nda-2",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "scifact-263",
+              "expected_kind": null,
+              "expected_tension": false,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": null,
+              "predicted_tension": false
+            },
+            {
+              "case_id": "climate-fever-55",
+              "expected_kind": "CONTRADICTION",
+              "expected_tension": true,
+              "experiment_match": true,
+              "kind_match": true,
+              "predicted_kind": "CONTRADICTION",
+              "predicted_tension": true
+            }
+          ],
+          "experiment_matches": 3,
+          "f1": 1.0,
+          "false_negatives": 0,
+          "false_positives": 0,
+          "kind_matches": 3,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "true_negatives": 5,
+          "true_positives": 3
+        },
+        "organization": "local-isolated-c",
+        "predictions": [
+          {
+            "case_id": "climate-fever-60",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "scifact-123",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-69",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-65",
+            "predicted_kind": "RESOURCE_CONFLICT",
+            "predicted_tension": true,
+            "recommended_experiment": "Independent recalibration and blinded replication",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          },
+          {
+            "case_id": "contract-nli-nda-1",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "contract-nli-nda-2",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 1,
+            "source_ids": [
+              "contract-nli"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "scifact-263",
+            "predicted_kind": null,
+            "predicted_tension": false,
+            "recommended_experiment": null,
+            "source_count": 2,
+            "source_ids": [
+              "scifact"
+            ],
+            "tension_score": 0.0
+          },
+          {
+            "case_id": "climate-fever-55",
+            "predicted_kind": "CONTRADICTION",
+            "predicted_tension": true,
+            "recommended_experiment": "Stratified replication across regimes",
+            "source_count": 2,
+            "source_ids": [
+              "climate-fever"
+            ],
+            "tension_score": 1.0
+          }
+        ],
+        "protocol_hash": "e805defc4957e857207d10bd071716bbbeaa38d13def0162a9a5e5e77bda655b",
+        "schema": "https://nexus-u.dev/preregistered-reproduction/evaluator-result/v1",
+        "sealed_predictions_hash": "c6d63f74dd26319aae6baeab6b922e4ace5f7d668415c7601d9fa11a189ae94f",
+        "selected_case_ids": [
+          "climate-fever-60",
+          "scifact-123",
+          "climate-fever-69",
+          "climate-fever-65",
+          "contract-nli-nda-1",
+          "contract-nli-nda-2",
+          "scifact-263",
+          "climate-fever-55"
+        ]
+      },
+      "signature": "64050474e344f5f74c4205b565291d18a0ca0be01efbb7d913918a27185cf89e"
+    }
+  ],
+  "protocol": {
+    "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+    "created_at": 1784023982.8394709,
+    "engine_version": "2.6.0",
+    "evaluator_quorum": 3,
+    "evaluators": [
+      {
+        "evaluator_id": "local-replay-a",
+        "independence_scope": "process_isolated_not_external",
+        "key_id": "local-replay-key-a",
+        "organization": "local-isolated-a"
+      },
+      {
+        "evaluator_id": "local-replay-b",
+        "independence_scope": "process_isolated_not_external",
+        "key_id": "local-replay-key-b",
+        "organization": "local-isolated-b"
+      },
+      {
+        "evaluator_id": "local-replay-c",
+        "independence_scope": "process_isolated_not_external",
+        "key_id": "local-replay-key-c",
+        "organization": "local-isolated-c"
+      }
+    ],
+    "labels_hash": "70f53fd0b0f08badf6be0e4105859130f953ee2399f05ed2a6405301c8bf41be",
+    "metadata": {
+      "challenge_id": "nexus-u-independent-discovery-v1",
+      "evaluation_scope": "local process-isolated reproduction; external evaluators not yet completed",
+      "external_independence_claimed": false,
+      "labels_physically_separated_during_inference": true,
+      "registry_metadata": {
+        "purpose": "Independent external-corpus discovery evaluation",
+        "registry_version": "1.0",
+        "snapshot_policy": "Only compact attributed records required by the benchmark are bundled. Full upstream datasets are not redistributed."
+      },
+      "source_metadata": {
+        "corpus_origin": "independently published external datasets",
+        "evaluation_mode": "blind-label-firewall",
+        "limitations": "Compact benchmark snapshots test evidence conflict detection and abstention, not open-domain retrieval or scientific novelty."
+      }
+    },
+    "primary_metrics": [
+      "precision",
+      "recall",
+      "specificity",
+      "f1",
+      "kind_matches",
+      "experiment_matches"
+    ],
+    "protocol_hash": "e805defc4957e857207d10bd071716bbbeaa38d13def0162a9a5e5e77bda655b",
+    "protocol_id": "nexus-u-independent-discovery-v1:preregistered:v1",
+    "sample_size": 8,
+    "schema": "https://nexus-u.dev/preregistered-reproduction/protocol/v1",
+    "seed": "nexus-u-v1.9-preregistered-seed",
+    "selected_case_ids": [
+      "climate-fever-60",
+      "scifact-123",
+      "climate-fever-69",
+      "climate-fever-65",
+      "contract-nli-nda-1",
+      "contract-nli-nda-2",
+      "scifact-263",
+      "climate-fever-55"
+    ],
+    "selection_algorithm": "sha256(seed || ':' || case_id), ascending",
+    "source_registry_hash": "bf0df0e2fc9c9dbe2664353550a9d3287fa746e95ee3e1d80db896d503e8014b",
+    "success_criteria": {
+      "exact_metric_agreement": true,
+      "exact_prediction_agreement": true,
+      "label_firewall_required": true,
+      "minimum_valid_evaluators": 3,
+      "tamper_detection_required": true
+    },
+    "title": "NEXUS-U preregistered independent reproduction protocol"
+  },
+  "replay_bundle_hash": "b0e3ecadce239506209a2f058c0c1167def2700af57a4bd035fd090daaf0726e",
+  "run_id": "860f0425-f305-4789-b00f-bb3b471aae1e",
+  "schema": "https://nexus-u.dev/preregistered-reproduction/report/v1",
+  "summary": {
+    "deterministic_sampling_verified": true,
+    "distinct_key_ids": 3,
+    "evaluator_count": 3,
+    "evaluator_quorum": 3,
+    "exact_metric_agreement": true,
+    "exact_prediction_agreement": true,
+    "external_independence_claimed": false,
+    "label_firewall_verified": true,
+    "metrics": {
+      "case_count": 8,
+      "cases": [
+        {
+          "case_id": "climate-fever-60",
+          "expected_kind": "CONTRADICTION",
+          "expected_tension": true,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": "CONTRADICTION",
+          "predicted_tension": true
+        },
+        {
+          "case_id": "scifact-123",
+          "expected_kind": null,
+          "expected_tension": false,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": null,
+          "predicted_tension": false
+        },
+        {
+          "case_id": "climate-fever-69",
+          "expected_kind": null,
+          "expected_tension": false,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": null,
+          "predicted_tension": false
+        },
+        {
+          "case_id": "climate-fever-65",
+          "expected_kind": "RESOURCE_CONFLICT",
+          "expected_tension": true,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": "RESOURCE_CONFLICT",
+          "predicted_tension": true
+        },
+        {
+          "case_id": "contract-nli-nda-1",
+          "expected_kind": null,
+          "expected_tension": false,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": null,
+          "predicted_tension": false
+        },
+        {
+          "case_id": "contract-nli-nda-2",
+          "expected_kind": null,
+          "expected_tension": false,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": null,
+          "predicted_tension": false
+        },
+        {
+          "case_id": "scifact-263",
+          "expected_kind": null,
+          "expected_tension": false,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": null,
+          "predicted_tension": false
+        },
+        {
+          "case_id": "climate-fever-55",
+          "expected_kind": "CONTRADICTION",
+          "expected_tension": true,
+          "experiment_match": true,
+          "kind_match": true,
+          "predicted_kind": "CONTRADICTION",
+          "predicted_tension": true
+        }
+      ],
+      "experiment_matches": 3,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "kind_matches": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "true_negatives": 5,
+      "true_positives": 3
+    },
+    "process_isolation_verified": true,
+    "protocol_matches": 3,
+    "reproduced": true,
+    "sample_size": 8,
+    "status": "PROCESS_REPRODUCED",
+    "tamper_detection_verified": true,
+    "valid_signatures": 3
+  }
+}

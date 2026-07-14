@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/discovery-trials.schema.json",
+  "title": "NEXUS-U Discovery Trial Suite",
+  "type": "object",
+  "required": ["suite_id", "cases"],
+  "properties": {
+    "suite_id": {"type": "string", "minLength": 1},
+    "metadata": {"type": "object"},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["case_id", "expectation", "claims"],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "title": {"type": "string"},
+          "expectation": {"enum": ["TENSION", "NO_TENSION"]},
+          "expected_kind": {"type": ["string", "null"]},
+          "expected_experiment_terms": {"type": "array", "items": {"type": "string"}},
+          "claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["claim_id", "statement", "verdict", "source_id", "provenance_group"],
+              "properties": {
+                "claim_id": {"type": "string"},
+                "statement": {"type": "string"},
+                "verdict": {"enum": ["SUPPORTS", "REFUTES", "INCONCLUSIVE"]},
+                "source_id": {"type": "string"},
+                "source_title": {"type": "string"},
+                "organization_id": {"type": "string"},
+                "provenance_group": {"type": "string"},
+                "trust_weight": {"type": "number", "exclusiveMinimum": 0},
+                "scope": {"type": "string"},
+                "tension_kind": {"type": "string"},
+                "metadata": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

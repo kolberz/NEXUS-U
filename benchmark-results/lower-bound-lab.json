@@ -1,0 +1,308 @@
+{
+  "completed_at": 1784023994.7403867,
+  "lab_report": {
+    "agenda": [
+      {
+        "prerequisites": [],
+        "priority": 1.714286,
+        "rationale": [
+          "Leverage=0.6",
+          "Difficulty=0.35"
+        ],
+        "statement": "Prove that selected information-counting, online-transfer, or circuit-transfer arguments cannot establish the universal target without additional premises.",
+        "target_id": "proof_barrier_catalog"
+      },
+      {
+        "prerequisites": [],
+        "priority": 1.454545,
+        "rationale": [
+          "Leverage=0.8",
+          "Difficulty=0.55"
+        ],
+        "statement": "Machine-check the published reduction with explicit size and time overhead.",
+        "target_id": "formalize_2025_transposition_reduction"
+      },
+      {
+        "prerequisites": [],
+        "priority": 1.222222,
+        "rationale": [
+          "Leverage=0.55",
+          "Difficulty=0.45"
+        ],
+        "statement": "Prove a superlinear lower bound for a precisely declared oblivious or locality-restricted multiplication model.",
+        "target_id": "restricted_oblivious_multiplication_lower_bound"
+      },
+      {
+        "prerequisites": [],
+        "priority": 1.071429,
+        "rationale": [
+          "Leverage=0.75",
+          "Difficulty=0.7"
+        ],
+        "statement": "Identify a model-valid information-transport invariant forcing repeated global permutation or tape crossing.",
+        "target_id": "data_movement_invariant"
+      },
+      {
+        "prerequisites": [
+          "transposition_matching_lower_open"
+        ],
+        "priority": 0.833333,
+        "rationale": [
+          "Leverage=1.0",
+          "Difficulty=1.0",
+          "Unresolved prerequisites: transposition_matching_lower_open",
+          "A matching transposition lower bound activates the proved reduction route."
+        ],
+        "statement": "Prove Omega(m^2 log m) for binary matrix transposition in the multitape Turing model.",
+        "target_id": "transposition_lower_bound"
+      }
+    ],
+    "audits": [
+      {
+        "allowed_status": "HEURISTIC",
+        "candidate_id": "empirical_timings_prove_optimality",
+        "decision": "REJECT_PROMOTION",
+        "obstructions": [
+          "EMPIRICAL_TO_ASYMPTOTIC_GAP"
+        ],
+        "reasons": [
+          "Finite timings and tests cannot prove a universal asymptotic lower bound."
+        ]
+      },
+      {
+        "allowed_status": "HEURISTIC",
+        "candidate_id": "consensus_proves_optimality",
+        "decision": "REJECT_PROMOTION",
+        "obstructions": [
+          "EMPIRICAL_TO_ASYMPTOTIC_GAP"
+        ],
+        "reasons": [
+          "Community expectation is not a proof."
+        ]
+      },
+      {
+        "allowed_status": "HEURISTIC",
+        "candidate_id": "online_transfers_offline",
+        "decision": "REJECT_PROMOTION",
+        "obstructions": [
+          "ONLINE_OFFLINE_GAP",
+          "RESTRICTED_TO_UNIVERSAL_GAP"
+        ],
+        "reasons": [
+          "An online lower bound does not automatically transfer to offline multiplication.",
+          "A restricted-model theorem cannot be advertised as a universal lower bound."
+        ]
+      },
+      {
+        "allowed_status": "HEURISTIC",
+        "candidate_id": "information_counting_only",
+        "decision": "REJECT_PROMOTION",
+        "obstructions": [
+          "INFORMATION_COUNTING_TOO_WEAK",
+          "REVERSIBILITY_ESCAPE"
+        ],
+        "reasons": [
+          "Input/output information count alone does not establish operation or movement cost.",
+          "The argument does not account for reversible computation or uncomputation."
+        ]
+      },
+      {
+        "allowed_status": "HEURISTIC",
+        "candidate_id": "bounded_circuit_universalized",
+        "decision": "REJECT_PROMOTION",
+        "obstructions": [
+          "CIRCUIT_TO_TURING_TRANSFER_GAP",
+          "MODEL_MISMATCH",
+          "RESTRICTED_TO_UNIVERSAL_GAP"
+        ],
+        "reasons": [
+          "The evidence and requested theorem use different computational models.",
+          "A restricted-model theorem cannot be advertised as a universal lower bound.",
+          "A circuit lower bound requires a proved transfer to the multitape Turing model."
+        ]
+      },
+      {
+        "allowed_status": "CONDITIONAL_THEOREM",
+        "candidate_id": "transpose_route_is_complete",
+        "decision": "HOLD_CONDITIONAL",
+        "obstructions": [
+          "REDUCTION_PREMISE_OPEN"
+        ],
+        "reasons": [
+          "The proposed conclusion remains conditional on an unproved source lower bound."
+        ]
+      },
+      {
+        "allowed_status": "OPEN",
+        "candidate_id": "record_open_problem_honestly",
+        "decision": "ACCEPT",
+        "obstructions": [],
+        "reasons": [
+          "The candidate honestly records an open obligation."
+        ]
+      },
+      {
+        "allowed_status": "PUBLISHED_RESULT",
+        "candidate_id": "online_result_as_restricted_progress",
+        "decision": "ACCEPT_RESTRICTED",
+        "obstructions": [],
+        "reasons": [
+          "Evidence class and theorem scope are aligned."
+        ]
+      }
+    ],
+    "challenge_id": "integer-multiplication-optimality-v1",
+    "claims": [
+      {
+        "assumptions": [
+          "multitape Turing model",
+          "ordinary binary representation"
+        ],
+        "claim_id": "hvdh_upper_2021",
+        "complexity": "O(n log n)",
+        "evidence_kind": "PEER_REVIEWED_PROOF",
+        "kind": "UPPER",
+        "problem_id": "integer_multiplication_offline",
+        "scope": "asymptotic bit complexity",
+        "source_ids": [
+          "harvey_vdh_2021"
+        ],
+        "statement": "Two n-bit integers can be multiplied in O(n log n) bit operations.",
+        "status": "PROVED"
+      },
+      {
+        "assumptions": [
+          "multitape Turing model",
+          "ordinary binary representation"
+        ],
+        "claim_id": "offline_matching_lower_open",
+        "complexity": "Omega(n log n)",
+        "evidence_kind": "NONE",
+        "kind": "LOWER",
+        "problem_id": "integer_multiplication_offline",
+        "scope": "unconditional universal lower bound",
+        "source_ids": [
+          "harvey_vdh_2025"
+        ],
+        "statement": "Every offline multitape Turing machine multiplying n-bit integers requires Omega(n log n) steps.",
+        "status": "OPEN"
+      },
+      {
+        "assumptions": [
+          "multitape Turing model"
+        ],
+        "claim_id": "transposition_matching_lower_open",
+        "complexity": "Omega(m^2 log m)",
+        "evidence_kind": "NONE",
+        "kind": "LOWER",
+        "problem_id": "binary_matrix_transposition",
+        "scope": "expected matching lower bound",
+        "source_ids": [
+          "harvey_vdh_2025"
+        ],
+        "statement": "Transposing an m by m binary matrix requires Omega(m^2 log m) steps.",
+        "status": "OPEN"
+      },
+      {
+        "assumptions": [
+          "online multitape model",
+          "mean-time formulation"
+        ],
+        "claim_id": "online_multiplication_lower_1974",
+        "complexity": "Omega(n log n)",
+        "evidence_kind": "PUBLISHED_PROOF",
+        "kind": "LOWER",
+        "problem_id": "integer_multiplication_online",
+        "scope": "restricted online model",
+        "source_ids": [
+          "paterson_1974"
+        ],
+        "statement": "Online multitape multiplication has an Omega(n log n) mean-time lower bound in the cited model.",
+        "status": "PUBLISHED_RESULT"
+      },
+      {
+        "assumptions": [
+          "Establish Omega(m^2 log m) for Binary matrix transposition",
+          "binary matrices",
+          "multitape Turing model"
+        ],
+        "claim_id": "derived:transpose_to_integer_multiplication_2025",
+        "complexity": "Omega(n log n)",
+        "evidence_kind": "PROVED_REDUCTION",
+        "kind": "LOWER",
+        "problem_id": "integer_multiplication_offline",
+        "scope": "Derived through transpose_to_integer_multiplication_2025; model_preserving=True",
+        "source_ids": [
+          "harvey_vdh_2025"
+        ],
+        "statement": "Omega(m^2 log m) for binary_matrix_transposition implies Omega(n log n) for integer_multiplication_offline",
+        "status": "CONDITIONAL_THEOREM"
+      }
+    ],
+    "created_at": 1784023994.740275,
+    "integrity_errors": [],
+    "integrity_valid": true,
+    "reductions": [
+      {
+        "assumptions": [
+          "binary matrices",
+          "multitape Turing model"
+        ],
+        "consequence_bound": "Omega(n log n)",
+        "evidence_kind": "PROVED_REDUCTION",
+        "model_preserving": true,
+        "overhead": "proved sufficiently small in the cited reduction",
+        "premise_bound": "Omega(m^2 log m)",
+        "reduction_id": "transpose_to_integer_multiplication_2025",
+        "size_map": "matrix dimension and packed integer length as specified by the reduction",
+        "source_ids": [
+          "harvey_vdh_2025"
+        ],
+        "source_problem_id": "binary_matrix_transposition",
+        "status": "PROVED",
+        "target_problem_id": "integer_multiplication_offline"
+      }
+    ],
+    "run_id": "7377d063-0fb4-48a5-9759-32088e35e091",
+    "schema": "https://nexus-u.dev/lower-bound-lab/v1",
+    "summary": {
+      "accepted_candidates": 2,
+      "best_available_lower_bound_route": "CONDITIONAL_THEOREM",
+      "candidate_count": 8,
+      "claim_count": 5,
+      "conditional_candidates": 1,
+      "integrity_valid": true,
+      "machine_model_count": 4,
+      "matrix_transposition_route_conditional": true,
+      "no_false_solution_claim": true,
+      "open_high_leverage_targets": 5,
+      "problem_count": 5,
+      "proved_upper_bound_present": true,
+      "reduction_count": 1,
+      "rejected_promotions": 5,
+      "source_count": 4,
+      "unconditional_universal_lower_bound_status": "OPEN"
+    }
+  },
+  "schema": "https://nexus-u.dev/lower-bound-lab-benchmark/v1",
+  "started_at": 1784023994.739581,
+  "summary": {
+    "baseline_false_promotions": 6,
+    "check_count": 9,
+    "checks": {
+      "all_invalid_promotions_blocked": true,
+      "conditional_transposition_route_preserved": true,
+      "honest_open_and_restricted_progress_accepted": true,
+      "integrity_valid": true,
+      "no_false_solution_claim": true,
+      "proved_upper_bound_present": true,
+      "reduction_overclaim_held_conditional": true,
+      "research_agenda_nonempty": true,
+      "unconditional_lower_bound_remains_open": true
+    },
+    "checks_passed": 9,
+    "lab_false_promotions": 0,
+    "pass_rate": 1.0,
+    "promotion_safety_advantage": 1.0
+  }
+}

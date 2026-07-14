@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "actual": "APPROVED",
+      "approved": true,
+      "case_id": "independent_quorum",
+      "expected": "APPROVED",
+      "independent_groups": 2,
+      "matched": true,
+      "organizations": 2,
+      "reasons": [
+        "Federated quorum and independence requirements satisfied"
+      ]
+    },
+    {
+      "actual": "INSUFFICIENT_QUORUM",
+      "approved": false,
+      "case_id": "correlated_evidence",
+      "expected": "INSUFFICIENT_QUORUM",
+      "independent_groups": 1,
+      "matched": true,
+      "organizations": 2,
+      "reasons": [
+        "Independent evidence quorum not met: 1/2"
+      ]
+    },
+    {
+      "actual": "CONFLICT",
+      "approved": false,
+      "case_id": "conflicting_evidence",
+      "expected": "CONFLICT",
+      "independent_groups": 1,
+      "matched": true,
+      "organizations": 1,
+      "reasons": [
+        "Conflicting signed evidence exists"
+      ]
+    },
+    {
+      "actual": "BLOCKED",
+      "approved": false,
+      "case_id": "security_veto",
+      "expected": "BLOCKED",
+      "independent_groups": 1,
+      "matched": true,
+      "organizations": 1,
+      "reasons": [
+        "A veto-authorized actor submitted refuting evidence"
+      ]
+    },
+    {
+      "actual": "MISSING_DEPENDENCY",
+      "approved": false,
+      "case_id": "missing_cross_repo_dependency",
+      "expected": "MISSING_DEPENDENCY",
+      "independent_groups": 2,
+      "matched": true,
+      "organizations": 2,
+      "reasons": [
+        "Missing required cross-system dependencies"
+      ]
+    },
+    {
+      "actual": "INSUFFICIENT_QUORUM",
+      "approved": false,
+      "case_id": "missing_human_authority",
+      "expected": "INSUFFICIENT_QUORUM",
+      "independent_groups": 2,
+      "matched": true,
+      "organizations": 2,
+      "reasons": [
+        "Missing required roles: OWNER"
+      ]
+    }
+  ],
+  "completed_at": 1784023977.0994833,
+  "schema": "https://nexus-u.dev/federated-evidence-benchmark/v1",
+  "started_at": 1784023977.0982587,
+  "summary": {
+    "approved_cases": 1,
+    "blocked_or_conflicted_cases": 5,
+    "case_count": 6,
+    "expected_outcomes_matched": 6,
+    "match_rate": 1.0
+  }
+}

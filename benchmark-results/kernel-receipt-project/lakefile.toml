@@ -1,0 +1,6 @@
+name = "NexusUKernelBridge"
+version = "0.1.0"
+defaultTargets = ["NexusUKernelBridge"]
+
+[[lean_lib]]
+name = "NexusUKernelBridge"

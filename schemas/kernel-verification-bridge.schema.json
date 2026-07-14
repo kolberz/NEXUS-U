@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/kernel-verification-bridge.schema.json",
+  "type": "object",
+  "required": ["schema", "run_id", "project_id", "toolchain", "theorem", "universal_target_status", "source_files", "static_checks", "execution", "status"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/kernel-verification-bridge/v1"},
+    "run_id": {"type": "string"},
+    "project_id": {"type": "string"},
+    "toolchain": {"type": "string"},
+    "theorem": {"type": "string"},
+    "universal_target_status": {"const": "OPEN"},
+    "source_files": {"type": "object", "additionalProperties": {"type": "string"}},
+    "static_checks": {"type": "object"},
+    "execution": {
+      "type": "object",
+      "required": ["available", "trusted_identity", "verified", "status"],
+      "properties": {
+        "available": {"type": "boolean"},
+        "trusted_identity": {"type": "boolean"},
+        "verified": {"type": "boolean"},
+        "status": {"type": "string"}
+      }
+    },
+    "status": {"type": "string"}
+  }
+}

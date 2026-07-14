@@ -1,0 +1,22 @@
+{
+  "evaluators": [
+    {
+      "evaluator_id": "local-replay-a",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-a",
+      "organization": "local-isolated-a"
+    },
+    {
+      "evaluator_id": "local-replay-b",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-b",
+      "organization": "local-isolated-b"
+    },
+    {
+      "evaluator_id": "local-replay-c",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-c",
+      "organization": "local-isolated-c"
+    }
+  ]
+}

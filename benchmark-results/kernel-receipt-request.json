@@ -1,0 +1,16 @@
+{
+  "command": [
+    "lake",
+    "build"
+  ],
+  "created_at": 1784024002.4416125,
+  "expected_version_fragment": "4.29.1",
+  "project_id": "nexus-u-decision-tree-kernel-bridge",
+  "project_sha256": "cedacf4d7452b78860e7e8462244a66510f5c0b076fc0951acafa6d02484272d",
+  "request_id": "f2ed3e27-ee3c-4c8e-b808-b4b823933c92",
+  "schema": "https://nexus-u.dev/kernel-receipt-request/v1",
+  "source_sha256": "49cd90a500dc2af18750bfbc741da5a68a210b6aa5d9b82b6dad82b99385cb2d",
+  "theorem": "allSensitive_forces_allQueried",
+  "toolchain": "leanprover/lean4:v4.29.1",
+  "universal_target_status": "OPEN"
+}

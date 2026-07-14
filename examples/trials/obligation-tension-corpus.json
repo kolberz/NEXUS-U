@@ -1,0 +1,344 @@
+{
+  "suite_id": "nexus-u-corpus-trials-v1",
+  "metadata": {
+    "description": "Blind, provenance-bearing trials derived from heterogeneous architecture, physics, verification, and release artifacts.",
+    "label_visibility": "Expected labels are withheld from the discovery engine and used only for scoring.",
+    "limitations": "Curated corpus; not an independent scientific-discovery benchmark."
+  },
+  "cases": [
+    {
+      "case_id": "truth-vs-feasibility",
+      "title": "Whether physical executability defines truth",
+      "expectation": "TENSION",
+      "expected_kind": "CAUSAL_CONFLICT",
+      "expected_experiment_terms": [
+        "intervention",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "aquinas-truth",
+          "topic": "truth",
+          "statement": "Truth is defined by that which can be physically sustained within the thermodynamic constraints of the universe.",
+          "verdict": "SUPPORTS",
+          "source_id": "sentinel-reference",
+          "source_title": "SENTINEL Protocol Reference Guide",
+          "organization_id": "Aquinas",
+          "provenance_group": "sentinel-original",
+          "tension_kind": "CAUSAL_CONFLICT"
+        },
+        {
+          "claim_id": "truth-separation",
+          "topic": "truth",
+          "statement": "A claim's truth, evidential support, and execution feasibility are separate properties.",
+          "verdict": "REFUTES",
+          "source_id": "sentinel-audit",
+          "source_title": "SENTINEL Critical Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "sentinel-audit-independent",
+          "tension_kind": "CAUSAL_CONFLICT"
+        }
+      ]
+    },
+    {
+      "case_id": "epsilon-semantics",
+      "title": "Whether epsilon is non-probabilistic while bounding a failure rate",
+      "expectation": "TENSION",
+      "expected_kind": "SCOPE_CONFLICT",
+      "expected_experiment_terms": [
+        "regimes",
+        "recalibration"
+      ],
+      "claims": [
+        {
+          "claim_id": "epsilon-nonprob",
+          "topic": "risk",
+          "statement": "Risk bound epsilon is a formal, non-probabilistic upper bound on the failure rate.",
+          "verdict": "SUPPORTS",
+          "source_id": "functional-architecture",
+          "source_title": "Functional Architecture Abstract",
+          "organization_id": "Architecture-Synthesis",
+          "provenance_group": "functional-architecture-source",
+          "tension_kind": "SCOPE_CONFLICT"
+        },
+        {
+          "claim_id": "epsilon-typed",
+          "topic": "risk",
+          "statement": "A failure-rate bound is probabilistic and must be separated from numeric, model, specification, cryptographic, and monitoring error.",
+          "verdict": "REFUTES",
+          "source_id": "risk-audit",
+          "source_title": "Typed Risk Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "risk-audit-independent",
+          "tension_kind": "SCOPE_CONFLICT"
+        }
+      ]
+    },
+    {
+      "case_id": "sequential-risk",
+      "title": "Exact additivity versus conditional union-bound composition",
+      "expectation": "TENSION",
+      "expected_kind": "COMPOSITION_FAILURE",
+      "expected_experiment_terms": [
+        "intervention",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "seq-additive",
+          "topic": "risk-composition",
+          "statement": "For sequential composition, total risk is strictly additive: epsilon_total equals epsilon_1 plus epsilon_2.",
+          "verdict": "SUPPORTS",
+          "source_id": "trust-type-system",
+          "source_title": "Trust Type System",
+          "organization_id": "Calculus-Architecture",
+          "provenance_group": "trust-type-source",
+          "tension_kind": "COMPOSITION_FAILURE"
+        },
+        {
+          "claim_id": "seq-upper-bound",
+          "topic": "risk-composition",
+          "statement": "Sequential failure risk is bounded by epsilon_1 plus epsilon_2 conditioned on the first guarantee; equality is not general.",
+          "verdict": "REFUTES",
+          "source_id": "composition-audit",
+          "source_title": "Composition Risk Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "composition-audit-independent",
+          "tension_kind": "COMPOSITION_FAILURE"
+        }
+      ]
+    },
+    {
+      "case_id": "barrier-sign",
+      "title": "Barrier sign convention and drift direction",
+      "expectation": "TENSION",
+      "expected_kind": "MODEL_DATA_MISMATCH",
+      "expected_experiment_terms": [
+        "recalibration",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "safe-positive-negative-drift",
+          "topic": "barrier-safety",
+          "statement": "The safe set is B(x) greater than or equal to zero and an upper negative-drift bound forces the trajectory toward safety.",
+          "verdict": "SUPPORTS",
+          "source_id": "adaptive-barrier-abstract",
+          "source_title": "Adaptive Barrier Certificates Abstract",
+          "organization_id": "Control-Architecture",
+          "provenance_group": "barrier-abstract-source",
+          "tension_kind": "MODEL_DATA_MISMATCH"
+        },
+        {
+          "claim_id": "hazard-barrier-convention",
+          "topic": "barrier-safety",
+          "statement": "That negative-drift inequality is coherent for a nonnegative hazard barrier that is zero inside the safe set, not for a positive safety-margin convention.",
+          "verdict": "REFUTES",
+          "source_id": "barrier-sign-audit",
+          "source_title": "Barrier Sign Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "barrier-audit-independent",
+          "tension_kind": "MODEL_DATA_MISMATCH"
+        }
+      ]
+    },
+    {
+      "case_id": "zk-zero-soundness",
+      "title": "Zero soundness error versus negligible cryptographic soundness error",
+      "expectation": "TENSION",
+      "expected_kind": "EVIDENCE_GAP",
+      "expected_experiment_terms": [
+        "recalibration",
+        "intervention",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "zk-zero",
+          "topic": "cryptographic-soundness",
+          "statement": "Zero-knowledge verifier soundness risk is exactly zero.",
+          "verdict": "SUPPORTS",
+          "source_id": "pillar-table",
+          "source_title": "Trustworthiness Pillar Table",
+          "organization_id": "Architecture-Catalog",
+          "provenance_group": "pillar-table-source",
+          "tension_kind": "EVIDENCE_GAP"
+        },
+        {
+          "claim_id": "zk-negligible",
+          "topic": "cryptographic-soundness",
+          "statement": "Practical proof-system soundness error is negligible in a security parameter rather than literally zero.",
+          "verdict": "REFUTES",
+          "source_id": "crypto-audit",
+          "source_title": "Cryptographic Assurance Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "crypto-audit-independent",
+          "tension_kind": "EVIDENCE_GAP"
+        }
+      ]
+    },
+    {
+      "case_id": "meve-cost-value",
+      "title": "Whether maximizing cost necessarily maximizes value",
+      "expectation": "TENSION",
+      "expected_kind": "CAUSAL_CONFLICT",
+      "expected_experiment_terms": [
+        "intervention",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "meve-proportional",
+          "topic": "economics",
+          "statement": "Value equals lambda_v times total cost of ownership, so maximizing permitted TCO maximizes utility.",
+          "verdict": "SUPPORTS",
+          "source_id": "universal-systemics",
+          "source_title": "Mass-Energy-Value Equivalence",
+          "organization_id": "Universal-Systemics",
+          "provenance_group": "meve-source",
+          "tension_kind": "CAUSAL_CONFLICT"
+        },
+        {
+          "claim_id": "diminishing-return",
+          "topic": "economics",
+          "statement": "Treating value as a fixed multiple of cost rewards waste; value should exhibit marginal returns and be optimized against cost and risk.",
+          "verdict": "REFUTES",
+          "source_id": "economic-audit",
+          "source_title": "MEVE Objective Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "economic-audit-independent",
+          "tension_kind": "CAUSAL_CONFLICT"
+        }
+      ]
+    },
+    {
+      "case_id": "proof-status",
+      "title": "Reported kernel verification versus independently reproduced proof",
+      "expectation": "TENSION",
+      "expected_kind": "EVIDENCE_GAP",
+      "expected_experiment_terms": [
+        "replication",
+        "recalibration"
+      ],
+      "claims": [
+        {
+          "claim_id": "report-kernel-verified",
+          "topic": "proof-status",
+          "statement": "The theorem report states that the result was machine checked by the proof kernel.",
+          "verdict": "SUPPORTS",
+          "source_id": "theorem-report",
+          "source_title": "Machine-Checked Theorem Report",
+          "organization_id": "Formalization-Program",
+          "provenance_group": "report-source",
+          "tension_kind": "EVIDENCE_GAP"
+        },
+        {
+          "claim_id": "repository-not-rebuilt",
+          "topic": "proof-status",
+          "statement": "The surfaced artifact is a report about a repository; the source, pinned toolchain, and independent build have not been reproduced in the current environment.",
+          "verdict": "REFUTES",
+          "source_id": "proof-reproduction-audit",
+          "source_title": "Proof Reproduction Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "reproduction-audit-independent",
+          "tension_kind": "EVIDENCE_GAP"
+        }
+      ]
+    },
+    {
+      "case_id": "landauer-search",
+      "title": "Search-space information versus irreversible erasure lower bound",
+      "expectation": "TENSION",
+      "expected_kind": "MODEL_DATA_MISMATCH",
+      "expected_experiment_terms": [
+        "recalibration",
+        "intervention",
+        "regimes"
+      ],
+      "claims": [
+        {
+          "claim_id": "search-erasure",
+          "topic": "thermodynamic-complexity",
+          "statement": "Searching S candidate states requires at least log2(S) irreversible erasures and therefore a Landauer energy lower bound.",
+          "verdict": "SUPPORTS",
+          "source_id": "budgeted-search",
+          "source_title": "Budgeted Search Infeasibility",
+          "organization_id": "Aquinas",
+          "provenance_group": "budgeted-search-source",
+          "tension_kind": "MODEL_DATA_MISMATCH"
+        },
+        {
+          "claim_id": "search-not-erasure",
+          "topic": "thermodynamic-complexity",
+          "statement": "log2(S) identifies information needed to select among candidates but does not itself lower-bound states examined or irreversible erasures without a computational model.",
+          "verdict": "REFUTES",
+          "source_id": "landauer-audit",
+          "source_title": "Landauer Complexity Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "landauer-audit-independent",
+          "tension_kind": "MODEL_DATA_MISMATCH"
+        }
+      ]
+    },
+    {
+      "case_id": "unavailable-verifier-control",
+      "title": "Unavailable formal verifier produces a partial result",
+      "expectation": "NO_TENSION",
+      "expected_kind": null,
+      "claims": [
+        {
+          "claim_id": "unavailable-partial-a",
+          "topic": "verifier-availability",
+          "statement": "When Lean is unavailable, the adapter returns a partial capability result rather than proof success.",
+          "verdict": "SUPPORTS",
+          "source_id": "adapter-contract",
+          "source_title": "Lean Adapter Contract",
+          "organization_id": "NEXUS-U",
+          "provenance_group": "adapter-contract-source",
+          "tension_kind": "EVIDENCE_GAP"
+        },
+        {
+          "claim_id": "unavailable-partial-b",
+          "topic": "verifier-availability",
+          "statement": "The validation report explicitly declines to claim external proof execution when Lean is not installed.",
+          "verdict": "SUPPORTS",
+          "source_id": "validation-report",
+          "source_title": "NEXUS-U Validation Report",
+          "organization_id": "Release-Assurance",
+          "provenance_group": "validation-report-source",
+          "tension_kind": "EVIDENCE_GAP"
+        }
+      ]
+    },
+    {
+      "case_id": "proof-recipe-control",
+      "title": "Positive-semidefinite proof by construction",
+      "expectation": "NO_TENSION",
+      "expected_kind": null,
+      "claims": [
+        {
+          "claim_id": "psd-recipe-a",
+          "topic": "verification-by-construction",
+          "statement": "A nonnegative weighted sum of pure-state outer products is positive semidefinite by construction.",
+          "verdict": "SUPPORTS",
+          "source_id": "operandic-vbc",
+          "source_title": "Operandic Verification by Construction",
+          "organization_id": "Operandic",
+          "provenance_group": "vbc-theory-source",
+          "tension_kind": "COMPOSITION_FAILURE"
+        },
+        {
+          "claim_id": "psd-recipe-b",
+          "topic": "verification-by-construction",
+          "statement": "The recipe still requires checks of nonnegative weights, normalization, fixed-point ranges, and numeric error.",
+          "verdict": "SUPPORTS",
+          "source_id": "vbc-audit",
+          "source_title": "Verification-by-Construction Audit",
+          "organization_id": "NEXUS-Audit",
+          "provenance_group": "vbc-audit-independent",
+          "tension_kind": "COMPOSITION_FAILURE"
+        }
+      ]
+    }
+  ]
+}

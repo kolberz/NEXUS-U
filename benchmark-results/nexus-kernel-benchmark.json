@@ -9,8 +9,7 @@
     "serialization_round_trip": true,
     "serialized_bundle_replayed": true
   },
-  "kernel": "nexus-kernel-v0.1.0-recovered",
-  "kernel_sha256": "8d74dc18e3b95f3b64ce7bbc1f83a92975d422558eed1fca5c1937e3c47f8b53",
+  "completed_at": 1784024003.7588334,
   "mutations": {
     "reject_bundle_payload_tampering": true,
     "reject_decoder_unknown_tag": true,
@@ -23,11 +22,10 @@
     "reject_wrong_theorem": true
   },
   "proof_bundle": {
-    "axioms": [],
-    "bundle_sha256": "377210fa66f3f639a0b1c597de527710612d0673ff185e793953a17c9a59a0d5",
+    "bundle_sha256": "b030cfa7679f6d57630213767001a7aad6ee3a323ece1d6638dbc29e22fd0512",
     "external_lean_compatible": false,
-    "kernel": "nexus-kernel-v0.1.0-recovered",
-    "kernel_sha256": "8d74dc18e3b95f3b64ce7bbc1f83a92975d422558eed1fca5c1937e3c47f8b53",
+    "kernel": "nexus-kernel-v0.1.0",
+    "kernel_sha256": "bb319e79f50d3f96f8f0d6c2ba1e5b66b796c313eea401ade5693bc382ae8dce",
     "proof": {
       "body": {
         "body": {
@@ -183,7 +181,8 @@
       },
       "tag": "Lam"
     },
-    "scope": "constructive generic sensitivity-to-query contradiction lemma",
+    "schema": "https://nexus-u.dev/nexus-kernel-proof/v1",
+    "scope": "generic deterministic decision-path sensitivity lemma with explicit decidability",
     "theorem": {
       "codomain": {
         "codomain": {
@@ -276,16 +275,62 @@
       },
       "tag": "Pi"
     },
-    "universal_offline_lower_bound_status": "OPEN"
+    "theorem_id": "sensitivity-to-query-constructive-v1",
+    "universal_integer_multiplication_lower_bound": "OPEN",
+    "verification": {
+      "axioms": [],
+      "kernel": "nexus-kernel-v0.1.0",
+      "kernel_sha256": "bb319e79f50d3f96f8f0d6c2ba1e5b66b796c313eea401ade5693bc382ae8dce",
+      "proof_depth": 14,
+      "proof_nodes": 45,
+      "theorem_nodes": 27,
+      "valid": true
+    }
   },
-  "schema": "https://nexus-u.dev/native-kernel-benchmark/v1",
+  "report_sha256": "de460aa0c1fe52c4f87820ef5621e9c69ec6b2a1545bb9a7de61ec8aa4d0cc2d",
+  "schema": "https://nexus-u.dev/nexus-kernel-benchmark/v1",
+  "started_at": 1784024003.755765,
   "summary": {
     "all_checks_passed": true,
+    "all_mutations_rejected": true,
     "axiom_count": 0,
     "check_count": 17,
     "checks_passed": 17,
     "external_lean_compatible": false,
-    "kernel_status": "NEXUS_KERNEL_VERIFIED_RECOVERED",
+    "kernel_status": "NEXUS_KERNEL_VERIFIED",
+    "kernel_version": "nexus-kernel-v0.1.0",
     "universal_offline_lower_bound_status": "OPEN"
+  },
+  "trusted_core": {
+    "files": [
+      {
+        "lines": 113,
+        "path": "ast.py",
+        "sha256": "b4d9efa410817bc8d748b7d734a86d8bcb949abb8251dd1bbf2345c32c92a055"
+      },
+      {
+        "lines": 150,
+        "path": "ops.py",
+        "sha256": "772342cfc9df3693e40a616c3e3fd5965a54410225aea8f315b32d70f1db625d"
+      },
+      {
+        "lines": 47,
+        "path": "environment.py",
+        "sha256": "8169009d2c6b8f8f329c355c4484dbe615c7809da8595c4a190b396d138bdaac"
+      },
+      {
+        "lines": 264,
+        "path": "core.py",
+        "sha256": "71015cfaca31c71599f546bc1539aea489235cad29c76269f3eafd97d948d8f1"
+      },
+      {
+        "lines": 93,
+        "path": "codec.py",
+        "sha256": "abeadd3c165b96e02cc5b0e7a7c39d53e1ceafe965d7d8e722725717831f7834"
+      }
+    ],
+    "forbidden_dynamic_execution": [],
+    "scope": "dependent Pi, lambda, application, let, sums, empty type, definitional equality",
+    "total_lines": 667
   }
 }

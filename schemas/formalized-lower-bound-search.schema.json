@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/formalized-lower-bound-search.schema.json",
+  "title": "NEXUS-U Formalized Lower-Bound Search Report",
+  "type": "object",
+  "required": ["schema", "run_id", "challenge_id", "certificate", "certificate_check", "theorem_target", "transposition_plan", "summary"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/formalized-lower-bound-search/v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "challenge_id": {"type": "string", "minLength": 1},
+    "certificate": {"type": "object"},
+    "certificate_check": {
+      "type": "object",
+      "required": ["valid", "status", "errors", "checker_digest"]
+    },
+    "theorem_target": {"type": "object"},
+    "transposition_plan": {"type": "array", "minItems": 1},
+    "summary": {
+      "type": "object",
+      "required": ["specialized_certificate_valid", "external_kernel_verified", "universal_offline_lower_bound_status", "transposition_plan_valid"]
+    }
+  }
+}

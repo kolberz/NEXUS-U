@@ -1,0 +1,2346 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "discovery-trials-local",
+  "payload": {
+    "cases": [
+      {
+        "abstained_correctly": false,
+        "case_id": "truth-vs-feasibility",
+        "expected": "TENSION",
+        "expected_kind": "CAUSAL_CONFLICT",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "CAUSAL_CONFLICT",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.8127012,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "b755d753-b164-4ea7-850d-b0d8cde2439a",
+              "likelihoods": {
+                "3460b48a-40a6-4053-a65e-116e06c1d327": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "4c6e01c0-dc74-49ac-b1d9-a4647676b434": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "3460b48a-40a6-4053-a65e-116e06c1d327",
+                  "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a",
+                  "4c6e01c0-dc74-49ac-b1d9-a4647676b434"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "3c2f6ea0-9fa3-4f5a-8045-1f4dee445daf",
+              "likelihoods": {
+                "3460b48a-40a6-4053-a65e-116e06c1d327": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "4c6e01c0-dc74-49ac-b1d9-a4647676b434": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "3460b48a-40a6-4053-a65e-116e06c1d327",
+                  "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a",
+                  "4c6e01c0-dc74-49ac-b1d9-a4647676b434"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "afcb5c60-727c-4e62-9c26-6c11ca71fd87",
+              "likelihoods": {
+                "3460b48a-40a6-4053-a65e-116e06c1d327": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "4c6e01c0-dc74-49ac-b1d9-a4647676b434": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "3460b48a-40a6-4053-a65e-116e06c1d327",
+                  "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a",
+                  "4c6e01c0-dc74-49ac-b1d9-a4647676b434"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The obligations are compatible only in a narrower operating regime.",
+              "discovery_value": 0.433333,
+              "hypothesis_id": "3460b48a-40a6-4053-a65e-116e06c1d327",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.65,
+              "prior": 0.3333333333333333,
+              "tension_id": "24025d05-2af6-4ea5-a8ce-961f0100997c"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "An unmodeled dependency or causal path links the conflicting components.",
+              "discovery_value": 0.425,
+              "hypothesis_id": "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a",
+              "kind": "DEPENDENCY_CORRECTION",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test dependency_correction explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.3333333333333333,
+              "tension_id": "24025d05-2af6-4ea5-a8ce-961f0100997c"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.5,
+              "description": "The composition or causal model is structurally incomplete.",
+              "discovery_value": 0.266667,
+              "hypothesis_id": "4c6e01c0-dc74-49ac-b1d9-a4647676b434",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.8,
+              "prior": 0.3333333333333333,
+              "tension_id": "24025d05-2af6-4ea5-a8ce-961f0100997c"
+            }
+          ],
+          "obligation_id": "truth-vs-feasibility",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "3460b48a-40a6-4053-a65e-116e06c1d327": 0.333333,
+            "4c6e01c0-dc74-49ac-b1d9-a4647676b434": 0.333333,
+            "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a": 0.333333
+          },
+          "prior_probabilities": {
+            "3460b48a-40a6-4053-a65e-116e06c1d327": 0.333333,
+            "4c6e01c0-dc74-49ac-b1d9-a4647676b434": 0.333333,
+            "cdcb1e69-8d8b-4c35-973d-ad92cf5d1d6a": 0.333333
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.208651,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.308333,
+              "supports_new_mechanism": 0.308333,
+              "supports_scope_split": 0.383333
+            },
+            "experiment_id": "b755d753-b164-4ea7-850d-b0d8cde2439a",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.198715
+          },
+          "run_id": "ea69a846-365f-4b6e-9355-e319e3dcc300",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "CAUSAL_CONFLICT",
+              "metadata": {
+                "claim_id": "truth-separation",
+                "inconclusive_count": 0,
+                "source_id": "sentinel-audit",
+                "statement": "Whether physical executability defines truth",
+                "tension_kind": "CAUSAL_CONFLICT"
+              },
+              "obligation_id": "truth-vs-feasibility",
+              "organizations": [
+                "Aquinas",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "sentinel-audit-independent",
+                "sentinel-original"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "f1180b28-d7a4-428b-a7ff-4d35c571f496"
+              ],
+              "score": 1.0,
+              "statement": "Whether physical executability defines truth",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "dc221d63-558b-4d39-8147-1e9e47099bca"
+              ],
+              "tension_id": "24025d05-2af6-4ea5-a8ce-961f0100997c"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "epsilon-semantics",
+        "expected": "TENSION",
+        "expected_kind": "SCOPE_CONFLICT",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "SCOPE_CONFLICT",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.8132222,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "0b36b898-ffa0-447f-b07f-f72aab6905fd",
+              "likelihoods": {
+                "0b5e87b8-6b50-423f-85cd-0b973f5f4873": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "41bba725-86f1-470f-8747-69f7a527de72": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "5b441aba-bfaf-48f4-924f-a82680a359c9": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "6b19aa6a-be06-4b08-84c3-8677ab7ad654": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "0b5e87b8-6b50-423f-85cd-0b973f5f4873",
+                  "5b441aba-bfaf-48f4-924f-a82680a359c9",
+                  "6b19aa6a-be06-4b08-84c3-8677ab7ad654",
+                  "41bba725-86f1-470f-8747-69f7a527de72"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "785aa63c-7173-4268-9a0d-7894532e3c67",
+              "likelihoods": {
+                "0b5e87b8-6b50-423f-85cd-0b973f5f4873": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "41bba725-86f1-470f-8747-69f7a527de72": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "5b441aba-bfaf-48f4-924f-a82680a359c9": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "6b19aa6a-be06-4b08-84c3-8677ab7ad654": {
+                  "supports_measurement_error": 0.75,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "0b5e87b8-6b50-423f-85cd-0b973f5f4873",
+                  "5b441aba-bfaf-48f4-924f-a82680a359c9",
+                  "6b19aa6a-be06-4b08-84c3-8677ab7ad654",
+                  "41bba725-86f1-470f-8747-69f7a527de72"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "71599754-a055-43fd-8fa0-63b5ce2f6095",
+              "likelihoods": {
+                "0b5e87b8-6b50-423f-85cd-0b973f5f4873": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "41bba725-86f1-470f-8747-69f7a527de72": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "5b441aba-bfaf-48f4-924f-a82680a359c9": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "6b19aa6a-be06-4b08-84c3-8677ab7ad654": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "0b5e87b8-6b50-423f-85cd-0b973f5f4873",
+                  "5b441aba-bfaf-48f4-924f-a82680a359c9",
+                  "6b19aa6a-be06-4b08-84c3-8677ab7ad654",
+                  "41bba725-86f1-470f-8747-69f7a527de72"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The claim is valid only under a narrower boundary condition or regime.",
+              "discovery_value": 0.466667,
+              "hypothesis_id": "0b5e87b8-6b50-423f-85cd-0b973f5f4873",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "SCOPE_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.7,
+              "prior": 0.25,
+              "tension_id": "73f076d3-5469-41f7-8976-a37df665f887"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.0,
+              "description": "A latent variable separates the apparently conflicting observations.",
+              "discovery_value": 0.34,
+              "hypothesis_id": "5b441aba-bfaf-48f4-924f-a82680a359c9",
+              "kind": "HIDDEN_VARIABLE",
+              "metadata": {
+                "tension_kind": "SCOPE_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test hidden_variable explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.25,
+              "tension_id": "73f076d3-5469-41f7-8976-a37df665f887"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "One evidence stream contains calibration, measurement, or labeling error.",
+              "discovery_value": 0.3,
+              "hypothesis_id": "6b19aa6a-be06-4b08-84c3-8677ab7ad654",
+              "kind": "CALIBRATION_ERROR",
+              "metadata": {
+                "tension_kind": "SCOPE_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test calibration_error explanation"
+              ],
+              "predicted_resolution": 0.6,
+              "prior": 0.25,
+              "tension_id": "73f076d3-5469-41f7-8976-a37df665f887"
+            },
+            {
+              "assumptions": [],
+              "complexity": 3.0,
+              "description": "The current explanatory model is incomplete and requires a new mechanism.",
+              "discovery_value": 0.257143,
+              "hypothesis_id": "41bba725-86f1-470f-8747-69f7a527de72",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "SCOPE_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.9,
+              "prior": 0.25,
+              "tension_id": "73f076d3-5469-41f7-8976-a37df665f887"
+            }
+          ],
+          "obligation_id": "epsilon-semantics",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "0b5e87b8-6b50-423f-85cd-0b973f5f4873": 0.25,
+            "41bba725-86f1-470f-8747-69f7a527de72": 0.25,
+            "5b441aba-bfaf-48f4-924f-a82680a359c9": 0.25,
+            "6b19aa6a-be06-4b08-84c3-8677ab7ad654": 0.25
+          },
+          "prior_probabilities": {
+            "0b5e87b8-6b50-423f-85cd-0b973f5f4873": 0.25,
+            "41bba725-86f1-470f-8747-69f7a527de72": 0.25,
+            "5b441aba-bfaf-48f4-924f-a82680a359c9": 0.25,
+            "6b19aa6a-be06-4b08-84c3-8677ab7ad654": 0.25
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.178141,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.33125,
+              "supports_new_mechanism": 0.33125,
+              "supports_scope_split": 0.3375
+            },
+            "experiment_id": "0b36b898-ffa0-447f-b07f-f72aab6905fd",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.169658
+          },
+          "run_id": "fd83eb4a-3400-45f8-995b-05fefbc38b17",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "SCOPE_CONFLICT",
+              "metadata": {
+                "claim_id": "epsilon-typed",
+                "inconclusive_count": 0,
+                "source_id": "risk-audit",
+                "statement": "Whether epsilon is non-probabilistic while bounding a failure rate",
+                "tension_kind": "SCOPE_CONFLICT"
+              },
+              "obligation_id": "epsilon-semantics",
+              "organizations": [
+                "Architecture-Synthesis",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "functional-architecture-source",
+                "risk-audit-independent"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "74cc4a4a-096c-481b-9430-c9aa94b998be"
+              ],
+              "score": 1.0,
+              "statement": "Whether epsilon is non-probabilistic while bounding a failure rate",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "742c5b6c-bdf0-486d-ba5a-312c99cb4efb"
+              ],
+              "tension_id": "73f076d3-5469-41f7-8976-a37df665f887"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "sequential-risk",
+        "expected": "TENSION",
+        "expected_kind": "COMPOSITION_FAILURE",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "COMPOSITION_FAILURE",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.8136222,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "2c6b57c0-4ba0-4344-93d6-2923d28b3082",
+              "likelihoods": {
+                "32abc425-58e0-4ae3-9983-65a2618acd75": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "7b02b35d-bec2-4a08-aa05-9ec2f20fedce": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "d81aa80d-390d-4986-8a6c-cf664de1dfe1": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d81aa80d-390d-4986-8a6c-cf664de1dfe1",
+                  "7b02b35d-bec2-4a08-aa05-9ec2f20fedce",
+                  "32abc425-58e0-4ae3-9983-65a2618acd75"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "61f03d2e-47b5-4fa6-94e6-fb4fc8961c63",
+              "likelihoods": {
+                "32abc425-58e0-4ae3-9983-65a2618acd75": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "7b02b35d-bec2-4a08-aa05-9ec2f20fedce": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "d81aa80d-390d-4986-8a6c-cf664de1dfe1": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d81aa80d-390d-4986-8a6c-cf664de1dfe1",
+                  "7b02b35d-bec2-4a08-aa05-9ec2f20fedce",
+                  "32abc425-58e0-4ae3-9983-65a2618acd75"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "eefaae26-7486-4741-8af0-dc5850bcf55d",
+              "likelihoods": {
+                "32abc425-58e0-4ae3-9983-65a2618acd75": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "7b02b35d-bec2-4a08-aa05-9ec2f20fedce": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "d81aa80d-390d-4986-8a6c-cf664de1dfe1": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d81aa80d-390d-4986-8a6c-cf664de1dfe1",
+                  "7b02b35d-bec2-4a08-aa05-9ec2f20fedce",
+                  "32abc425-58e0-4ae3-9983-65a2618acd75"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The obligations are compatible only in a narrower operating regime.",
+              "discovery_value": 0.433333,
+              "hypothesis_id": "d81aa80d-390d-4986-8a6c-cf664de1dfe1",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "COMPOSITION_FAILURE",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.65,
+              "prior": 0.3333333333333333,
+              "tension_id": "d44e3428-60bd-4a9c-a333-7f17444b996e"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "An unmodeled dependency or causal path links the conflicting components.",
+              "discovery_value": 0.425,
+              "hypothesis_id": "7b02b35d-bec2-4a08-aa05-9ec2f20fedce",
+              "kind": "DEPENDENCY_CORRECTION",
+              "metadata": {
+                "tension_kind": "COMPOSITION_FAILURE",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test dependency_correction explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.3333333333333333,
+              "tension_id": "d44e3428-60bd-4a9c-a333-7f17444b996e"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.5,
+              "description": "The composition or causal model is structurally incomplete.",
+              "discovery_value": 0.266667,
+              "hypothesis_id": "32abc425-58e0-4ae3-9983-65a2618acd75",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "COMPOSITION_FAILURE",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.8,
+              "prior": 0.3333333333333333,
+              "tension_id": "d44e3428-60bd-4a9c-a333-7f17444b996e"
+            }
+          ],
+          "obligation_id": "sequential-risk",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "32abc425-58e0-4ae3-9983-65a2618acd75": 0.333333,
+            "7b02b35d-bec2-4a08-aa05-9ec2f20fedce": 0.333333,
+            "d81aa80d-390d-4986-8a6c-cf664de1dfe1": 0.333333
+          },
+          "prior_probabilities": {
+            "32abc425-58e0-4ae3-9983-65a2618acd75": 0.333333,
+            "7b02b35d-bec2-4a08-aa05-9ec2f20fedce": 0.333333,
+            "d81aa80d-390d-4986-8a6c-cf664de1dfe1": 0.333333
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.208651,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.308333,
+              "supports_new_mechanism": 0.308333,
+              "supports_scope_split": 0.383333
+            },
+            "experiment_id": "2c6b57c0-4ba0-4344-93d6-2923d28b3082",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.198715
+          },
+          "run_id": "43f3fa8e-10c0-4cae-b7a4-81a8ec031316",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "COMPOSITION_FAILURE",
+              "metadata": {
+                "claim_id": "seq-upper-bound",
+                "inconclusive_count": 0,
+                "source_id": "composition-audit",
+                "statement": "Exact additivity versus conditional union-bound composition",
+                "tension_kind": "COMPOSITION_FAILURE"
+              },
+              "obligation_id": "sequential-risk",
+              "organizations": [
+                "Calculus-Architecture",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "composition-audit-independent",
+                "trust-type-source"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "0107e811-abd3-4b39-aeb8-520ce132f44e"
+              ],
+              "score": 1.0,
+              "statement": "Exact additivity versus conditional union-bound composition",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "e4201abd-c885-4fbd-a149-b2651d3c8189"
+              ],
+              "tension_id": "d44e3428-60bd-4a9c-a333-7f17444b996e"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "barrier-sign",
+        "expected": "TENSION",
+        "expected_kind": "MODEL_DATA_MISMATCH",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "MODEL_DATA_MISMATCH",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.814039,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "8a155db0-5313-43fb-bc76-de2a28e98828",
+              "likelihoods": {
+                "26e7e6fa-a265-4405-96a0-4d46bc3c333c": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "4022ebd5-4e54-4552-90bd-bef9c7cb6306": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "49c38b04-e02f-401e-99ed-d7e41e415ef2": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "4022ebd5-4e54-4552-90bd-bef9c7cb6306",
+                  "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba",
+                  "49c38b04-e02f-401e-99ed-d7e41e415ef2",
+                  "26e7e6fa-a265-4405-96a0-4d46bc3c333c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "ebaab385-120d-404a-9c72-c6aa3f158d0d",
+              "likelihoods": {
+                "26e7e6fa-a265-4405-96a0-4d46bc3c333c": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "4022ebd5-4e54-4552-90bd-bef9c7cb6306": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "49c38b04-e02f-401e-99ed-d7e41e415ef2": {
+                  "supports_measurement_error": 0.75,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.125
+                },
+                "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "4022ebd5-4e54-4552-90bd-bef9c7cb6306",
+                  "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba",
+                  "49c38b04-e02f-401e-99ed-d7e41e415ef2",
+                  "26e7e6fa-a265-4405-96a0-4d46bc3c333c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "7d97cb98-7191-41c4-8b80-b82847f93b04",
+              "likelihoods": {
+                "26e7e6fa-a265-4405-96a0-4d46bc3c333c": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "4022ebd5-4e54-4552-90bd-bef9c7cb6306": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "49c38b04-e02f-401e-99ed-d7e41e415ef2": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "4022ebd5-4e54-4552-90bd-bef9c7cb6306",
+                  "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba",
+                  "49c38b04-e02f-401e-99ed-d7e41e415ef2",
+                  "26e7e6fa-a265-4405-96a0-4d46bc3c333c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The claim is valid only under a narrower boundary condition or regime.",
+              "discovery_value": 0.466667,
+              "hypothesis_id": "4022ebd5-4e54-4552-90bd-bef9c7cb6306",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.7,
+              "prior": 0.25,
+              "tension_id": "e4adc3bb-1a34-40ba-b41a-c749ea1c8210"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.0,
+              "description": "A latent variable separates the apparently conflicting observations.",
+              "discovery_value": 0.34,
+              "hypothesis_id": "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba",
+              "kind": "HIDDEN_VARIABLE",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test hidden_variable explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.25,
+              "tension_id": "e4adc3bb-1a34-40ba-b41a-c749ea1c8210"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "One evidence stream contains calibration, measurement, or labeling error.",
+              "discovery_value": 0.3,
+              "hypothesis_id": "49c38b04-e02f-401e-99ed-d7e41e415ef2",
+              "kind": "CALIBRATION_ERROR",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test calibration_error explanation"
+              ],
+              "predicted_resolution": 0.6,
+              "prior": 0.25,
+              "tension_id": "e4adc3bb-1a34-40ba-b41a-c749ea1c8210"
+            },
+            {
+              "assumptions": [],
+              "complexity": 3.0,
+              "description": "The current explanatory model is incomplete and requires a new mechanism.",
+              "discovery_value": 0.257143,
+              "hypothesis_id": "26e7e6fa-a265-4405-96a0-4d46bc3c333c",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.9,
+              "prior": 0.25,
+              "tension_id": "e4adc3bb-1a34-40ba-b41a-c749ea1c8210"
+            }
+          ],
+          "obligation_id": "barrier-sign",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "26e7e6fa-a265-4405-96a0-4d46bc3c333c": 0.25,
+            "4022ebd5-4e54-4552-90bd-bef9c7cb6306": 0.25,
+            "49c38b04-e02f-401e-99ed-d7e41e415ef2": 0.25,
+            "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba": 0.25
+          },
+          "prior_probabilities": {
+            "26e7e6fa-a265-4405-96a0-4d46bc3c333c": 0.25,
+            "4022ebd5-4e54-4552-90bd-bef9c7cb6306": 0.25,
+            "49c38b04-e02f-401e-99ed-d7e41e415ef2": 0.25,
+            "89e9f6e8-2545-4e8d-bec7-4fdbdc59d9ba": 0.25
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.178141,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.33125,
+              "supports_new_mechanism": 0.33125,
+              "supports_scope_split": 0.3375
+            },
+            "experiment_id": "8a155db0-5313-43fb-bc76-de2a28e98828",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.169658
+          },
+          "run_id": "0a7658d9-d3ed-4e33-985f-ceb2489777a1",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "MODEL_DATA_MISMATCH",
+              "metadata": {
+                "claim_id": "hazard-barrier-convention",
+                "inconclusive_count": 0,
+                "source_id": "barrier-sign-audit",
+                "statement": "Barrier sign convention and drift direction",
+                "tension_kind": "MODEL_DATA_MISMATCH"
+              },
+              "obligation_id": "barrier-sign",
+              "organizations": [
+                "Control-Architecture",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "barrier-abstract-source",
+                "barrier-audit-independent"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "235084bb-327c-4d39-9a24-2c1ab776ef8e"
+              ],
+              "score": 1.0,
+              "statement": "Barrier sign convention and drift direction",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "9a50f51e-1f2c-48f9-94ab-6f4507a1b639"
+              ],
+              "tension_id": "e4adc3bb-1a34-40ba-b41a-c749ea1c8210"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "zk-zero-soundness",
+        "expected": "TENSION",
+        "expected_kind": "EVIDENCE_GAP",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "EVIDENCE_GAP",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.8144236,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "87bd95ec-4b14-49cc-ad09-94a5794be9dd",
+              "likelihoods": {
+                "2716bab0-7513-4efb-b5fb-571871b42674": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "339d8f6a-6631-4a9e-94e8-0aa87db69091": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "f8c33afb-c040-4fba-badf-b76084a4e12d": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4",
+                  "f8c33afb-c040-4fba-badf-b76084a4e12d",
+                  "339d8f6a-6631-4a9e-94e8-0aa87db69091",
+                  "2716bab0-7513-4efb-b5fb-571871b42674"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "23aa840b-730e-42fa-900b-a0725a15f8a0",
+              "likelihoods": {
+                "2716bab0-7513-4efb-b5fb-571871b42674": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "339d8f6a-6631-4a9e-94e8-0aa87db69091": {
+                  "supports_measurement_error": 0.75,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.125
+                },
+                "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "f8c33afb-c040-4fba-badf-b76084a4e12d": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4",
+                  "f8c33afb-c040-4fba-badf-b76084a4e12d",
+                  "339d8f6a-6631-4a9e-94e8-0aa87db69091",
+                  "2716bab0-7513-4efb-b5fb-571871b42674"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "873e7d72-eb7b-4ba6-93ab-0e69294d5f02",
+              "likelihoods": {
+                "2716bab0-7513-4efb-b5fb-571871b42674": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "339d8f6a-6631-4a9e-94e8-0aa87db69091": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "f8c33afb-c040-4fba-badf-b76084a4e12d": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4",
+                  "f8c33afb-c040-4fba-badf-b76084a4e12d",
+                  "339d8f6a-6631-4a9e-94e8-0aa87db69091",
+                  "2716bab0-7513-4efb-b5fb-571871b42674"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The claim is valid only under a narrower boundary condition or regime.",
+              "discovery_value": 0.466667,
+              "hypothesis_id": "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.7,
+              "prior": 0.25,
+              "tension_id": "75b0773c-be4f-4e46-9f09-038fbbdae9e8"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.0,
+              "description": "A latent variable separates the apparently conflicting observations.",
+              "discovery_value": 0.34,
+              "hypothesis_id": "f8c33afb-c040-4fba-badf-b76084a4e12d",
+              "kind": "HIDDEN_VARIABLE",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test hidden_variable explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.25,
+              "tension_id": "75b0773c-be4f-4e46-9f09-038fbbdae9e8"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "One evidence stream contains calibration, measurement, or labeling error.",
+              "discovery_value": 0.3,
+              "hypothesis_id": "339d8f6a-6631-4a9e-94e8-0aa87db69091",
+              "kind": "CALIBRATION_ERROR",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test calibration_error explanation"
+              ],
+              "predicted_resolution": 0.6,
+              "prior": 0.25,
+              "tension_id": "75b0773c-be4f-4e46-9f09-038fbbdae9e8"
+            },
+            {
+              "assumptions": [],
+              "complexity": 3.0,
+              "description": "The current explanatory model is incomplete and requires a new mechanism.",
+              "discovery_value": 0.257143,
+              "hypothesis_id": "2716bab0-7513-4efb-b5fb-571871b42674",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.9,
+              "prior": 0.25,
+              "tension_id": "75b0773c-be4f-4e46-9f09-038fbbdae9e8"
+            }
+          ],
+          "obligation_id": "zk-zero-soundness",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "2716bab0-7513-4efb-b5fb-571871b42674": 0.25,
+            "339d8f6a-6631-4a9e-94e8-0aa87db69091": 0.25,
+            "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4": 0.25,
+            "f8c33afb-c040-4fba-badf-b76084a4e12d": 0.25
+          },
+          "prior_probabilities": {
+            "2716bab0-7513-4efb-b5fb-571871b42674": 0.25,
+            "339d8f6a-6631-4a9e-94e8-0aa87db69091": 0.25,
+            "d962b0d3-1dfd-4468-98d9-2a4a5e096fe4": 0.25,
+            "f8c33afb-c040-4fba-badf-b76084a4e12d": 0.25
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.178141,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.33125,
+              "supports_new_mechanism": 0.33125,
+              "supports_scope_split": 0.3375
+            },
+            "experiment_id": "87bd95ec-4b14-49cc-ad09-94a5794be9dd",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.169658
+          },
+          "run_id": "821814a4-7a23-4479-b947-6b709ace8c93",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "EVIDENCE_GAP",
+              "metadata": {
+                "claim_id": "zk-negligible",
+                "inconclusive_count": 0,
+                "source_id": "crypto-audit",
+                "statement": "Zero soundness error versus negligible cryptographic soundness error",
+                "tension_kind": "EVIDENCE_GAP"
+              },
+              "obligation_id": "zk-zero-soundness",
+              "organizations": [
+                "Architecture-Catalog",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "crypto-audit-independent",
+                "pillar-table-source"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "fcd5327c-4715-4f4a-9808-99bf9e02fb89"
+              ],
+              "score": 1.0,
+              "statement": "Zero soundness error versus negligible cryptographic soundness error",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "7d1c145b-b910-4093-9d1e-f2e80dd8883a"
+              ],
+              "tension_id": "75b0773c-be4f-4e46-9f09-038fbbdae9e8"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "meve-cost-value",
+        "expected": "TENSION",
+        "expected_kind": "CAUSAL_CONFLICT",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "CAUSAL_CONFLICT",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.814795,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "beb0e7e2-f95b-4790-a6f0-9289e2392678",
+              "likelihoods": {
+                "0aedb858-2d5f-404f-8582-828fdf421009": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "1dab863c-2708-4014-8311-a360301b536b": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "327cce2e-81a6-4045-95fd-94510b7a9665": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "327cce2e-81a6-4045-95fd-94510b7a9665",
+                  "1dab863c-2708-4014-8311-a360301b536b",
+                  "0aedb858-2d5f-404f-8582-828fdf421009"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "914d584d-21b2-40f3-a40a-2528276cdebd",
+              "likelihoods": {
+                "0aedb858-2d5f-404f-8582-828fdf421009": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "1dab863c-2708-4014-8311-a360301b536b": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "327cce2e-81a6-4045-95fd-94510b7a9665": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "327cce2e-81a6-4045-95fd-94510b7a9665",
+                  "1dab863c-2708-4014-8311-a360301b536b",
+                  "0aedb858-2d5f-404f-8582-828fdf421009"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "31ea939d-9475-4663-80c1-e288f151e16e",
+              "likelihoods": {
+                "0aedb858-2d5f-404f-8582-828fdf421009": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "1dab863c-2708-4014-8311-a360301b536b": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "327cce2e-81a6-4045-95fd-94510b7a9665": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "327cce2e-81a6-4045-95fd-94510b7a9665",
+                  "1dab863c-2708-4014-8311-a360301b536b",
+                  "0aedb858-2d5f-404f-8582-828fdf421009"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The obligations are compatible only in a narrower operating regime.",
+              "discovery_value": 0.433333,
+              "hypothesis_id": "327cce2e-81a6-4045-95fd-94510b7a9665",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.65,
+              "prior": 0.3333333333333333,
+              "tension_id": "21b5ad8d-2f63-451e-943a-a2956875c789"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "An unmodeled dependency or causal path links the conflicting components.",
+              "discovery_value": 0.425,
+              "hypothesis_id": "1dab863c-2708-4014-8311-a360301b536b",
+              "kind": "DEPENDENCY_CORRECTION",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test dependency_correction explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.3333333333333333,
+              "tension_id": "21b5ad8d-2f63-451e-943a-a2956875c789"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.5,
+              "description": "The composition or causal model is structurally incomplete.",
+              "discovery_value": 0.266667,
+              "hypothesis_id": "0aedb858-2d5f-404f-8582-828fdf421009",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "CAUSAL_CONFLICT",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.8,
+              "prior": 0.3333333333333333,
+              "tension_id": "21b5ad8d-2f63-451e-943a-a2956875c789"
+            }
+          ],
+          "obligation_id": "meve-cost-value",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "0aedb858-2d5f-404f-8582-828fdf421009": 0.333333,
+            "1dab863c-2708-4014-8311-a360301b536b": 0.333333,
+            "327cce2e-81a6-4045-95fd-94510b7a9665": 0.333333
+          },
+          "prior_probabilities": {
+            "0aedb858-2d5f-404f-8582-828fdf421009": 0.333333,
+            "1dab863c-2708-4014-8311-a360301b536b": 0.333333,
+            "327cce2e-81a6-4045-95fd-94510b7a9665": 0.333333
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.208651,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.308333,
+              "supports_new_mechanism": 0.308333,
+              "supports_scope_split": 0.383333
+            },
+            "experiment_id": "beb0e7e2-f95b-4790-a6f0-9289e2392678",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.198715
+          },
+          "run_id": "1fdeff41-2796-43a5-baa4-f3d517d7ed62",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "CAUSAL_CONFLICT",
+              "metadata": {
+                "claim_id": "diminishing-return",
+                "inconclusive_count": 0,
+                "source_id": "economic-audit",
+                "statement": "Whether maximizing cost necessarily maximizes value",
+                "tension_kind": "CAUSAL_CONFLICT"
+              },
+              "obligation_id": "meve-cost-value",
+              "organizations": [
+                "NEXUS-Audit",
+                "Universal-Systemics"
+              ],
+              "provenance_groups": [
+                "economic-audit-independent",
+                "meve-source"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "899df7d0-762e-4e5d-ba4c-3b2f3f20a46f"
+              ],
+              "score": 1.0,
+              "statement": "Whether maximizing cost necessarily maximizes value",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "75fcedd6-9863-4101-8f3f-a209c4a7976b"
+              ],
+              "tension_id": "21b5ad8d-2f63-451e-943a-a2956875c789"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "proof-status",
+        "expected": "TENSION",
+        "expected_kind": "EVIDENCE_GAP",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "EVIDENCE_GAP",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.815184,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "8516330f-008d-4656-bc70-2b75a1fe3736",
+              "likelihoods": {
+                "2e1f9dae-9deb-4517-9ccf-5a9eff48545c": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "593c7f14-ffda-48cd-82a9-b6c0d1329533": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "5f0349de-dec8-4e15-85cf-10e4b8f55e85": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "a1e7135a-0f37-4a76-a76e-f70f02d1a743": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "5f0349de-dec8-4e15-85cf-10e4b8f55e85",
+                  "593c7f14-ffda-48cd-82a9-b6c0d1329533",
+                  "a1e7135a-0f37-4a76-a76e-f70f02d1a743",
+                  "2e1f9dae-9deb-4517-9ccf-5a9eff48545c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "e78a7175-d924-4e28-bc55-a554ec4337c4",
+              "likelihoods": {
+                "2e1f9dae-9deb-4517-9ccf-5a9eff48545c": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "593c7f14-ffda-48cd-82a9-b6c0d1329533": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "5f0349de-dec8-4e15-85cf-10e4b8f55e85": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "a1e7135a-0f37-4a76-a76e-f70f02d1a743": {
+                  "supports_measurement_error": 0.75,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "5f0349de-dec8-4e15-85cf-10e4b8f55e85",
+                  "593c7f14-ffda-48cd-82a9-b6c0d1329533",
+                  "a1e7135a-0f37-4a76-a76e-f70f02d1a743",
+                  "2e1f9dae-9deb-4517-9ccf-5a9eff48545c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "7df9a3ab-d52e-47bf-beb9-b8a65e524449",
+              "likelihoods": {
+                "2e1f9dae-9deb-4517-9ccf-5a9eff48545c": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "593c7f14-ffda-48cd-82a9-b6c0d1329533": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "5f0349de-dec8-4e15-85cf-10e4b8f55e85": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "a1e7135a-0f37-4a76-a76e-f70f02d1a743": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "5f0349de-dec8-4e15-85cf-10e4b8f55e85",
+                  "593c7f14-ffda-48cd-82a9-b6c0d1329533",
+                  "a1e7135a-0f37-4a76-a76e-f70f02d1a743",
+                  "2e1f9dae-9deb-4517-9ccf-5a9eff48545c"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The claim is valid only under a narrower boundary condition or regime.",
+              "discovery_value": 0.466667,
+              "hypothesis_id": "5f0349de-dec8-4e15-85cf-10e4b8f55e85",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.7,
+              "prior": 0.25,
+              "tension_id": "ee9d3838-b5b7-4967-8671-1c159f807632"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.0,
+              "description": "A latent variable separates the apparently conflicting observations.",
+              "discovery_value": 0.34,
+              "hypothesis_id": "593c7f14-ffda-48cd-82a9-b6c0d1329533",
+              "kind": "HIDDEN_VARIABLE",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test hidden_variable explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.25,
+              "tension_id": "ee9d3838-b5b7-4967-8671-1c159f807632"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "One evidence stream contains calibration, measurement, or labeling error.",
+              "discovery_value": 0.3,
+              "hypothesis_id": "a1e7135a-0f37-4a76-a76e-f70f02d1a743",
+              "kind": "CALIBRATION_ERROR",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test calibration_error explanation"
+              ],
+              "predicted_resolution": 0.6,
+              "prior": 0.25,
+              "tension_id": "ee9d3838-b5b7-4967-8671-1c159f807632"
+            },
+            {
+              "assumptions": [],
+              "complexity": 3.0,
+              "description": "The current explanatory model is incomplete and requires a new mechanism.",
+              "discovery_value": 0.257143,
+              "hypothesis_id": "2e1f9dae-9deb-4517-9ccf-5a9eff48545c",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "EVIDENCE_GAP",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.9,
+              "prior": 0.25,
+              "tension_id": "ee9d3838-b5b7-4967-8671-1c159f807632"
+            }
+          ],
+          "obligation_id": "proof-status",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "2e1f9dae-9deb-4517-9ccf-5a9eff48545c": 0.25,
+            "593c7f14-ffda-48cd-82a9-b6c0d1329533": 0.25,
+            "5f0349de-dec8-4e15-85cf-10e4b8f55e85": 0.25,
+            "a1e7135a-0f37-4a76-a76e-f70f02d1a743": 0.25
+          },
+          "prior_probabilities": {
+            "2e1f9dae-9deb-4517-9ccf-5a9eff48545c": 0.25,
+            "593c7f14-ffda-48cd-82a9-b6c0d1329533": 0.25,
+            "5f0349de-dec8-4e15-85cf-10e4b8f55e85": 0.25,
+            "a1e7135a-0f37-4a76-a76e-f70f02d1a743": 0.25
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.178141,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.33125,
+              "supports_new_mechanism": 0.33125,
+              "supports_scope_split": 0.3375
+            },
+            "experiment_id": "8516330f-008d-4656-bc70-2b75a1fe3736",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.169658
+          },
+          "run_id": "4a825982-6872-4913-90d4-1a9cbdad90c3",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "EVIDENCE_GAP",
+              "metadata": {
+                "claim_id": "repository-not-rebuilt",
+                "inconclusive_count": 0,
+                "source_id": "proof-reproduction-audit",
+                "statement": "Reported kernel verification versus independently reproduced proof",
+                "tension_kind": "EVIDENCE_GAP"
+              },
+              "obligation_id": "proof-status",
+              "organizations": [
+                "Formalization-Program",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "report-source",
+                "reproduction-audit-independent"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "0cfee365-ff88-4030-aad1-cdc9b54977b1"
+              ],
+              "score": 1.0,
+              "statement": "Reported kernel verification versus independently reproduced proof",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "9804e295-eda7-4613-a11f-92b600494e95"
+              ],
+              "tension_id": "ee9d3838-b5b7-4967-8671-1c159f807632"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": false,
+        "case_id": "landauer-search",
+        "expected": "TENSION",
+        "expected_kind": "MODEL_DATA_MISMATCH",
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": "MODEL_DATA_MISMATCH",
+        "predicted_tension": true,
+        "provenance_groups": 2,
+        "recommended_experiment": "Stratified replication across regimes",
+        "report": {
+          "created_at": 1784023979.8155696,
+          "experiments": [
+            {
+              "cost": 1.0,
+              "description": "Stratified replication across regimes",
+              "experiment_id": "fd3f78fc-ccd0-4667-b42d-0e4bec1ad2db",
+              "likelihoods": {
+                "2f364b80-34e5-4904-a1de-735510406a39": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "38b97db6-9527-4152-8825-b894b2013620": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                },
+                "8e570e47-b706-4839-89c6-a32b866ec643": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.75
+                },
+                "e3f92ff6-0bf6-44ac-8a76-730d932388b2": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.2
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "8e570e47-b706-4839-89c6-a32b866ec643",
+                  "2f364b80-34e5-4904-a1de-735510406a39",
+                  "e3f92ff6-0bf6-44ac-8a76-730d932388b2",
+                  "38b97db6-9527-4152-8825-b894b2013620"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.2,
+              "description": "Independent recalibration and blinded replication",
+              "experiment_id": "d2995961-ba1b-4f78-83ef-1af97086ed82",
+              "likelihoods": {
+                "2f364b80-34e5-4904-a1de-735510406a39": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "38b97db6-9527-4152-8825-b894b2013620": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "8e570e47-b706-4839-89c6-a32b866ec643": {
+                  "supports_measurement_error": 0.2,
+                  "supports_new_mechanism": 0.4,
+                  "supports_scope_split": 0.4
+                },
+                "e3f92ff6-0bf6-44ac-8a76-730d932388b2": {
+                  "supports_measurement_error": 0.75,
+                  "supports_new_mechanism": 0.125,
+                  "supports_scope_split": 0.125
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "8e570e47-b706-4839-89c6-a32b866ec643",
+                  "2f364b80-34e5-4904-a1de-735510406a39",
+                  "e3f92ff6-0bf6-44ac-8a76-730d932388b2",
+                  "38b97db6-9527-4152-8825-b894b2013620"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            },
+            {
+              "cost": 1.5,
+              "description": "Targeted intervention on the suspected latent dependency",
+              "experiment_id": "f3facb23-da05-41ca-b876-7183815c9acb",
+              "likelihoods": {
+                "2f364b80-34e5-4904-a1de-735510406a39": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "38b97db6-9527-4152-8825-b894b2013620": {
+                  "supports_measurement_error": 0.125,
+                  "supports_new_mechanism": 0.75,
+                  "supports_scope_split": 0.125
+                },
+                "8e570e47-b706-4839-89c6-a32b866ec643": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                },
+                "e3f92ff6-0bf6-44ac-8a76-730d932388b2": {
+                  "supports_measurement_error": 0.4,
+                  "supports_new_mechanism": 0.2,
+                  "supports_scope_split": 0.4
+                }
+              },
+              "metadata": {
+                "default_generated": true,
+                "hypothesis_ids": [
+                  "8e570e47-b706-4839-89c6-a32b866ec643",
+                  "2f364b80-34e5-4904-a1de-735510406a39",
+                  "e3f92ff6-0bf6-44ac-8a76-730d932388b2",
+                  "38b97db6-9527-4152-8825-b894b2013620"
+                ]
+              },
+              "outcomes": [
+                "supports_scope_split",
+                "supports_measurement_error",
+                "supports_new_mechanism"
+              ],
+              "prerequisites": [],
+              "risk": 0.05
+            }
+          ],
+          "hypotheses": [
+            {
+              "assumptions": [],
+              "complexity": 1.0,
+              "description": "The claim is valid only under a narrower boundary condition or regime.",
+              "discovery_value": 0.466667,
+              "hypothesis_id": "8e570e47-b706-4839-89c6-a32b866ec643",
+              "kind": "NARROW_SCOPE",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test narrow_scope explanation"
+              ],
+              "predicted_resolution": 0.7,
+              "prior": 0.25,
+              "tension_id": "35c6021e-0749-4b15-9101-9c912bc5704f"
+            },
+            {
+              "assumptions": [],
+              "complexity": 2.0,
+              "description": "A latent variable separates the apparently conflicting observations.",
+              "discovery_value": 0.34,
+              "hypothesis_id": "2f364b80-34e5-4904-a1de-735510406a39",
+              "kind": "HIDDEN_VARIABLE",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test hidden_variable explanation"
+              ],
+              "predicted_resolution": 0.85,
+              "prior": 0.25,
+              "tension_id": "35c6021e-0749-4b15-9101-9c912bc5704f"
+            },
+            {
+              "assumptions": [],
+              "complexity": 1.5,
+              "description": "One evidence stream contains calibration, measurement, or labeling error.",
+              "discovery_value": 0.3,
+              "hypothesis_id": "e3f92ff6-0bf6-44ac-8a76-730d932388b2",
+              "kind": "CALIBRATION_ERROR",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test calibration_error explanation"
+              ],
+              "predicted_resolution": 0.6,
+              "prior": 0.25,
+              "tension_id": "35c6021e-0749-4b15-9101-9c912bc5704f"
+            },
+            {
+              "assumptions": [],
+              "complexity": 3.0,
+              "description": "The current explanatory model is incomplete and requires a new mechanism.",
+              "discovery_value": 0.257143,
+              "hypothesis_id": "38b97db6-9527-4152-8825-b894b2013620",
+              "kind": "MODEL_REVISION",
+              "metadata": {
+                "tension_kind": "MODEL_DATA_MISMATCH",
+                "tension_score": 1.0
+              },
+              "new_obligations": [
+                "Test model_revision explanation"
+              ],
+              "predicted_resolution": 0.9,
+              "prior": 0.25,
+              "tension_id": "35c6021e-0749-4b15-9101-9c912bc5704f"
+            }
+          ],
+          "obligation_id": "landauer-search",
+          "observed_result": null,
+          "posterior_probabilities": {
+            "2f364b80-34e5-4904-a1de-735510406a39": 0.25,
+            "38b97db6-9527-4152-8825-b894b2013620": 0.25,
+            "8e570e47-b706-4839-89c6-a32b866ec643": 0.25,
+            "e3f92ff6-0bf6-44ac-8a76-730d932388b2": 0.25
+          },
+          "prior_probabilities": {
+            "2f364b80-34e5-4904-a1de-735510406a39": 0.25,
+            "38b97db6-9527-4152-8825-b894b2013620": 0.25,
+            "8e570e47-b706-4839-89c6-a32b866ec643": 0.25,
+            "e3f92ff6-0bf6-44ac-8a76-730d932388b2": 0.25
+          },
+          "reasons": [
+            "Independent supporting and refuting evidence creates an obligation tension",
+            "Hypotheses are ranked by predicted resolution relative to explanatory burden"
+          ],
+          "recommendation": {
+            "expected_information_gain": 0.178141,
+            "expected_outcome_probabilities": {
+              "supports_measurement_error": 0.33125,
+              "supports_new_mechanism": 0.33125,
+              "supports_scope_split": 0.3375
+            },
+            "experiment_id": "fd3f78fc-ccd0-4667-b42d-0e4bec1ad2db",
+            "rationale": [
+              "Maximizes expected reduction in hypothesis uncertainty",
+              "Penalizes experiment cost and declared risk"
+            ],
+            "utility": 0.169658
+          },
+          "run_id": "91c1758e-2ab0-4cd4-9097-8d8da26c22c2",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "EXPERIMENT_RECOMMENDED",
+          "tension_reduction": 0.0,
+          "tension_score_after": 1.0,
+          "tension_score_before": 1.0,
+          "tensions": [
+            {
+              "kind": "MODEL_DATA_MISMATCH",
+              "metadata": {
+                "claim_id": "search-not-erasure",
+                "inconclusive_count": 0,
+                "source_id": "landauer-audit",
+                "statement": "Search-space information versus irreversible erasure lower bound",
+                "tension_kind": "MODEL_DATA_MISMATCH"
+              },
+              "obligation_id": "landauer-search",
+              "organizations": [
+                "Aquinas",
+                "NEXUS-Audit"
+              ],
+              "provenance_groups": [
+                "budgeted-search-source",
+                "landauer-audit-independent"
+              ],
+              "refute_weight": 1.0,
+              "refuting_evidence": [
+                "cec3891a-c845-4ea7-8c19-fd28eee0e82e"
+              ],
+              "score": 1.0,
+              "statement": "Search-space information versus irreversible erasure lower bound",
+              "support_weight": 1.0,
+              "supporting_evidence": [
+                "1a784e34-0cd1-452d-b4a5-94cfacc00452"
+              ],
+              "tension_id": "35c6021e-0749-4b15-9101-9c912bc5704f"
+            }
+          ]
+        },
+        "source_count": 2,
+        "tension_score": 1.0
+      },
+      {
+        "abstained_correctly": true,
+        "case_id": "unavailable-verifier-control",
+        "expected": "NO_TENSION",
+        "expected_kind": null,
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": null,
+        "predicted_tension": false,
+        "provenance_groups": 2,
+        "recommended_experiment": null,
+        "report": {
+          "created_at": 1784023979.8157988,
+          "experiments": [],
+          "hypotheses": [],
+          "obligation_id": "unavailable-verifier-control",
+          "observed_result": null,
+          "posterior_probabilities": {},
+          "prior_probabilities": {},
+          "reasons": [
+            "No independently supported contradiction was detected"
+          ],
+          "recommendation": null,
+          "run_id": "ad73114f-c8c0-4f41-91b0-3648a40f0d77",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "NO_TENSION",
+          "tension_reduction": 0.0,
+          "tension_score_after": 0.0,
+          "tension_score_before": 0.0,
+          "tensions": []
+        },
+        "source_count": 2,
+        "tension_score": 0.0
+      },
+      {
+        "abstained_correctly": true,
+        "case_id": "proof-recipe-control",
+        "expected": "NO_TENSION",
+        "expected_kind": null,
+        "experiment_match": true,
+        "false_discovery": false,
+        "kind_match": true,
+        "missed_tension": false,
+        "predicted_kind": null,
+        "predicted_tension": false,
+        "provenance_groups": 2,
+        "recommended_experiment": null,
+        "report": {
+          "created_at": 1784023979.8159752,
+          "experiments": [],
+          "hypotheses": [],
+          "obligation_id": "proof-recipe-control",
+          "observed_result": null,
+          "posterior_probabilities": {},
+          "prior_probabilities": {},
+          "reasons": [
+            "No independently supported contradiction was detected"
+          ],
+          "recommendation": null,
+          "run_id": "0a2526e5-fd0c-4431-bea5-457e92d6b877",
+          "schema": "https://nexus-u.dev/tension-discovery/v1",
+          "status": "NO_TENSION",
+          "tension_reduction": 0.0,
+          "tension_score_after": 0.0,
+          "tension_score_before": 0.0,
+          "tensions": []
+        },
+        "source_count": 2,
+        "tension_score": 0.0
+      }
+    ],
+    "corpus_hash": "d08a965b22fd3afe6e125e584b91f4aed7f0ac2f7d0f66c44a5d8f6946e47cf2",
+    "created_at": 1784023979.8162327,
+    "engine_version": "2.6.0",
+    "metadata": {
+      "description": "Blind, provenance-bearing trials derived from heterogeneous architecture, physics, verification, and release artifacts.",
+      "label_visibility": "Expected labels are withheld from the discovery engine and used only for scoring.",
+      "limitations": "Curated corpus; not an independent scientific-discovery benchmark."
+    },
+    "run_id": "2fb8f4b9-e288-4e72-a943-3af6b0484a9a",
+    "schema": "https://nexus-u.dev/discovery-trials/v1",
+    "suite_id": "nexus-u-corpus-trials-v1",
+    "summary": {
+      "case_count": 10,
+      "correct_abstentions": 2,
+      "experiment_matches": 8,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "kind_matches": 8,
+      "negative_controls": 2,
+      "positive_cases": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "true_negatives": 2,
+      "true_positives": 8
+    }
+  },
+  "signature": "dad100ceaee3d7d67f18015a150e657eec3a8df6a9fa4c60a5d0c62af362c6aa"
+}

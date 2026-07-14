@@ -1,9 +1,8 @@
 {
-  "axioms": [],
-  "bundle_sha256": "377210fa66f3f639a0b1c597de527710612d0673ff185e793953a17c9a59a0d5",
+  "bundle_sha256": "b030cfa7679f6d57630213767001a7aad6ee3a323ece1d6638dbc29e22fd0512",
   "external_lean_compatible": false,
-  "kernel": "nexus-kernel-v0.1.0-recovered",
-  "kernel_sha256": "8d74dc18e3b95f3b64ce7bbc1f83a92975d422558eed1fca5c1937e3c47f8b53",
+  "kernel": "nexus-kernel-v0.1.0",
+  "kernel_sha256": "bb319e79f50d3f96f8f0d6c2ba1e5b66b796c313eea401ade5693bc382ae8dce",
   "proof": {
     "body": {
       "body": {
@@ -159,7 +158,8 @@
     },
     "tag": "Lam"
   },
-  "scope": "constructive generic sensitivity-to-query contradiction lemma",
+  "schema": "https://nexus-u.dev/nexus-kernel-proof/v1",
+  "scope": "generic deterministic decision-path sensitivity lemma with explicit decidability",
   "theorem": {
     "codomain": {
       "codomain": {
@@ -252,5 +252,15 @@
     },
     "tag": "Pi"
   },
-  "universal_offline_lower_bound_status": "OPEN"
+  "theorem_id": "sensitivity-to-query-constructive-v1",
+  "universal_integer_multiplication_lower_bound": "OPEN",
+  "verification": {
+    "axioms": [],
+    "kernel": "nexus-kernel-v0.1.0",
+    "kernel_sha256": "bb319e79f50d3f96f8f0d6c2ba1e5b66b796c313eea401ade5693bc382ae8dce",
+    "proof_depth": 14,
+    "proof_nodes": 45,
+    "theorem_nodes": 27,
+    "valid": true
+  }
 }

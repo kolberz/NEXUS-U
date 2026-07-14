@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/lower-bound-lab.schema.json",
+  "title": "NEXUS-U Lower-Bound Laboratory Report",
+  "type": "object",
+  "required": ["schema", "run_id", "challenge_id", "integrity_valid", "claims", "reductions", "audits", "agenda", "summary"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/lower-bound-lab/v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "challenge_id": {"type": "string", "minLength": 1},
+    "integrity_valid": {"type": "boolean"},
+    "integrity_errors": {"type": "array", "items": {"type": "string"}},
+    "claims": {"type": "array", "items": {"type": "object"}},
+    "reductions": {"type": "array", "items": {"type": "object"}},
+    "audits": {"type": "array", "items": {"type": "object"}},
+    "agenda": {"type": "array", "items": {"type": "object"}},
+    "summary": {
+      "type": "object",
+      "required": ["proved_upper_bound_present", "unconditional_universal_lower_bound_status", "matrix_transposition_route_conditional", "no_false_solution_claim"]
+    }
+  }
+}

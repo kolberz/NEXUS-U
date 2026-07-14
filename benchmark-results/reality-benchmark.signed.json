@@ -1,0 +1,362 @@
+{
+  "algorithm": "HMAC-SHA256",
+  "key_id": "reality-loop-local",
+  "payload": {
+    "cases": [
+      {
+        "artifact_id": "81adb435-2f45-4b3e-8061-f9c8351e0802",
+        "artifact_path": "/mnt/data/nexus_u_prod_v2_6/benchmark-results/artifacts/81adb435-2f45-4b3e-8061-f9c8351e0802.json",
+        "baseline_duration_seconds": 1.276028,
+        "baseline_passed": true,
+        "case_id": "good_delivery",
+        "expected_baseline": true,
+        "expected_nexus": true,
+        "hidden_obligation_caught": false,
+        "nexus_duration_seconds": 3.123457,
+        "nexus_released": true,
+        "nexus_status": "RELEASED",
+        "obligation_metrics": {
+          "active_delta": 0,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "CLAIM": 1,
+            "EVIDENCE": 22,
+            "INTENT": 1,
+            "POLICY": 8,
+            "PROVENANCE": 1,
+            "REQUIREMENT": 2,
+            "SAFETY": 1,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_operation": {
+            "ADD_EVIDENCE": 22,
+            "ADD_RELATION": 30,
+            "CREATE_OBLIGATION": 17,
+            "DISCHARGE_OBLIGATION": 15,
+            "artifact_released": 1,
+            "task_initialized": 1
+          },
+          "created": 17,
+          "critical_created": 1,
+          "critical_unresolved": 0,
+          "deferred": 0,
+          "discharged": 15,
+          "escalated": 0,
+          "evidence_added": 22,
+          "final_active": 0,
+          "final_weighted_debt": 2.2,
+          "initial_active": 0,
+          "initial_weighted_debt": 143.0,
+          "maximum_discharge_seconds": 2.507061,
+          "mean_discharge_seconds": 0.501097,
+          "refuted": 0,
+          "reopened": 0,
+          "resolution_ratio": 0.984615,
+          "transferred": 0,
+          "weight_resolved": 140.8,
+          "weighted_debt_delta": -140.8
+        },
+        "obligation_summary": {
+          "blocking_unresolved_count": 0,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "CLAIM": 1,
+            "EVIDENCE": 22,
+            "INTENT": 1,
+            "POLICY": 8,
+            "PROVENANCE": 1,
+            "REQUIREMENT": 2,
+            "SAFETY": 1,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_status": {
+            "ACKNOWLEDGED": 2,
+            "DISCHARGED": 37
+          },
+          "conservation_errors": [],
+          "conservation_valid": true,
+          "edge_count": 30,
+          "epistemic_potential": 2.2,
+          "event_count": 86,
+          "graph_id": "task:4fc3894f0fbe4c79a0ac455f98f847a3",
+          "node_count": 39,
+          "sha256": "a86ab8f7538df74a12e977201b0e776be06eb0780fcc963361acb766e85fe3e8",
+          "unresolved_count": 0
+        },
+        "unresolved": []
+      },
+      {
+        "artifact_id": "35618c31-9a03-4475-9b82-3ce43d5a83bf",
+        "artifact_path": "/mnt/data/nexus_u_prod_v2_6/benchmark-results/artifacts/35618c31-9a03-4475-9b82-3ce43d5a83bf.json",
+        "baseline_duration_seconds": 1.320503,
+        "baseline_passed": true,
+        "case_id": "hidden_security_violation",
+        "expected_baseline": true,
+        "expected_nexus": false,
+        "hidden_obligation_caught": true,
+        "nexus_duration_seconds": 3.701468,
+        "nexus_released": false,
+        "nexus_status": "PARTIAL",
+        "obligation_metrics": {
+          "active_delta": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 12,
+            "INTENT": 1,
+            "POLICY": 7,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_operation": {
+            "ADD_EVIDENCE": 12,
+            "ADD_RELATION": 12,
+            "CREATE_OBLIGATION": 14,
+            "DEFER_OBLIGATION": 2,
+            "DISCHARGE_OBLIGATION": 6,
+            "REFUTE_OBLIGATION": 1,
+            "obligation_routes_recommended": 1,
+            "task_initialized": 1
+          },
+          "created": 14,
+          "critical_created": 0,
+          "critical_unresolved": 0,
+          "deferred": 2,
+          "discharged": 6,
+          "escalated": 0,
+          "evidence_added": 12,
+          "final_active": 5,
+          "final_weighted_debt": 39.0,
+          "initial_active": 0,
+          "initial_weighted_debt": 107.0,
+          "maximum_discharge_seconds": 8.5e-05,
+          "mean_discharge_seconds": 5.5e-05,
+          "refuted": 1,
+          "reopened": 0,
+          "resolution_ratio": 0.635514,
+          "transferred": 0,
+          "weight_resolved": 68.0,
+          "weighted_debt_delta": -68.0
+        },
+        "obligation_summary": {
+          "blocking_unresolved_count": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 12,
+            "INTENT": 1,
+            "POLICY": 7,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_status": {
+            "ACKNOWLEDGED": 2,
+            "DEFERRED": 2,
+            "DISCHARGED": 18,
+            "OPEN": 3,
+            "REFUTED": 1
+          },
+          "conservation_errors": [],
+          "conservation_valid": true,
+          "edge_count": 12,
+          "epistemic_potential": 39.0,
+          "event_count": 49,
+          "graph_id": "task:6404091caff54cd686fa2f5726c9cc42",
+          "node_count": 26,
+          "sha256": "2c4cb99a064859d1e9ce57691a0e7542caecfe7f3b4de5ce0fce53ef3c6ef6d0",
+          "unresolved_count": 5
+        },
+        "unresolved": [
+          "forbidden_pattern failed for calc.py"
+        ]
+      },
+      {
+        "artifact_id": "5786a32e-1ae8-4b6d-ba08-f6bcf85c66e2",
+        "artifact_path": "/mnt/data/nexus_u_prod_v2_6/benchmark-results/artifacts/5786a32e-1ae8-4b6d-ba08-f6bcf85c66e2.json",
+        "baseline_duration_seconds": 1.284487,
+        "baseline_passed": true,
+        "case_id": "missing_rollback",
+        "expected_baseline": true,
+        "expected_nexus": false,
+        "hidden_obligation_caught": true,
+        "nexus_duration_seconds": 3.208526,
+        "nexus_released": false,
+        "nexus_status": "PARTIAL",
+        "obligation_metrics": {
+          "active_delta": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 12,
+            "INTENT": 1,
+            "POLICY": 7,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_operation": {
+            "ADD_EVIDENCE": 12,
+            "ADD_RELATION": 12,
+            "CREATE_OBLIGATION": 14,
+            "DEFER_OBLIGATION": 2,
+            "DISCHARGE_OBLIGATION": 6,
+            "REFUTE_OBLIGATION": 1,
+            "obligation_routes_recommended": 1,
+            "task_initialized": 1
+          },
+          "created": 14,
+          "critical_created": 0,
+          "critical_unresolved": 0,
+          "deferred": 2,
+          "discharged": 6,
+          "escalated": 0,
+          "evidence_added": 12,
+          "final_active": 5,
+          "final_weighted_debt": 39.0,
+          "initial_active": 0,
+          "initial_weighted_debt": 107.0,
+          "maximum_discharge_seconds": 0.000115,
+          "mean_discharge_seconds": 6.3e-05,
+          "refuted": 1,
+          "reopened": 0,
+          "resolution_ratio": 0.635514,
+          "transferred": 0,
+          "weight_resolved": 68.0,
+          "weighted_debt_delta": -68.0
+        },
+        "obligation_summary": {
+          "blocking_unresolved_count": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 12,
+            "INTENT": 1,
+            "POLICY": 7,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_status": {
+            "ACKNOWLEDGED": 2,
+            "DEFERRED": 2,
+            "DISCHARGED": 18,
+            "OPEN": 3,
+            "REFUTED": 1
+          },
+          "conservation_errors": [],
+          "conservation_valid": true,
+          "edge_count": 12,
+          "epistemic_potential": 39.0,
+          "event_count": 49,
+          "graph_id": "task:4959fe4e466f4f57a30125ebef8d6ab8",
+          "node_count": 26,
+          "sha256": "a21e882c279a37877677e56ecd6cdcabe7f009268c7ba285430d8351f40aa072",
+          "unresolved_count": 5
+        },
+        "unresolved": [
+          "Rollback command is required but missing"
+        ]
+      },
+      {
+        "artifact_id": "86b61e92-61d6-43d6-b050-21d65929e062",
+        "artifact_path": "/mnt/data/nexus_u_prod_v2_6/benchmark-results/artifacts/86b61e92-61d6-43d6-b050-21d65929e062.json",
+        "baseline_duration_seconds": 1.347921,
+        "baseline_passed": true,
+        "case_id": "intent_drift",
+        "expected_baseline": true,
+        "expected_nexus": false,
+        "hidden_obligation_caught": true,
+        "nexus_duration_seconds": 3.240737,
+        "nexus_released": false,
+        "nexus_status": "PARTIAL",
+        "obligation_metrics": {
+          "active_delta": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 11,
+            "INTENT": 1,
+            "POLICY": 6,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_operation": {
+            "ADD_EVIDENCE": 11,
+            "ADD_RELATION": 11,
+            "CREATE_OBLIGATION": 13,
+            "DEFER_OBLIGATION": 2,
+            "DISCHARGE_OBLIGATION": 5,
+            "REFUTE_OBLIGATION": 1,
+            "obligation_routes_recommended": 1,
+            "task_initialized": 1
+          },
+          "created": 13,
+          "critical_created": 0,
+          "critical_unresolved": 0,
+          "deferred": 2,
+          "discharged": 5,
+          "escalated": 0,
+          "evidence_added": 11,
+          "final_active": 5,
+          "final_weighted_debt": 39.0,
+          "initial_active": 0,
+          "initial_weighted_debt": 99.0,
+          "maximum_discharge_seconds": 9e-05,
+          "mean_discharge_seconds": 7.5e-05,
+          "refuted": 1,
+          "reopened": 0,
+          "resolution_ratio": 0.606061,
+          "transferred": 0,
+          "weight_resolved": 60.0,
+          "weighted_debt_delta": -60.0
+        },
+        "obligation_summary": {
+          "blocking_unresolved_count": 5,
+          "by_kind": {
+            "ASSUMPTION": 1,
+            "EVIDENCE": 11,
+            "INTENT": 1,
+            "POLICY": 6,
+            "REQUIREMENT": 3,
+            "SPECIFICATION": 1,
+            "TEST": 1
+          },
+          "by_status": {
+            "ACKNOWLEDGED": 2,
+            "DEFERRED": 2,
+            "DISCHARGED": 16,
+            "OPEN": 3,
+            "REFUTED": 1
+          },
+          "conservation_errors": [],
+          "conservation_valid": true,
+          "edge_count": 11,
+          "epistemic_potential": 39.0,
+          "event_count": 45,
+          "graph_id": "task:08c6e282ea344a9c8c640cdd8a837ea7",
+          "node_count": 24,
+          "sha256": "6d77968b4241a6fb81b09ed50a5513f16d9a53d8613cc28a49fa1cb21724ef65",
+          "unresolved_count": 5
+        },
+        "unresolved": [
+          "required_pattern failed for calc.py"
+        ]
+      }
+    ],
+    "completed_at": 1784023974.324797,
+    "schema": "https://nexus-u.dev/reality-benchmark/v1",
+    "started_at": 1784023955.8134723,
+    "suite": "nexus-u-reality-loop-v1",
+    "summary": {
+      "baseline_passes": 4,
+      "case_count": 4,
+      "expected_outcome_rate": 1.0,
+      "expected_outcomes_matched": 4,
+      "hidden_obligations_caught": 3,
+      "mean_baseline_seconds": 1.307235,
+      "mean_nexus_seconds": 3.318547,
+      "nexus_releases": 1
+    }
+  },
+  "signature": "518f5063484af9c9fa9833c809500aff1f07ae033cf14f3a8b2ea522d4e49cdf"
+}

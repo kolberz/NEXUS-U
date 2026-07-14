@@ -1,0 +1,17 @@
+name: Lean kernel bridge
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/lean-kernel-bridge
+      - name: Verify replay manifest inputs
+        run: python scripts/verify_kernel_bridge_manifest.py

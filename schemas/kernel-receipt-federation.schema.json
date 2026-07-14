@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/kernel-receipt-federation.schema.json",
+  "title": "NEXUS-U Kernel Receipt Federation Report",
+  "type": "object",
+  "required": ["schema", "summary", "request", "decision", "checks"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/kernel-receipt-benchmark/v1"},
+    "summary": {
+      "type": "object",
+      "required": ["quorum_status", "theorem_status", "external_independence_claimed", "universal_target_status"]
+    },
+    "request": {"type": "object"},
+    "decision": {"type": "object"},
+    "checks": {"type": "object"}
+  }
+}

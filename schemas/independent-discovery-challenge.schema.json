@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexus-u.dev/schemas/independent-discovery-challenge.schema.json",
+  "title": "NEXUS-U Independent Discovery Challenge Report",
+  "type": "object",
+  "required": ["schema", "run_id", "challenge_id", "corpus_hash", "labels_hash", "source_registry_hash", "summary", "cases"],
+  "properties": {
+    "schema": {"const": "https://nexus-u.dev/independent-discovery-challenge/v1"},
+    "run_id": {"type": "string"},
+    "challenge_id": {"type": "string"},
+    "corpus_hash": {"type": "string", "minLength": 64, "maxLength": 64},
+    "labels_hash": {"type": "string", "minLength": 64, "maxLength": 64},
+    "source_registry_hash": {"type": "string", "minLength": 64, "maxLength": 64},
+    "label_firewall_verified": {"type": "boolean"},
+    "summary": {"type": "object"},
+    "cases": {"type": "array"}
+  }
+}

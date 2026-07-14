@@ -1,0 +1,76 @@
+{
+  "corpus_hash": "3e6839c9467ec3e63823f7a672fc020aded498aed14cae368bec6bf7c61c1973",
+  "created_at": 1784023982.8394709,
+  "engine_version": "2.6.0",
+  "evaluator_quorum": 3,
+  "evaluators": [
+    {
+      "evaluator_id": "local-replay-a",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-a",
+      "organization": "local-isolated-a"
+    },
+    {
+      "evaluator_id": "local-replay-b",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-b",
+      "organization": "local-isolated-b"
+    },
+    {
+      "evaluator_id": "local-replay-c",
+      "independence_scope": "process_isolated_not_external",
+      "key_id": "local-replay-key-c",
+      "organization": "local-isolated-c"
+    }
+  ],
+  "labels_hash": "70f53fd0b0f08badf6be0e4105859130f953ee2399f05ed2a6405301c8bf41be",
+  "metadata": {
+    "challenge_id": "nexus-u-independent-discovery-v1",
+    "evaluation_scope": "local process-isolated reproduction; external evaluators not yet completed",
+    "external_independence_claimed": false,
+    "labels_physically_separated_during_inference": true,
+    "registry_metadata": {
+      "purpose": "Independent external-corpus discovery evaluation",
+      "registry_version": "1.0",
+      "snapshot_policy": "Only compact attributed records required by the benchmark are bundled. Full upstream datasets are not redistributed."
+    },
+    "source_metadata": {
+      "corpus_origin": "independently published external datasets",
+      "evaluation_mode": "blind-label-firewall",
+      "limitations": "Compact benchmark snapshots test evidence conflict detection and abstention, not open-domain retrieval or scientific novelty."
+    }
+  },
+  "primary_metrics": [
+    "precision",
+    "recall",
+    "specificity",
+    "f1",
+    "kind_matches",
+    "experiment_matches"
+  ],
+  "protocol_hash": "e805defc4957e857207d10bd071716bbbeaa38d13def0162a9a5e5e77bda655b",
+  "protocol_id": "nexus-u-independent-discovery-v1:preregistered:v1",
+  "sample_size": 8,
+  "schema": "https://nexus-u.dev/preregistered-reproduction/protocol/v1",
+  "seed": "nexus-u-v1.9-preregistered-seed",
+  "selected_case_ids": [
+    "climate-fever-60",
+    "scifact-123",
+    "climate-fever-69",
+    "climate-fever-65",
+    "contract-nli-nda-1",
+    "contract-nli-nda-2",
+    "scifact-263",
+    "climate-fever-55"
+  ],
+  "selection_algorithm": "sha256(seed || ':' || case_id), ascending",
+  "source_registry_hash": "bf0df0e2fc9c9dbe2664353550a9d3287fa746e95ee3e1d80db896d503e8014b",
+  "success_criteria": {
+    "exact_metric_agreement": true,
+    "exact_prediction_agreement": true,
+    "label_firewall_required": true,
+    "minimum_valid_evaluators": 3,
+    "tamper_detection_required": true
+  },
+  "title": "NEXUS-U preregistered independent reproduction protocol"
+}

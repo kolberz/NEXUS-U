@@ -39,6 +39,7 @@ def test_kernel_bridge_generates_replayable_project(tmp_path: Path) -> None:
     assert report.execution.verified is False
     assert Path(report.replay_manifest_path).is_file()
     assert (tmp_path / "project" / "lean-toolchain").read_text().strip() == PINNED_LEAN_TOOLCHAIN
+    assert (tmp_path / "project" / "NexusUKernelBridge.lean").read_text().strip() == "import NexusUKernelBridge.AllSensitive"
 
 
 def test_kernel_bridge_unavailable_is_explicit(tmp_path: Path, monkeypatch) -> None:

@@ -42,6 +42,7 @@ jobs:
       - uses: leanprover/lean-action@v1
         with:
           lake-package-directory: benchmark-results/kernel-bridge
+          auto-config: false
 
   release:
     name: Release gate
